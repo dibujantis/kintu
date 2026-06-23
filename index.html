@@ -2,9 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Marino</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2a4f6d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>kintu</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playpen+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -12,23 +14,21 @@
   --accent:#3d6b8e;--accent-light:#deeaf4;--accent-dark:#2a4f6d;--accent-mid:#5585a8;
   --danger:#e05252;--shadow:0 1px 3px rgba(30,42,53,.07),0 4px 12px rgba(30,42,53,.05);
   --shadow-lg:0 8px 32px rgba(30,42,53,.13);--radius:16px;--radius-sm:10px;
+  --font-warm:'Playpen Sans',cursive;--font-ui:'Montserrat',sans-serif;
 }
-body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-input,textarea,select,button{font-family:'Montserrat',sans-serif;}
+body{font-family:var(--font-ui);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+input,textarea,select,button{font-family:var(--font-ui);}
 .screen{display:none;position:relative;z-index:1;}
 .screen.active{display:flex;flex-direction:column;min-height:100vh;}
-
-/* CONFETTI */
 .confetti-bg{position:fixed;inset:0;pointer-events:none;z-index:0;}
 .confetti-bg canvas{position:absolute;inset:0;width:100%;height:100%;}
-
 /* HEADER */
 .app-header{background:linear-gradient(135deg,var(--accent),var(--accent-dark));padding:1.8rem 2rem;display:flex;align-items:center;}
 .logo-lockup{display:flex;align-items:center;gap:.85rem;}
-.logo-wordmark{display:flex;flex-direction:column;line-height:1.15;}
-.lw-name{font-size:1.15rem;font-weight:900;color:#fff;letter-spacing:-.02em;}
-.lw-sub{font-size:.72rem;color:rgba(255,255,255,.65);font-weight:500;}
-
+.logo-wordmark{display:flex;flex-direction:column;line-height:1.2;}
+.lw-brand{font-family:var(--font-warm);font-size:1.9rem;font-weight:700;color:#fff;letter-spacing:.01em;line-height:1;}
+.lw-name{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.82);margin-top:.18rem;}
+.lw-sub{font-size:.67rem;color:rgba(255,255,255,.52);font-weight:500;margin-top:.06rem;}
 /* SETUP */
 #screen-setup{background:transparent;align-items:center;justify-content:center;padding:3rem 1rem 2rem;}
 .setup-box{background:#fff;border-radius:22px;width:100%;max-width:440px;box-shadow:var(--shadow-lg);overflow:hidden;}
@@ -39,10 +39,9 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .step-dots{display:flex;gap:.4rem;justify-content:center;margin-bottom:1.5rem;}
 .si-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .25s;}
 .si-dot.done{background:var(--accent);}
-.step h2{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:.2rem;}
+.step h2{font-family:var(--font-warm);font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:.2rem;}
 .step>p{font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.65;}
 .setup-illo{display:flex;justify-content:center;margin-bottom:1.2rem;}
-
 /* FORM */
 .form-field{margin-bottom:.88rem;}
 .form-field label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;}
@@ -55,7 +54,6 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .color-swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;transition:transform .12s;border:3px solid transparent;}
 .color-swatch:hover{transform:scale(1.15);}
 .color-swatch.sel{border-color:var(--text);transform:scale(1.18);}
-
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.38rem;padding:.68rem 1.18rem;border-radius:var(--radius-sm);font-size:.85rem;font-weight:700;border:none;transition:all .18s ease;cursor:pointer;}
 .btn-primary{background:var(--accent);color:#fff;}
@@ -66,7 +64,6 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .btn-ghost{background:none;border:none;color:var(--accent);font-size:.82rem;font-weight:700;padding:.3rem 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
 .btn-full{width:100%;}
 .btn-sm{padding:.38rem .78rem;font-size:.74rem;}
-
 /* LOGIN */
 #screen-login{background:transparent;align-items:center;justify-content:center;padding:3rem 1rem 2rem;}
 .login-card{background:#fff;border-radius:22px;width:100%;max-width:400px;box-shadow:var(--shadow-lg);overflow:hidden;}
@@ -94,7 +91,6 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .recover-back{display:flex;align-items:center;gap:.3rem;font-size:.77rem;font-weight:700;color:var(--muted);background:none;border:none;margin-bottom:.95rem;cursor:pointer;}
 .recover-sent{background:var(--accent-light);border:1.5px solid #9bbdd6;border-radius:var(--radius-sm);padding:.88rem 1rem;font-size:.8rem;color:var(--accent-dark);line-height:1.65;display:none;margin-top:.82rem;}
 .recover-sent.show{display:block;}
-
 /* APP */
 #screen-app{background:transparent;}
 .topbar{background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);}
@@ -122,33 +118,37 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .tab-content{display:none;padding:1.35rem;max-width:860px;margin:0 auto;width:100%;}
 .tab-content.active{display:block;}
 .sec-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.05rem;gap:.8rem;}
-.sec-title{font-size:.98rem;font-weight:800;color:var(--text);}
+.sec-title{font-family:var(--font-warm);font-size:1.1rem;font-weight:600;color:var(--text);}
 .sec-sub{font-size:.73rem;color:var(--muted);margin-top:.1rem;}
 .card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-bottom:.9rem;}
 .card-head{padding:.75rem 1.05rem;border-bottom:1px solid var(--border);background:var(--bg);font-size:.65rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
 .card-body{padding:.9rem 1.05rem;}
-
-/* Banner */
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:1rem;}
+.search-input{width:100%;padding:.62rem .88rem .62rem 2.4rem;border:1.5px solid var(--border);border-radius:50px;font-size:.82rem;background:#fff;outline:none;transition:border-color .18s,box-shadow .18s;color:var(--text);}
+.search-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(61,107,142,.12);}
+.search-icon{position:absolute;left:.82rem;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;}
+.search-clear{position:absolute;right:.72rem;top:50%;transform:translateY(-50%);background:var(--border);border:none;border-radius:50%;width:18px;height:18px;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:.65rem;color:var(--muted);}
+.search-clear.show{display:flex;}
+/* BANNER */
 .capsule-banner{background:linear-gradient(135deg,var(--accent),var(--accent-dark));border-radius:var(--radius);padding:1.3rem;margin-bottom:1.05rem;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;}
-.cb-left h2{font-size:.98rem;font-weight:800;margin-bottom:.18rem;}
+.cb-left h2{font-family:var(--font-warm);font-size:1.12rem;font-weight:600;margin-bottom:.18rem;}
 .cb-left p{font-size:.75rem;opacity:.78;}
 .cb-right{text-align:right;}
-.cb-countdown{font-size:1.8rem;font-weight:900;line-height:1;letter-spacing:-.03em;}
+.cb-countdown{font-family:var(--font-warm);font-size:1.95rem;font-weight:700;line-height:1;}
 .cb-label{font-size:.65rem;opacity:.72;margin-top:.15rem;}
-
-/* Progress */
+.days-alive-chip{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.15);border-radius:50px;padding:.22rem .62rem;font-size:.65rem;font-weight:600;margin-top:.5rem;color:rgba(255,255,255,.9);}
+/* PROGRESS */
 .progress-wrap{margin-bottom:1.05rem;}
 .progress-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);font-weight:600;margin-bottom:.38rem;}
 .progress-track{height:8px;background:var(--border);border-radius:50px;overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent-mid),var(--accent-dark));border-radius:50px;transition:width .6s ease;}
-
-/* Stats */
+/* STATS */
 .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.48rem;margin-bottom:1.05rem;}
 .stat-box{background:#fff;border-radius:var(--radius-sm);border:1px solid var(--border);padding:.7rem .8rem;text-align:center;}
-.stat-n{font-size:1.4rem;font-weight:900;color:var(--text);line-height:1;letter-spacing:-.03em;}
+.stat-n{font-family:var(--font-warm);font-size:1.5rem;font-weight:700;color:var(--text);line-height:1;}
 .stat-l{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.17rem;font-weight:700;}
-
-/* Filters */
+/* FILTERS */
 .filter-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.95rem;gap:.5rem;flex-wrap:wrap;}
 .filter-bar{display:flex;gap:.4rem;flex-wrap:wrap;}
 .f-chip{padding:.32rem .72rem;border-radius:50px;border:1.5px solid var(--border);background:#fff;font-size:.7rem;font-weight:700;color:var(--muted);transition:all .15s;cursor:pointer;}
@@ -157,8 +157,7 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .vt-btn{width:28px;height:28px;border-radius:6px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;color:var(--muted);}
 .vt-btn.active{background:#fff;color:var(--accent);box-shadow:0 1px 4px rgba(0,0,0,.08);}
 .vt-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-
-/* Memory */
+/* MEMORY GRID */
 .memory-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.8rem;}
 .mem-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s;}
 .mem-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
@@ -176,26 +175,36 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .mem-title{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:.15rem;line-height:1.3;}
 .mem-preview{font-size:.71rem;color:var(--muted);line-height:1.5;}
 .mem-milestone-badge{display:inline-flex;align-items:center;gap:.25rem;background:var(--accent-light);color:var(--accent);font-size:.58rem;font-weight:800;padding:.12rem .45rem;border-radius:5px;margin-bottom:.18rem;}
-
-/* Empty state */
+/* REACTIONS */
+.mem-reactions{display:flex;gap:.3rem;padding:.4rem .8rem .6rem;border-top:1px solid var(--border);}
+.react-btn{background:none;border:1.5px solid var(--border);border-radius:50px;padding:.18rem .52rem;font-size:.68rem;cursor:pointer;transition:all .14s;display:flex;align-items:center;gap:.2rem;color:var(--muted);}
+.react-btn.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent);}
+.react-btn:hover{background:var(--bg);}
+.react-count{font-size:.62rem;font-weight:700;}
+/* EMPTY */
 .empty-state{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;padding:3rem 1.5rem;text-align:center;}
 .empty-state svg.illo{width:150px;height:130px;margin-bottom:1.2rem;}
-.empty-state h3{font-size:.98rem;font-weight:800;color:var(--text);margin-bottom:.35rem;}
+.empty-state h3{font-family:var(--font-warm);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
 .empty-state p{font-size:.8rem;color:var(--muted);line-height:1.65;max-width:280px;}
 .empty-state .empty-cta{margin-top:1.1rem;}
-
-/* Reminder banner — verde agua */
+/* REMINDER */
 .reminder-banner{background:linear-gradient(135deg,#e8f8f3,#f0faf6);border:1px solid #6ecfae;border-radius:var(--radius-sm);padding:.85rem 1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem;}
 .rb-icon{width:36px;height:36px;background:#c5edd9;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;}
 .rb-text{flex:1;}
 .rb-title{font-size:.8rem;font-weight:800;color:#0d6e4a;}
 .rb-sub{font-size:.7rem;color:#1a8c60;margin-top:.06rem;}
-.rb-close{background:none;border:none;color:#1a8c60;cursor:pointer;font-size:.9rem;flex-shrink:0;line-height:1;}
-
-/* Timeline */
+.rb-close{background:none;border:none;color:#1a8c60;cursor:pointer;font-size:.9rem;flex-shrink:0;}
+/* WELCOME LETTER */
+.welcome-letter-card{background:linear-gradient(135deg,#fef9ef,#fffdf7);border:1.5px solid #e8d99a;border-radius:var(--radius);padding:1.1rem 1.2rem;margin-bottom:1.05rem;cursor:pointer;transition:box-shadow .18s;}
+.welcome-letter-card:hover{box-shadow:var(--shadow);}
+.wl-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem;}
+.wl-icon{font-size:1.4rem;}
+.wl-title{font-family:var(--font-warm);font-size:.95rem;font-weight:600;color:#7a5c00;}
+.wl-preview{font-size:.78rem;color:#9a7a20;line-height:1.6;font-style:italic;}
+/* TIMELINE */
 .timeline{position:relative;padding-left:2.2rem;}
 .timeline::before{content:'';position:absolute;left:.85rem;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent) 0%,var(--border) 100%);}
-.tl-year{font-size:.7rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;margin-top:1.4rem;position:relative;}
+.tl-year{font-family:var(--font-warm);font-size:.85rem;font-weight:600;color:var(--muted);letter-spacing:.03em;margin-bottom:.6rem;margin-top:1.4rem;position:relative;}
 .tl-year::before{content:'';position:absolute;left:-1.75rem;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 0 0 2px var(--accent);}
 .tl-item{display:flex;gap:.8rem;margin-bottom:.75rem;position:relative;cursor:pointer;}
 .tl-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:2px solid #fff;flex-shrink:0;margin-top:.55rem;position:absolute;left:-1.58rem;}
@@ -209,66 +218,57 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .tl-title{font-size:.86rem;font-weight:700;color:var(--text);line-height:1.3;}
 .tl-preview{font-size:.7rem;color:var(--muted);margin-top:.12rem;line-height:1.5;}
 .tl-author{font-size:.6rem;color:var(--muted);margin-top:.28rem;display:flex;align-items:center;gap:.25rem;}
-
-/* Add memory */
+/* ADD MEMORY */
 .type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.42rem;margin-bottom:1.2rem;}
-.type-opt{padding:.7rem .32rem;border-radius:10px;border:1.5px solid var(--border);background:#fff;display:flex;flex-direction:column;align-items:center;gap:.28rem;font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;transition:all .15s;cursor:pointer;}
-.type-opt svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-.type-opt:hover,.type-opt.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent);}
-.upload-zone{border:2px dashed var(--border);border-radius:var(--radius-sm);padding:1.35rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative;}
-.upload-zone:hover,.upload-zone.dragover{border-color:var(--accent);background:var(--accent-light);}
+.type-opt{display:flex;flex-direction:column;align-items:center;gap:.35rem;padding:.72rem .5rem;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;color:var(--muted);}
+.type-opt svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.type-opt span{font-size:.63rem;font-weight:700;}
+.type-opt.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent);}
+.upload-zone{border:2px dashed var(--border);border-radius:var(--radius-sm);padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:all .18s;position:relative;}
 .upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.uz-icon{width:40px;height:40px;background:#fff;border-radius:11px;margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);box-shadow:var(--shadow);}
-.uz-icon svg{width:19px;height:19px;stroke:var(--muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-.uz-label{font-size:.78rem;font-weight:600;color:var(--muted);line-height:1.6;}
+.upload-zone:hover,.upload-zone.dragover{border-color:var(--accent);background:var(--accent-light);}
+.uz-icon svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.5rem;}
+.uz-label{font-size:.8rem;color:var(--muted);}
 .uz-label strong{color:var(--accent);}
-.uz-sub{font-size:.65rem;color:var(--muted);margin-top:.22rem;opacity:.75;}
-.file-preview{display:flex;align-items:center;gap:.72rem;padding:.72rem .88rem;background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);margin-top:.65rem;}
-.fp-thumb{width:44px;height:44px;border-radius:8px;background:var(--bg);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.uz-sub{font-size:.7rem;color:var(--muted);margin-top:.2rem;}
+.file-preview{display:flex;align-items:center;gap:.72rem;padding:.6rem .8rem;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border);margin-top:.5rem;}
+.fp-thumb{width:44px;height:44px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--border);display:flex;align-items:center;justify-content:center;}
 .fp-thumb img,.fp-thumb video{width:100%;height:100%;object-fit:cover;}
 .fp-info{flex:1;min-width:0;}
-.fp-name{font-size:.76rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.fp-size{font-size:.65rem;color:var(--muted);}
-.fp-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.95rem;flex-shrink:0;}
-.fp-remove:hover{color:var(--danger);}
-
-/* Users */
-.user-admin-item{display:flex;align-items:center;justify-content:space-between;padding:.76rem .9rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:#fff;gap:.75rem;}
-.uai-left{display:flex;align-items:center;gap:.66rem;}
-.uai-name{font-size:.86rem;font-weight:700;color:var(--text);}
-.uai-meta{font-size:.66rem;color:var(--muted);margin-top:.1rem;display:flex;align-items:center;gap:.36rem;flex-wrap:wrap;}
-.role-badge{display:inline-block;padding:.1rem .44rem;border-radius:5px;font-size:.57rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
-.role-badge.admin{background:var(--accent-light);color:var(--accent-dark);}
-.role-badge.member{background:#f1f5f9;color:var(--muted);}
-.uai-actions{display:flex;gap:.36rem;flex-shrink:0;}
-.access-box{background:#f4f8fc;border:1.5px dashed #9bbdd6;border-radius:var(--radius-sm);padding:.9rem;margin-top:.72rem;}
-.access-box .ab-label{font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:.48rem;}
-.access-code{font-family:'Courier New',monospace;font-size:1.3rem;font-weight:700;color:var(--text);letter-spacing:.2em;text-align:center;background:#fff;border-radius:8px;padding:.5rem;border:1px solid var(--border);margin-bottom:.48rem;}
-.copy-btn{display:inline-flex;align-items:center;gap:.28rem;padding:.34rem .72rem;border-radius:7px;background:var(--accent-light);color:var(--accent);font-size:.7rem;font-weight:700;border:none;transition:all .15s;cursor:pointer;}
-.copy-btn:hover{background:var(--accent);color:#fff;}
-
-/* Settings */
-.setting-row{display:flex;align-items:center;justify-content:space-between;padding:.78rem 0;border-bottom:1px solid var(--border);}
+.fp-name{font-size:.78rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fp-size{font-size:.66rem;color:var(--muted);margin-top:.08rem;}
+.fp-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.85rem;padding:.2rem;}
+/* USERS */
+.user-admin-item{display:flex;align-items:center;justify-content:space-between;padding:.82rem 1.05rem;background:#fff;border-radius:var(--radius-sm);border:1px solid var(--border);}
+.uai-left{display:flex;align-items:center;gap:.72rem;}
+.uai-name{font-size:.86rem;font-weight:700;}
+.uai-meta{display:flex;align-items:center;gap:.38rem;font-size:.68rem;color:var(--muted);flex-wrap:wrap;margin-top:.12rem;}
+.uai-actions{display:flex;gap:.38rem;}
+.role-badge{display:inline-flex;align-items:center;padding:.1rem .48rem;border-radius:5px;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;}
+.role-badge.admin{background:#deeaf4;color:var(--accent-dark);}
+.role-badge.member{background:#f0f0f0;color:var(--muted);}
+.access-box{background:var(--accent-light);border:1.5px solid #9bbdd6;border-radius:var(--radius-sm);padding:.9rem 1rem;margin-top:1rem;}
+.ab-label{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.4rem;}
+.access-code{font-family:monospace;font-size:2rem;font-weight:900;letter-spacing:.35em;color:var(--accent-dark);margin-bottom:.3rem;}
+.copy-btn{background:#fff;border:1.5px solid #9bbdd6;color:var(--accent-dark);border-radius:8px;padding:.38rem .85rem;font-size:.74rem;font-weight:700;cursor:pointer;transition:all .15s;}
+.copy-btn:hover{background:var(--accent-light);}
+/* SETTINGS */
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:.65rem 0;border-bottom:1px solid var(--border);}
 .setting-row:last-child{border-bottom:none;}
 .sr-name{font-size:.84rem;font-weight:600;color:var(--text);}
 .sr-desc{font-size:.67rem;color:var(--muted);margin-top:.1rem;}
-
-/* Lang select */
 .lang-select-wrap{position:relative;}
-.lang-select{width:100%;padding:.7rem 2.4rem .7rem .9rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);outline:none;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:600;color:var(--text);background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color .18s,box-shadow .18s;}
+.lang-select{width:100%;padding:.7rem 2.4rem .7rem .9rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);outline:none;font-family:var(--font-ui);font-size:.85rem;font-weight:600;color:var(--text);background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color .18s,box-shadow .18s;}
 .lang-select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(61,107,142,.14);}
 .lang-select-arrow{position:absolute;right:.85rem;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--muted);}
 .lang-select-arrow svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-
-/* Toggle */
 .toggle-switch{position:relative;display:inline-block;width:40px;height:22px;}
 .toggle-switch input{opacity:0;width:0;height:0;}
 .toggle-slider{position:absolute;cursor:pointer;inset:0;background:var(--border);border-radius:50px;transition:.25s;}
 .toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.15);}
 .toggle-switch input:checked + .toggle-slider{background:var(--accent);}
 .toggle-switch input:checked + .toggle-slider::before{transform:translateX(18px);}
-
-/* Drive */
+/* DRIVE */
 .drive-panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:.9rem;}
 .drive-panel-head{padding:.75rem 1.05rem;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .drive-panel-title{font-size:.65rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
@@ -286,31 +286,59 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 .dir-label{color:var(--muted);font-size:.76rem;}
 .dir-value{font-weight:700;color:var(--text);font-size:.8rem;}
 .drive-note{background:#f0f8ff;border:1px solid #b3d4ea;border-radius:var(--radius-sm);padding:.75rem .9rem;font-size:.73rem;color:var(--accent-dark);line-height:1.65;margin-top:.8rem;}
-
-/* Opening */
+.export-row{display:flex;gap:.5rem;flex-wrap:wrap;}
+/* OPENING */
 #screen-opening{background:linear-gradient(160deg,#0d1b2a 0%,#1a3a5c 50%,#0d1b2a 100%);align-items:center;justify-content:center;padding:2rem 1rem;}
 .opening-wrap{text-align:center;max-width:380px;width:100%;}
-.opening-title{font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:.5rem;line-height:1.2;}
-.opening-sub{color:rgba(255,255,255,.65);font-size:.88rem;line-height:1.7;margin-bottom:2rem;}
-.opening-btn{background:#fff;color:var(--accent-dark);border:none;border-radius:50px;padding:1rem 2.5rem;font-size:1rem;font-weight:800;cursor:pointer;transition:all .22s;box-shadow:0 4px 24px rgba(61,107,142,.4);}
+.opening-title{font-family:var(--font-warm);font-size:1.75rem;font-weight:600;color:#fff;margin-bottom:.5rem;line-height:1.25;}
+.opening-sub{color:rgba(255,255,255,.65);font-size:.88rem;line-height:1.75;margin-bottom:2rem;white-space:pre-line;}
+.opening-btn{background:#fff;color:var(--accent-dark);border:none;border-radius:50px;padding:1rem 2.5rem;font-family:var(--font-warm);font-size:1.05rem;font-weight:600;cursor:pointer;transition:all .22s;box-shadow:0 4px 24px rgba(61,107,142,.4);}
 .opening-btn:hover{transform:translateY(-2px);}
-
-/* Modal */
+/* PREVIEW SCREEN */
+#screen-preview{background:linear-gradient(160deg,#0d1b2a 0%,#1a3a5c 60%,#0d1b2a 100%);align-items:center;justify-content:flex-start;padding:0;}
+.preview-header{width:100%;padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.preview-back{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;padding:.38rem .82rem;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .15s;}
+.preview-back:hover{background:rgba(255,255,255,.22);}
+.preview-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);}
+.preview-body{flex:1;width:100%;overflow-y:auto;padding:0 1.5rem 2rem;}
+.preview-letter{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;color:#fff;}
+.preview-letter-title{font-family:var(--font-warm);font-size:1.15rem;font-weight:600;margin-bottom:.8rem;color:rgba(255,255,255,.9);}
+.preview-letter-body{font-size:.85rem;line-height:1.85;color:rgba(255,255,255,.72);white-space:pre-wrap;}
+.preview-mem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;}
+.preview-mem-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);overflow:hidden;}
+.preview-mem-thumb{height:100px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.preview-mem-thumb img{width:100%;height:100%;object-fit:cover;}
+.preview-mem-title{font-size:.78rem;font-weight:700;color:#fff;padding:.5rem .6rem .2rem;}
+.preview-mem-date{font-size:.62rem;color:rgba(255,255,255,.5);padding:0 .6rem .5rem;}
+.preview-empty{text-align:center;padding:3rem 1rem;}
+.preview-empty-text{font-family:var(--font-warm);font-size:1.1rem;color:rgba(255,255,255,.5);}
+/* CONFIRM */
+.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:600;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px);}
+.confirm-overlay.open{display:flex;}
+.confirm-box{background:#fff;border-radius:18px;max-width:360px;width:100%;padding:1.5rem;box-shadow:var(--shadow-lg);animation:pop .2s ease;}
+.confirm-title{font-family:var(--font-warm);font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
+.confirm-msg{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1.2rem;}
+.confirm-actions{display:flex;gap:.5rem;justify-content:flex-end;}
+/* MODAL */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(3px);}
 .overlay.open{display:flex;}
 .modal{background:#fff;border-radius:22px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:pop .22s ease;}
 @keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
 .modal-head{padding:1rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1;}
-.modal-head h3{font-size:.93rem;font-weight:800;color:var(--text);}
+.modal-head h3{font-family:var(--font-warm);font-size:1rem;font-weight:600;color:var(--text);}
 .modal-head p{font-size:.7rem;color:var(--muted);margin-top:.1rem;}
 .mh-close{background:none;border:none;color:var(--muted);font-size:.93rem;line-height:1;cursor:pointer;}
 .modal-body{padding:1rem 1.2rem;}
 .modal-foot{padding:.8rem 1.2rem;border-top:1px solid var(--border);display:flex;gap:.42rem;justify-content:flex-end;position:sticky;bottom:0;background:#fff;}
-
-/* Toast */
+/* MEMORY MODAL NAV */
+.mem-modal-nav{display:flex;align-items:center;justify-content:space-between;padding:.55rem 1.2rem;border-bottom:1px solid var(--border);background:var(--bg);}
+.mmn-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:.28rem .72rem;font-size:.72rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .14s;}
+.mmn-btn:hover:not(:disabled){background:var(--accent-light);border-color:var(--accent);color:var(--accent);}
+.mmn-btn:disabled{opacity:.35;cursor:default;}
+.mmn-count{font-size:.72rem;color:var(--muted);font-weight:600;}
+/* TOAST */
 .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:#fff;padding:.52rem 1.15rem;border-radius:50px;font-size:.76rem;font-weight:700;z-index:2000;transition:transform .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 20px rgba(0,0,0,.18);white-space:nowrap;pointer-events:none;}
 .toast.show{transform:translateX(-50%) translateY(0);}
-
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @media(max-width:600px){
   .type-grid{grid-template-columns:repeat(2,1fr);}
@@ -320,6 +348,7 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
   .tab-content{padding:.95rem;}
   .tb-name{display:none;}
   .app-header{padding:1.5rem 1.2rem;}
+  .preview-mem-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
 }
 </style>
 </head>
@@ -333,7 +362,7 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
     <div style="font-size:4.5rem;margin-bottom:1rem;display:inline-block;animation:float 3s ease-in-out infinite">💌</div>
     <div class="opening-title" id="opening-title"></div>
     <div class="opening-sub" id="opening-sub"></div>
-    <button class="opening-btn" onclick="openCapsuleReveal()">Abrir mi cápsula</button>
+    <button class="opening-btn" onclick="openCapsuleReveal()" data-i18n="opening_btn"></button>
   </div>
 </div>
 
@@ -344,34 +373,15 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
     <div class="setup-steps">
       <div class="step-dots" id="setup-dots"></div>
       <div class="step active" id="step-1">
-        <div class="setup-illo">
-          <svg width="110" height="90" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="22" width="94" height="58" rx="10" fill="#e8ecef" stroke="#b0bec5" stroke-width="2"/>
-            <path d="M8 32 L55 58 L102 32" stroke="#b0bec5" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M55 40 C55 40 44 30 44 24 C44 19 48 16 52 17 C53.5 17.5 55 19 55 19 C55 19 56.5 17.5 58 17 C62 16 66 19 66 24 C66 30 55 40 55 40Z" fill="#6b7f8e" opacity=".75"/>
-            <circle cx="82" cy="16" r="8" fill="#eceff1"/>
-            <text x="82" y="20" text-anchor="middle" font-size="10" font-family="Montserrat" font-weight="900" fill="#546473">?</text>
-          </svg>
-        </div>
+        <div class="setup-illo"><svg width="110" height="90" viewBox="0 0 110 90" fill="none"><rect x="8" y="22" width="94" height="58" rx="10" fill="#e8ecef" stroke="#b0bec5" stroke-width="2"/><path d="M8 32 L55 58 L102 32" stroke="#b0bec5" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M55 40 C55 40 44 30 44 24 C44 19 48 16 52 17 C53.5 17.5 55 19 55 19 C55 19 56.5 17.5 58 17 C62 16 66 19 66 24 C66 30 55 40 55 40Z" fill="#6b7f8e" opacity=".75"/><circle cx="82" cy="16" r="8" fill="#eceff1"/><text x="82" y="20" text-anchor="middle" font-size="10" font-family="Playpen Sans" font-weight="900" fill="#546473">?</text></svg></div>
         <h2 data-i18n="s1_title"></h2><p data-i18n="s1_desc"></p>
         <div class="form-field"><label data-i18n="s1_name"></label><input type="text" id="s-child-name" data-i18n-ph="s1_name_ph"></div>
         <div class="form-field"><label data-i18n="s1_birth"></label><input type="date" id="s-birth"></div>
-        <div class="form-field"><label data-i18n="s1_age"></label>
-          <select id="s-open-age"><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18" selected>18</option><option value="21">21</option><option value="25">25</option></select>
-        </div>
+        <div class="form-field"><label data-i18n="s1_age"></label><select id="s-open-age"><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18" selected>18</option><option value="21">21</option><option value="25">25</option></select></div>
         <button class="btn btn-primary btn-full" onclick="setupNext(1)" data-i18n="btn_next"></button>
       </div>
       <div class="step" id="step-2">
-        <div class="setup-illo">
-          <svg width="110" height="90" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="55" cy="30" r="22" fill="#e8ecef" stroke="#b0bec5" stroke-width="2"/>
-            <circle cx="55" cy="24" r="10" fill="#b0bec5"/>
-            <path d="M35 62 C35 52 42 46 55 46 C68 46 75 52 75 62" fill="#b0bec5"/>
-            <circle cx="82" cy="68" r="12" fill="#eceff1" stroke="#b0bec5" stroke-width="2"/>
-            <path d="M82 62 L82 68 M79 65 L85 65" stroke="#546473" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M82 68 L82 76" stroke="#546473" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-        </div>
+        <div class="setup-illo"><svg width="110" height="90" viewBox="0 0 110 90" fill="none"><circle cx="55" cy="30" r="22" fill="#e8ecef" stroke="#b0bec5" stroke-width="2"/><circle cx="55" cy="24" r="10" fill="#b0bec5"/><path d="M35 62 C35 52 42 46 55 46 C68 46 75 52 75 62" fill="#b0bec5"/><circle cx="82" cy="68" r="12" fill="#eceff1" stroke="#b0bec5" stroke-width="2"/><path d="M82 62 L82 68 M79 65 L85 65" stroke="#546473" stroke-width="2.5" stroke-linecap="round"/><path d="M82 68 L82 76" stroke="#546473" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <h2 data-i18n="s2_title"></h2><p data-i18n="s2_desc"></p>
         <div class="form-field"><label data-i18n="s2_name"></label><input type="text" id="s-admin-name" data-i18n-ph="s2_name_ph"></div>
         <div class="form-field"><label data-i18n="field_email"></label><input type="email" id="s-admin-email" placeholder="tu@email.com"></div>
@@ -380,23 +390,9 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
         <button class="btn btn-secondary btn-full" style="margin-top:.5rem" onclick="setupPrev(2)" data-i18n="btn_back"></button>
       </div>
       <div class="step" id="step-3">
-        <div class="setup-illo">
-          <svg width="110" height="90" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="30" width="70" height="48" rx="24" fill="#e8ecef" stroke="#b0bec5" stroke-width="2"/>
-            <rect x="38" y="18" width="34" height="24" rx="8" fill="none" stroke="#b0bec5" stroke-width="2.5"/>
-            <rect x="32" y="36" width="46" height="30" rx="8" fill="#b0bec5"/>
-            <rect x="46" y="46" width="18" height="14" rx="4" fill="#fff" opacity=".5"/>
-            <circle cx="55" cy="51" r="3" fill="#546473"/>
-            <path d="M55 51 L55 56" stroke="#546473" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
+        <div class="setup-illo"><svg width="110" height="90" viewBox="0 0 110 90" fill="none"><rect x="20" y="30" width="70" height="48" rx="24" fill="#e8ecef" stroke="#b0bec5" stroke-width="2"/><rect x="38" y="18" width="34" height="24" rx="8" fill="none" stroke="#b0bec5" stroke-width="2.5"/><rect x="32" y="36" width="46" height="30" rx="8" fill="#b0bec5"/><rect x="46" y="46" width="18" height="14" rx="4" fill="#fff" opacity=".5"/><circle cx="55" cy="51" r="3" fill="#546473"/><path d="M55 51 L55 56" stroke="#546473" stroke-width="2" stroke-linecap="round"/></svg></div>
         <h2 data-i18n="s3_title"></h2><p data-i18n="s3_desc"></p>
-        <div class="pin-row">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp0" oninput="pinMove(this,null,'sp1')">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp1" oninput="pinMove(this,'sp0','sp2')" onkeydown="pinBack(event,'sp0')">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp2" oninput="pinMove(this,'sp1','sp3')" onkeydown="pinBack(event,'sp1')">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp3" oninput="pinMove(this,'sp2',null)" onkeydown="pinBack(event,'sp2')">
-        </div>
+        <div class="pin-row"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp0" oninput="pinMove(this,null,'sp1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp1" oninput="pinMove(this,'sp0','sp2')" onkeydown="pinBack(event,'sp0')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp2" oninput="pinMove(this,'sp1','sp3')" onkeydown="pinBack(event,'sp1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="sp3" oninput="pinMove(this,'sp2',null)" onkeydown="pinBack(event,'sp2')"></div>
         <button class="btn btn-primary btn-full" onclick="setupFinish()" data-i18n="s3_create"></button>
         <button class="btn btn-secondary btn-full" style="margin-top:.5rem" onclick="setupPrev(3)" data-i18n="btn_back"></button>
       </div>
@@ -408,10 +404,7 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 <div id="screen-login" class="screen">
   <div class="login-card">
     <div class="app-header" id="login-header" style="padding:1.65rem 2rem;"></div>
-    <div class="user-selector" id="login-user-section">
-      <h3 data-i18n="login_who"></h3>
-      <div class="user-list" id="login-user-list"></div>
-    </div>
+    <div class="user-selector" id="login-user-section"><h3 data-i18n="login_who"></h3><div class="user-list" id="login-user-list"></div></div>
     <div class="pin-section" id="pin-section" style="display:none">
       <div class="pin-label" id="pin-label"></div>
       <div class="pin-dots" id="pin-dots"></div>
@@ -435,12 +428,8 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
   <div class="topbar">
     <div id="app-header-logo"></div>
     <div class="tb-right">
-      <div class="notif-bell" id="notif-bell" onclick="toggleNotifPanel()">
-        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-      </div>
-      <div class="drive-pill disconnected" id="topbar-drive-pill" onclick="goTab('settings',document.querySelectorAll('.tab')[3])">
-        <div class="drive-dot"></div><span id="topbar-drive-text"></span>
-      </div>
+      <button class="notif-bell" id="notif-bell" onclick="toggleNotifPanel()"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
+      <div class="drive-pill disconnected" id="topbar-drive-pill" onclick="goTab('settings',document.querySelectorAll('.tab')[3])"><div class="drive-dot"></div><span id="topbar-drive-text"></span></div>
       <div class="tb-avatar" id="tb-avatar"></div>
       <span class="tb-name" id="tb-name"></span>
       <button class="tb-logout" onclick="logout()" data-i18n="btn_logout"></button>
@@ -452,28 +441,28 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
     <button class="tab" onclick="goTab('add',this)" data-i18n="tab_add"></button>
     <button class="tab admin-only" onclick="goTab('users',this)" data-i18n="tab_users"></button>
     <button class="tab" onclick="goTab('settings',this)" data-i18n="tab_settings"></button>
+    <button class="tab" onclick="goPreview()" data-i18n="tab_preview"></button>
   </div>
 
-  <!-- MEMORIES -->
+  <!-- MEMORIES TAB -->
   <div class="tab-content active" id="tab-memories">
-    <div id="reminder-banner" style="display:none" class="reminder-banner">
-      <div class="rb-icon">💡</div>
-      <div class="rb-text"><div class="rb-title" id="rb-title"></div><div class="rb-sub" id="rb-sub"></div></div>
-      <button class="rb-close" onclick="dismissReminder()">&#10005;</button>
-    </div>
+    <div id="reminder-banner" style="display:none" class="reminder-banner"><div class="rb-icon">💡</div><div class="rb-text"><div class="rb-title" id="rb-title"></div><div class="rb-sub" id="rb-sub"></div></div><button class="rb-close" onclick="dismissReminder()">&#10005;</button></div>
+    <div id="welcome-letter-banner" style="display:none" class="welcome-letter-card" onclick="openWelcomeLetter()"><div class="wl-head"><span class="wl-icon">✉️</span><span class="wl-title" data-i18n="wl_title"></span></div><div class="wl-preview" id="wl-preview-text"></div></div>
     <div class="capsule-banner">
-      <div class="cb-left"><h2><span data-i18n="cap_of"></span> <span id="cap-name-banner">—</span></h2><p data-i18n="cap_sub"></p></div>
+      <div class="cb-left"><h2><span data-i18n="cap_of"></span> <span id="cap-name-banner">—</span></h2><p data-i18n="cap_sub"></p><div class="days-alive-chip">🌱 <span id="days-alive-text">—</span></div></div>
       <div class="cb-right"><div class="cb-countdown" id="cap-countdown">—</div><div class="cb-label" data-i18n="cap_label"></div></div>
     </div>
-    <div class="progress-wrap">
-      <div class="progress-label"><span id="progress-label-left"></span><span id="progress-label-right"></span></div>
-      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-    </div>
+    <div class="progress-wrap"><div class="progress-label"><span id="progress-label-left"></span><span id="progress-label-right"></span></div><div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div></div>
     <div class="stats-strip">
       <div class="stat-box"><div class="stat-n" id="st-total">0</div><div class="stat-l" data-i18n="stat_total"></div></div>
       <div class="stat-box"><div class="stat-n" id="st-photos">0</div><div class="stat-l" data-i18n="stat_photos"></div></div>
       <div class="stat-box"><div class="stat-n" id="st-audio">0</div><div class="stat-l" data-i18n="stat_audio"></div></div>
       <div class="stat-box"><div class="stat-n" id="st-hitos">0</div><div class="stat-l" data-i18n="stat_hitos"></div></div>
+    </div>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" type="text" id="search-input" data-i18n-ph="search_ph" oninput="onSearch(this.value)">
+      <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
     </div>
     <div class="filter-row">
       <div class="filter-bar">
@@ -491,13 +480,13 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
     <div id="memory-grid" class="memory-grid"></div>
   </div>
 
-  <!-- TIMELINE -->
+  <!-- TIMELINE TAB -->
   <div class="tab-content" id="tab-timeline">
     <div class="sec-head"><div><div class="sec-title" data-i18n="tab_timeline"></div><div class="sec-sub" data-i18n="timeline_sub"></div></div></div>
     <div class="timeline" id="timeline-content"></div>
   </div>
 
-  <!-- ADD -->
+  <!-- ADD TAB -->
   <div class="tab-content" id="tab-add">
     <div class="sec-head"><div><div class="sec-title" data-i18n="add_title"></div><div class="sec-sub" data-i18n="add_sub"></div></div></div>
     <div class="card"><div class="card-body">
@@ -519,34 +508,24 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
           <div class="uz-label"><strong data-i18n="upload_click"></strong> <span data-i18n="upload_or"></span></div>
           <div class="uz-sub" id="uz-sub-text"></div>
         </div>
-        <div class="file-preview" id="file-preview" style="display:none">
-          <div class="fp-thumb" id="fp-thumb"></div>
-          <div class="fp-info"><div class="fp-name" id="fp-name"></div><div class="fp-size" id="fp-size"></div></div>
-          <button class="fp-remove" onclick="clearFile()">&#10005;</button>
-        </div>
+        <div class="file-preview" id="file-preview" style="display:none"><div class="fp-thumb" id="fp-thumb"></div><div class="fp-info"><div class="fp-name" id="fp-name"></div><div class="fp-size" id="fp-size"></div></div><button class="fp-remove" onclick="clearFile()">&#10005;</button></div>
       </div>
       <div class="form-field"><label data-i18n="add_field_msg"></label><textarea id="add-msg" rows="3" data-i18n-ph="add_msg_ph"></textarea></div>
       <button class="btn btn-primary btn-full" onclick="saveMemory()" data-i18n="add_save"></button>
     </div></div>
   </div>
 
-  <!-- USERS -->
+  <!-- USERS TAB -->
   <div class="tab-content" id="tab-users">
-    <div class="sec-head">
-      <div><div class="sec-title" data-i18n="users_title"></div><div class="sec-sub" data-i18n="users_sub"></div></div>
-      <button class="btn btn-primary btn-sm" onclick="openNewUserModal()" data-i18n="users_new"></button>
-    </div>
+    <div class="sec-head"><div><div class="sec-title" data-i18n="users_title"></div><div class="sec-sub" data-i18n="users_sub"></div></div><button class="btn btn-primary btn-sm" onclick="openNewUserModal()" data-i18n="users_new"></button></div>
     <div style="display:flex;flex-direction:column;gap:.5rem" id="users-admin-list"></div>
   </div>
 
-  <!-- SETTINGS -->
+  <!-- SETTINGS TAB -->
   <div class="tab-content" id="tab-settings">
     <div class="sec-head"><div><div class="sec-title" data-i18n="tab_settings"></div></div></div>
     <div class="drive-panel">
-      <div class="drive-panel-head">
-        <span class="drive-panel-title" data-i18n="drive_title"></span>
-        <div class="drive-status-badge disconnected" id="drive-status-badge"><div class="drive-dot-badge"></div><span id="drive-status-text"></span></div>
-      </div>
+      <div class="drive-panel-head"><span class="drive-panel-title" data-i18n="drive_title"></span><div class="drive-status-badge disconnected" id="drive-status-badge"><div class="drive-dot-badge"></div><span id="drive-status-text"></span></div></div>
       <div class="drive-panel-body">
         <div id="drive-member-note" style="display:none;background:#e8f8f3;border:1px solid #6ecfae;border-radius:var(--radius-sm);padding:.7rem .85rem;font-size:.74rem;color:#0d6e4a;margin-bottom:.9rem;line-height:1.6"><strong data-i18n="drive_member_note_title"></strong> <span data-i18n="drive_member_note_body"></span></div>
         <div class="drive-info-row"><span class="dir-label" data-i18n="drive_account"></span><span class="dir-value" id="drive-account-val">—</span></div>
@@ -561,45 +540,54 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
         <div class="drive-note"><strong data-i18n="drive_note_title"></strong> <span data-i18n="drive_note_body"></span></div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-head" data-i18n="set_capsule"></div>
+    <div class="card admin-only" id="welcome-letter-card-settings">
+      <div class="card-head" data-i18n="wl_card_head"></div>
       <div class="card-body">
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_recipient"></div></div><span style="font-size:.82rem;font-weight:700" id="set-child-name">—</span></div>
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_opens"></div></div><span style="font-size:.82rem;font-weight:700" id="set-open-date">—</span></div>
-        <div class="setting-row admin-only" id="admin-change-capsule" style="display:none"><div><div class="sr-name" data-i18n="set_edit_cap"></div></div><button class="btn btn-secondary btn-sm" onclick="openEditCapsuleModal()" data-i18n="btn_edit"></button></div>
+        <div style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:.85rem" data-i18n="wl_card_desc"></div>
+        <div class="form-field"><textarea id="wl-textarea" rows="5" data-i18n-ph="wl_ph" style="font-size:.82rem;line-height:1.7"></textarea></div>
+        <button class="btn btn-primary" onclick="saveWelcomeLetter()" data-i18n="wl_save"></button>
       </div>
     </div>
-    <div class="card">
-      <div class="card-head" data-i18n="set_reminders"></div>
-      <div class="card-body">
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_reminder_monthly"></div><div class="sr-desc" data-i18n="set_reminder_monthly_desc"></div></div><label class="toggle-switch"><input type="checkbox" id="toggle-monthly" checked onchange="saveReminderPrefs()"><span class="toggle-slider"></span></label></div>
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_reminder_birthday"></div><div class="sr-desc" data-i18n="set_reminder_birthday_desc"></div></div><label class="toggle-switch"><input type="checkbox" id="toggle-birthday" checked onchange="saveReminderPrefs()"><span class="toggle-slider"></span></label></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-head" data-i18n="set_security"></div>
-      <div class="card-body">
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_pin"></div></div><button class="btn btn-secondary btn-sm" onclick="openChangePinModal()" data-i18n="btn_change"></button></div>
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_email_rec"></div><div class="sr-desc" id="set-my-email-desc">—</div></div><button class="btn btn-secondary btn-sm" onclick="openEditProfileModal()" data-i18n="btn_edit"></button></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-head" data-i18n="set_profile"></div>
-      <div class="card-body">
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_name"></div></div><span style="font-size:.82rem;font-weight:700" id="set-my-name">—</span></div>
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_role"></div></div><span class="role-badge" id="set-my-role">—</span></div>
-        <div class="setting-row"><div><div class="sr-name" data-i18n="set_edit_profile"></div></div><button class="btn btn-secondary btn-sm" onclick="openEditProfileModal()" data-i18n="btn_edit"></button></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-head" data-i18n="set_lang"></div>
-      <div class="card-body">
-        <div class="lang-select-wrap">
-          <select class="lang-select" id="lang-select" onchange="setLang(this.value)"></select>
-          <div class="lang-select-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-      </div>
-    </div>
+    <div class="card"><div class="card-head" data-i18n="set_capsule"></div><div class="card-body">
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_recipient"></div></div><span style="font-size:.82rem;font-weight:700" id="set-child-name">—</span></div>
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_opens"></div></div><span style="font-size:.82rem;font-weight:700" id="set-open-date">—</span></div>
+      <div class="setting-row admin-only" id="admin-change-capsule" style="display:none"><div><div class="sr-name" data-i18n="set_edit_cap"></div></div><button class="btn btn-secondary btn-sm" onclick="openEditCapsuleModal()" data-i18n="btn_edit"></button></div>
+    </div></div>
+    <div class="card"><div class="card-head" data-i18n="set_reminders"></div><div class="card-body">
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_reminder_monthly"></div><div class="sr-desc" data-i18n="set_reminder_monthly_desc"></div></div><label class="toggle-switch"><input type="checkbox" id="toggle-monthly" checked onchange="saveReminderPrefs()"><span class="toggle-slider"></span></label></div>
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_reminder_birthday"></div><div class="sr-desc" data-i18n="set_reminder_birthday_desc"></div></div><label class="toggle-switch"><input type="checkbox" id="toggle-birthday" checked onchange="saveReminderPrefs()"><span class="toggle-slider"></span></label></div>
+    </div></div>
+    <div class="card"><div class="card-head" data-i18n="set_security"></div><div class="card-body">
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_pin"></div></div><button class="btn btn-secondary btn-sm" onclick="openChangePinModal()" data-i18n="btn_change"></button></div>
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_email_rec"></div><div class="sr-desc" id="set-my-email-desc">—</div></div><button class="btn btn-secondary btn-sm" onclick="openEditProfileModal()" data-i18n="btn_edit"></button></div>
+    </div></div>
+    <div class="card"><div class="card-head" data-i18n="set_profile"></div><div class="card-body">
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_name"></div></div><span style="font-size:.82rem;font-weight:700" id="set-my-name">—</span></div>
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_role"></div></div><span class="role-badge" id="set-my-role">—</span></div>
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_edit_profile"></div></div><button class="btn btn-secondary btn-sm" onclick="openEditProfileModal()" data-i18n="btn_edit"></button></div>
+    </div></div>
+    <div class="card"><div class="card-head" data-i18n="set_lang"></div><div class="card-body">
+      <div class="lang-select-wrap"><select class="lang-select" id="lang-select" onchange="setLang(this.value)"></select><div class="lang-select-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+    </div></div>
+    <div class="card admin-only"><div class="card-head" data-i18n="set_data"></div><div class="card-body">
+      <div style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:.85rem" data-i18n="set_data_desc"></div>
+      <div class="export-row"><button class="btn btn-secondary" onclick="exportData()" data-i18n="btn_export"></button><button class="btn btn-secondary" onclick="document.getElementById('import-file').click()" data-i18n="btn_import"></button><input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- PREVIEW SCREEN -->
+<div id="screen-preview" class="screen">
+  <div class="preview-header"><button class="preview-back" onclick="closePreview()">&#8592; <span data-i18n="btn_back"></span></button><span class="preview-label" data-i18n="preview_label"></span></div>
+  <div class="preview-body" id="preview-body"></div>
+</div>
+
+<!-- CONFIRM DIALOG -->
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <div class="confirm-title" id="confirm-title"></div>
+    <div class="confirm-msg" id="confirm-msg"></div>
+    <div class="confirm-actions"><button class="btn btn-secondary" onclick="confirmCancel()" data-i18n="btn_cancel"></button><button class="btn btn-danger" id="confirm-ok-btn" onclick="confirmOk()"></button></div>
   </div>
 </div>
 
@@ -612,14 +600,7 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
       <div class="form-field"><label data-i18n="field_email"></label><input type="email" id="nu-email" data-i18n-ph="nu_email_ph"></div>
       <div class="form-field"><label data-i18n="field_color"></label><div class="color-picker" id="nu-color-picker"></div></div>
       <div class="form-field"><label data-i18n="nu_role"></label><select id="nu-role"><option value="member" data-i18n="nu_role_member"></option><option value="admin" data-i18n="nu_role_admin"></option></select></div>
-      <div class="form-field"><label data-i18n="nu_pin"></label>
-        <div class="pin-row" style="justify-content:flex-start">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p0" oninput="pinMove(this,null,'nu-p1')">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p1" oninput="pinMove(this,'nu-p0','nu-p2')" onkeydown="pinBack(event,'nu-p0')">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p2" oninput="pinMove(this,'nu-p1','nu-p3')" onkeydown="pinBack(event,'nu-p1')">
-          <input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p3" oninput="pinMove(this,'nu-p2',null)" onkeydown="pinBack(event,'nu-p2')">
-        </div>
-      </div>
+      <div class="form-field"><label data-i18n="nu_pin"></label><div class="pin-row" style="justify-content:flex-start"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p0" oninput="pinMove(this,null,'nu-p1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p1" oninput="pinMove(this,'nu-p0','nu-p2')" onkeydown="pinBack(event,'nu-p0')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p2" oninput="pinMove(this,'nu-p1','nu-p3')" onkeydown="pinBack(event,'nu-p1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="nu-p3" oninput="pinMove(this,'nu-p2',null)" onkeydown="pinBack(event,'nu-p2')"></div></div>
       <div id="nu-access-preview" style="display:none"><div class="access-box"><div class="ab-label" data-i18n="nu_preview"></div><div id="nu-invite-msg" style="font-size:.77rem;line-height:1.7;white-space:pre-line;background:#fff;border-radius:8px;padding:.7rem;border:1px solid var(--border)"></div></div></div>
     </div>
     <div class="modal-foot"><button class="btn btn-secondary" onclick="previewAccess()" data-i18n="nu_preview_btn"></button><button class="btn btn-primary" onclick="saveNewUser()" data-i18n="nu_create"></button></div>
@@ -630,26 +611,23 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
   <div class="modal">
     <div class="modal-head"><div><h3 id="ud-title">—</h3><p id="ud-sub"></p></div><button class="mh-close" onclick="closeModal('overlay-user-detail')">&#10005;</button></div>
     <div class="modal-body" id="ud-body"></div>
-    <div class="modal-foot"><button class="btn btn-danger btn-sm" id="ud-delete-btn" onclick="deleteUserConfirm()" data-i18n="btn_delete"></button><button class="btn btn-secondary" onclick="closeModal('overlay-user-detail')" data-i18n="btn_close"></button><button class="btn btn-primary" id="ud-save-btn" onclick="saveUserEdit()" data-i18n="btn_save"></button></div>
+    <div class="modal-foot"><button class="btn btn-danger btn-sm" id="ud-delete-btn" onclick="confirmDeleteUser()" data-i18n="btn_delete"></button><button class="btn btn-secondary" onclick="closeModal('overlay-user-detail')" data-i18n="btn_close"></button><button class="btn btn-primary" id="ud-save-btn" onclick="saveUserEdit()" data-i18n="btn_save"></button></div>
   </div>
 </div>
 
 <div class="overlay" id="overlay-memory" onclick="if(event.target===this)closeModal('overlay-memory')">
   <div class="modal">
     <div class="modal-head"><div><h3 id="mem-modal-title">—</h3><p id="mem-modal-sub"></p></div><button class="mh-close" onclick="closeModal('overlay-memory')">&#10005;</button></div>
+    <div class="mem-modal-nav"><button class="mmn-btn" id="mmn-prev" onclick="navMemory(-1)">&#8592; <span data-i18n="nav_prev"></span></button><span class="mmn-count" id="mmn-count"></span><button class="mmn-btn" id="mmn-next" onclick="navMemory(1)"><span data-i18n="nav_next"></span> &#8594;</button></div>
     <div class="modal-body" id="mem-modal-body"></div>
-    <div class="modal-foot"><button class="btn btn-danger btn-sm" id="mem-delete-btn" onclick="deleteMemory()" data-i18n="btn_delete"></button><button class="btn btn-secondary" onclick="closeModal('overlay-memory')" data-i18n="btn_close"></button></div>
+    <div class="modal-foot"><button class="btn btn-danger btn-sm" id="mem-delete-btn" onclick="confirmDeleteMemory()" data-i18n="btn_delete"></button><button class="btn btn-secondary" onclick="closeModal('overlay-memory')" data-i18n="btn_close"></button></div>
   </div>
 </div>
 
 <div class="overlay" id="overlay-edit-capsule" onclick="if(event.target===this)closeModal('overlay-edit-capsule')">
   <div class="modal">
     <div class="modal-head"><div><h3 data-i18n="set_edit_cap"></h3></div><button class="mh-close" onclick="closeModal('overlay-edit-capsule')">&#10005;</button></div>
-    <div class="modal-body">
-      <div class="form-field"><label data-i18n="s1_name"></label><input type="text" id="ec-name"></div>
-      <div class="form-field"><label data-i18n="s1_birth"></label><input type="date" id="ec-birth"></div>
-      <div class="form-field"><label data-i18n="s1_age"></label><select id="ec-age"><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="21">21</option><option value="25">25</option></select></div>
-    </div>
+    <div class="modal-body"><div class="form-field"><label data-i18n="s1_name"></label><input type="text" id="ec-name"></div><div class="form-field"><label data-i18n="s1_birth"></label><input type="date" id="ec-birth"></div><div class="form-field"><label data-i18n="s1_age"></label><select id="ec-age"><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="21">21</option><option value="25">25</option></select></div></div>
     <div class="modal-foot"><button class="btn btn-secondary" onclick="closeModal('overlay-edit-capsule')" data-i18n="btn_cancel"></button><button class="btn btn-primary" onclick="saveCapsuleEdit()" data-i18n="btn_save"></button></div>
   </div>
 </div>
@@ -657,10 +635,7 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 <div class="overlay" id="overlay-change-pin" onclick="if(event.target===this)closeModal('overlay-change-pin')">
   <div class="modal">
     <div class="modal-head"><div><h3 data-i18n="set_pin"></h3></div><button class="mh-close" onclick="closeModal('overlay-change-pin')">&#10005;</button></div>
-    <div class="modal-body">
-      <p style="font-size:.8rem;color:var(--muted);margin-bottom:1.05rem" data-i18n="change_pin_desc"></p>
-      <div class="pin-row"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp0" oninput="pinMove(this,null,'cp1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp1" oninput="pinMove(this,'cp0','cp2')" onkeydown="pinBack(event,'cp0')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp2" oninput="pinMove(this,'cp1','cp3')" onkeydown="pinBack(event,'cp1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp3" oninput="pinMove(this,'cp2',null)" onkeydown="pinBack(event,'cp2')"></div>
-    </div>
+    <div class="modal-body"><p style="font-size:.8rem;color:var(--muted);margin-bottom:1.05rem" data-i18n="change_pin_desc"></p><div class="pin-row"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp0" oninput="pinMove(this,null,'cp1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp1" oninput="pinMove(this,'cp0','cp2')" onkeydown="pinBack(event,'cp0')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp2" oninput="pinMove(this,'cp1','cp3')" onkeydown="pinBack(event,'cp1')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="cp3" oninput="pinMove(this,'cp2',null)" onkeydown="pinBack(event,'cp2')"></div></div>
     <div class="modal-foot"><button class="btn btn-secondary" onclick="closeModal('overlay-change-pin')" data-i18n="btn_cancel"></button><button class="btn btn-primary" onclick="saveChangedPin()" data-i18n="btn_save"></button></div>
   </div>
 </div>
@@ -668,556 +643,115 @@ input,textarea,select,button{font-family:'Montserrat',sans-serif;}
 <div class="overlay" id="overlay-edit-profile" onclick="if(event.target===this)closeModal('overlay-edit-profile')">
   <div class="modal">
     <div class="modal-head"><div><h3 data-i18n="set_profile"></h3></div><button class="mh-close" onclick="closeModal('overlay-edit-profile')">&#10005;</button></div>
-    <div class="modal-body">
-      <div class="form-field"><label data-i18n="set_name"></label><input type="text" id="ep-name"></div>
-      <div class="form-field"><label data-i18n="field_email"></label><input type="email" id="ep-email" placeholder="tu@email.com"></div>
-      <div class="form-field"><label data-i18n="field_color"></label><div class="color-picker" id="ep-color-picker"></div></div>
-    </div>
+    <div class="modal-body"><div class="form-field"><label data-i18n="set_name"></label><input type="text" id="ep-name"></div><div class="form-field"><label data-i18n="field_email"></label><input type="email" id="ep-email" placeholder="tu@email.com"></div><div class="form-field"><label data-i18n="field_color"></label><div class="color-picker" id="ep-color-picker"></div></div></div>
     <div class="modal-foot"><button class="btn btn-secondary" onclick="closeModal('overlay-edit-profile')" data-i18n="btn_cancel"></button><button class="btn btn-primary" onclick="saveEditProfile()" data-i18n="btn_save"></button></div>
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="overlay" id="overlay-welcome-letter" onclick="if(event.target===this)closeModal('overlay-welcome-letter')">
+  <div class="modal">
+    <div class="modal-head"><div><h3 data-i18n="wl_title"></h3></div><button class="mh-close" onclick="closeModal('overlay-welcome-letter')">&#10005;</button></div>
+    <div class="modal-body" id="wl-modal-body"></div>
+    <div class="modal-foot"><button class="btn btn-secondary" onclick="closeModal('overlay-welcome-letter')" data-i18n="btn_close"></button></div>
+  </div>
+</div>
 
+<div class="toast" id="toast"></div>
 <script>
 // ═══ CONFETTI ═══
-(function(){
-  const cv=document.getElementById('confetti-canvas'),ctx=cv.getContext('2d');
-  const PAL=['#9bbdd6','#deeaf4','#b3d4ea','#c5dff0','#a8c8e0','#e8f3f9','#5585a8','#f0f7fb','#7fb3ce','#d1e9f5'];
-  let dots=[];
-  function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;}
-  function init(){dots=[];for(let i=0;i<80;i++)dots.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:2+Math.random()*8,color:PAL[i%PAL.length],sy:.14+Math.random()*.38,sx:(Math.random()-.5)*.14,op:.18+Math.random()*.32,drift:Math.random()*Math.PI*2,ds:.002+Math.random()*.007});}
-  function draw(){ctx.clearRect(0,0,cv.width,cv.height);dots.forEach(function(d){d.drift+=d.ds;d.x+=d.sx+Math.sin(d.drift)*.16;d.y+=d.sy;if(d.y>cv.height+12)d.y=-12;if(d.x>cv.width+12)d.x=-12;if(d.x<-12)d.x=cv.width+12;ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle=d.color;ctx.globalAlpha=d.op;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}
-  resize();init();draw();window.addEventListener('resize',function(){resize();init();});
-})();
+(function(){var cv=document.getElementById('confetti-canvas'),ctx=cv.getContext('2d');var PAL=['#9bbdd6','#deeaf4','#b3d4ea','#c5dff0','#a8c8e0','#e8f3f9','#5585a8','#f0f7fb','#7fb3ce','#d1e9f5'];var dots=[];function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;}function init(){dots=[];for(var i=0;i<80;i++)dots.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:2+Math.random()*8,color:PAL[i%PAL.length],sy:.14+Math.random()*.38,sx:(Math.random()-.5)*.14,op:.18+Math.random()*.32,drift:Math.random()*Math.PI*2,ds:.002+Math.random()*.007});}function draw(){ctx.clearRect(0,0,cv.width,cv.height);dots.forEach(function(d){d.drift+=d.ds;d.x+=d.sx+Math.sin(d.drift)*.16;d.y+=d.sy;if(d.y>cv.height+12)d.y=-12;if(d.x>cv.width+12)d.x=-12;if(d.x<-12)d.x=cv.width+12;ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle=d.color;ctx.globalAlpha=d.op;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}resize();init();draw();window.addEventListener('resize',function(){resize();init();});})();
 
 // ═══ i18n ═══
-var LANG_META=[
-  {code:'es',flag:'🇪🇸',name:'Español'},
-  {code:'en',flag:'🇬🇧',name:'English'},
-  {code:'fr',flag:'🇫🇷',name:'Français'},
-  {code:'de',flag:'🇩🇪',name:'Deutsch'},
-  {code:'it',flag:'🇮🇹',name:'Italiano'},
-  {code:'pt',flag:'🇧🇷',name:'Português'},
-  {code:'zh',flag:'🇨🇳',name:'中文'},
-  {code:'hi',flag:'🇮🇳',name:'हिन्दी'},
-  {code:'ar',flag:'🇸🇦',name:'العربية'},
-  {code:'ru',flag:'🇷🇺',name:'Русский'},
-  {code:'ja',flag:'🇯🇵',name:'日本語'},
-  {code:'eu',flag:'🏴',name:'Euskera'}
-];
-
+var LANG_META=[{code:'es',flag:'🇪🇸',name:'Español'},{code:'en',flag:'🇬🇧',name:'English'},{code:'fr',flag:'🇫🇷',name:'Français'},{code:'de',flag:'🇩🇪',name:'Deutsch'},{code:'it',flag:'🇮🇹',name:'Italiano'},{code:'pt',flag:'🇧🇷',name:'Português'},{code:'zh',flag:'🇨🇳',name:'中文'},{code:'hi',flag:'🇮🇳',name:'हिन्दी'},{code:'ar',flag:'🇸🇦',name:'العربية'},{code:'ru',flag:'🇷🇺',name:'Русский'},{code:'ja',flag:'🇯🇵',name:'日本語'},{code:'eu',flag:'🏴',name:'Euskera'}];
 var STRINGS={
   es:{
-    setup_tagline:'Cápsula del tiempo familiar',s1_title:'¿Para quién es esta cápsula?',
-    s1_desc:'Guarda recuerdos hasta que esa persona llegue a la edad que elijas.',
-    s1_name:'Nombre del destinatario',s1_name_ph:'Ej: Marino',s1_birth:'Fecha de nacimiento',s1_age:'Abrir cuando tenga',
-    s2_title:'Crea tu cuenta de administrador',s2_desc:'Gestionarás la cápsula, añadirás colaboradores y conectarás el Drive compartido.',
-    s2_name:'Tu nombre',s2_name_ph:'Ej: Mamá / Carlos García',
+    setup_tagline:'Cápsula del tiempo familiar',s1_title:'¿Para quién es esta cápsula?',s1_desc:'Guarda recuerdos hasta que esa persona llegue a la edad que elijas.',s1_name:'Nombre del destinatario',s1_name_ph:'Ej: Marino',s1_birth:'Fecha de nacimiento',s1_age:'Abrir cuando tenga',
+    s2_title:'Crea tu cuenta de administrador',s2_desc:'Gestionarás la cápsula y conectarás el Drive compartido.',s2_name:'Tu nombre',s2_name_ph:'Ej: Mamá / Carlos García',
     s3_title:'Elige un PIN de administrador',s3_desc:'Con este PIN accederás a tu cuenta. Si lo olvidas, recupéralo por email.',s3_create:'Crear cápsula',
-    btn_next:'Siguiente',btn_back:'Atrás',btn_logout:'Salir',btn_edit:'Editar',btn_change:'Cambiar',
-    btn_save:'Guardar',btn_cancel:'Cancelar',btn_close:'Cerrar',btn_delete:'Eliminar',
+    btn_next:'Siguiente',btn_back:'Atrás',btn_logout:'Salir',btn_edit:'Editar',btn_change:'Cambiar',btn_save:'Guardar',btn_cancel:'Cancelar',btn_close:'Cerrar',btn_delete:'Eliminar',btn_export:'Exportar cápsula',btn_import:'Importar copia',
     field_email:'Correo electrónico',field_color:'Color de perfil',
-    login_who:'Selecciona tu perfil',forgot_pin:'Olvidé mi PIN',
-    recover_back:'Volver',recover_title:'Recuperar PIN',
-    recover_desc:'Te enviaremos tu PIN al correo asociado a tu cuenta.',recover_send:'Enviar PIN por email',
+    login_who:'Selecciona tu perfil',forgot_pin:'Olvidé mi PIN',recover_back:'Volver',recover_title:'Recuperar PIN',recover_desc:'Te enviaremos tu PIN al correo asociado a tu cuenta.',recover_send:'Enviar PIN por email',
     pin_label:function(n){return 'PIN de '+n;},wrong_pin:'PIN incorrecto. Inténtalo de nuevo.',
-    recover_found:function(n,p){return '<strong>Email enviado</strong><br><br>PIN de <strong>'+n+'</strong>: <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},
-    recover_notfound:'Si ese correo está registrado, recibirás el PIN en breve.',
-    tab_memories:'Recuerdos',tab_timeline:'Línea de tiempo',tab_add:'+ Añadir',tab_users:'Colaboradores',tab_settings:'Ajustes',
+    recover_found:function(n,p){return '<strong>Email enviado</strong><br><br>PIN de <strong>'+n+'</strong>: <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},recover_notfound:'Si ese correo está registrado, recibirás el PIN en breve.',
+    tab_memories:'Recuerdos',tab_timeline:'Cronología',tab_add:'+ Añadir',tab_users:'Colaboradores',tab_settings:'Ajustes',tab_preview:'Vista previa',preview_label:'Así lo verá',
     timeline_sub:'Tu historia organizada por momentos',
     cap_of:'Para',cap_sub:'Guardando recuerdos hasta que sea el momento',cap_label:'para abrirse',
+    days_alive:function(d){return d+' días en el mundo';},
     stat_total:'Total',stat_photos:'Fotos/Vídeos',stat_audio:'Audios',stat_hitos:'Hitos',
     filter_all:'Todos',type_photo:'Foto',type_video:'Vídeo',type_audio:'Audio',type_milestone:'Hito',
-    add_title:'Añadir recuerdo',add_sub:'Cada detalle que guardes hoy será un tesoro mañana',
-    add_type:'Tipo',add_field_title:'Título',add_title_ph:'Ponle un nombre a este recuerdo…',
-    add_field_date:'Fecha del recuerdo',add_field_msg:'Mensaje o descripción',
-    add_msg_ph:'Escribe lo que sientes ahora, lo que esperas, lo que quieres que sepa…',
-    add_file:'Archivo',add_save:'Guardar en la cápsula',upload_click:'Haz clic para subir',upload_or:'o arrastra aquí',
+    search_ph:'Buscar recuerdos…',
+    add_title:'Añadir recuerdo',add_sub:'Cada detalle que guardes hoy será un tesoro mañana',add_type:'Tipo',add_field_title:'Título',add_title_ph:'Ponle un nombre a este recuerdo…',add_field_date:'Fecha del recuerdo',add_field_msg:'Mensaje o descripción',add_msg_ph:'Escribe lo que sientes ahora, lo que esperas, lo que quieres que sepa…',add_file:'Archivo',add_save:'Guardar en la cápsula',upload_click:'Haz clic para subir',upload_or:'o arrastra aquí',
     file_types:{foto:'JPG, PNG, GIF, WebP',video:'MP4, MOV, WebM',audio:'MP3, WAV, M4A, OGG',hito:''},
-    empty_title:'Aún no hay recuerdos',empty_sub:'Sé el primero en añadir algo.',empty_cta:'Añadir primer recuerdo',
-    empty_filter_title:'Nada aquí todavía',empty_filter_sub:'No hay recuerdos de este tipo.',
+    empty_title:'Aún no hay recuerdos',empty_sub:'Sé el primero en añadir algo.',empty_cta:'Añadir primer recuerdo',empty_filter_title:'Nada aquí todavía',empty_filter_sub:'No hay recuerdos de este tipo.',empty_search_title:'Sin resultados',empty_search_sub:'No hay recuerdos con esa búsqueda.',
     users_title:'Colaboradores',users_sub:'Gestiona quién puede añadir recuerdos',users_new:'+ Nuevo',
-    nu_title:'Nuevo colaborador',nu_sub:'Crea acceso para alguien que añada recuerdos',
-    nu_email_ph:'Para recuperar el PIN si lo olvida',nu_role:'Rol',
-    nu_role_member:'Miembro — puede añadir recuerdos',nu_role_admin:'Admin — acceso completo',
-    nu_pin:'PIN de acceso (4 dígitos)',nu_preview:'Vista previa',nu_preview_btn:'Ver invitación',nu_create:'Crear colaborador',
-    set_capsule:'La cápsula',set_recipient:'Destinatario',set_opens:'Se abre el',set_edit_cap:'Modificar cápsula',
-    set_reminders:'Recordatorios',set_reminder_monthly:'Recordatorio mensual',
-    set_reminder_monthly_desc:'Aviso para añadir recuerdos cada mes',
-    set_reminder_birthday:'Cumpleaños anual',set_reminder_birthday_desc:'Aviso especial cada año en el cumpleaños',
-    set_security:'Seguridad',set_pin:'Cambiar PIN',set_email_rec:'Email de recuperación',
-    set_profile:'Mi perfil',set_name:'Nombre',set_role:'Rol',set_edit_profile:'Editar nombre y color',
-    set_lang:'Idioma',role_admin:'Administrador',role_member:'Colaborador',
-    toast_created:'Cápsula creada',toast_saved:'Recuerdo guardado',toast_deleted:'Recuerdo eliminado',
-    toast_user_added:function(n){return n+' añadido a la cápsula';},
-    toast_user_deleted:function(n){return n+' eliminado';},
-    toast_changes:'Cambios guardados',toast_pin_updated:'PIN actualizado',toast_profile_updated:'Perfil actualizado',
-    toast_capsule_updated:'Cápsula actualizada',toast_copied:'Mensaje copiado',
-    toast_fill:'Completa todos los campos',toast_invalid_email:'Introduce un correo válido',
-    toast_short_pin:'El PIN debe tener 4 dígitos',toast_no_title:'Añade un título',
+    nu_title:'Nuevo colaborador',nu_sub:'Crea acceso para alguien',nu_email_ph:'Para recuperar el PIN si lo olvida',nu_role:'Rol',nu_role_member:'Miembro — puede añadir recuerdos',nu_role_admin:'Admin — acceso completo',nu_pin:'PIN de acceso (4 dígitos)',nu_preview:'Vista previa',nu_preview_btn:'Ver invitación',nu_create:'Crear colaborador',
+    set_capsule:'La cápsula',set_recipient:'Destinatario',set_opens:'Se abre el',set_edit_cap:'Modificar cápsula',set_reminders:'Recordatorios',set_reminder_monthly:'Recordatorio mensual',set_reminder_monthly_desc:'Aviso para añadir recuerdos cada mes',set_reminder_birthday:'Cumpleaños anual',set_reminder_birthday_desc:'Aviso especial cada año en el cumpleaños',set_security:'Seguridad',set_pin:'Cambiar PIN',set_email_rec:'Email de recuperación',set_profile:'Mi perfil',set_name:'Nombre',set_role:'Rol',set_edit_profile:'Editar nombre y color',set_lang:'Idioma',
+    set_data:'Datos y backup',set_data_desc:'Exporta una copia de seguridad completa en JSON. Si cambias de dispositivo, importa ese archivo para restaurar todo.',
+    role_admin:'Administrador',role_member:'Colaborador',
+    wl_title:'Carta de bienvenida',wl_card_head:'Carta de bienvenida',wl_card_desc:'Escribe una carta para quien abra la cápsula. Aparecerá lo primero cuando llegue el día.',wl_ph:'Escribe aquí tu carta…\n\n"Cuando tengas 18 años y leas esto, quiero que sepas que…"',wl_save:'Guardar carta',
+    toast_created:'Cápsula creada',toast_saved:'Recuerdo guardado',toast_deleted:'Recuerdo eliminado',toast_user_added:function(n){return n+' añadido a la cápsula';},toast_user_deleted:function(n){return n+' eliminado';},toast_changes:'Cambios guardados',toast_pin_updated:'PIN actualizado',toast_profile_updated:'Perfil actualizado',toast_capsule_updated:'Cápsula actualizada',toast_copied:'Copiado al portapapeles',toast_fill:'Completa todos los campos',toast_invalid_email:'Introduce un correo válido',toast_short_pin:'El PIN debe tener 4 dígitos',toast_no_title:'Añade un título',toast_exported:'Copia exportada ✓',toast_imported:'Cápsula restaurada ✓',toast_letter_saved:'Carta guardada',
     change_pin_desc:'Nuevo PIN de 4 dígitos para tu cuenta.',
-    invite:function(name,pin,role,child,age){return 'Hola '+name+',\n\nTe invito a la cápsula del tiempo de '+child+'.\n\nCada recuerdo que añadas se guarda en el Drive compartido de la familia.\n\nTus accesos:\n  Nombre: '+name+'\n  PIN: '+pin+'\n\nSi olvidas el PIN, recupéralo desde la pantalla de inicio con tu correo.';},
-    years_months:function(y,m){return y+'a '+m+'m';},months_days:function(m,d){return m+'m '+d+'d';},
-    days:function(d){return d+' días';},moment:'Ha llegado el momento',open_in:function(a){return a+' años';},
-    age_at:function(y,m){return m>0?y+' años y '+m+' meses':y+' años';},
-    memories_word:function(n){return n===1?'recuerdo':'recuerdos';},you:'tú',
+    invite:function(name,pin,role,child,age){return 'Hola '+name+',\n\nTe invito a la cápsula del tiempo de '+child+'.\n\nTus accesos:\n  Nombre: '+name+'\n  PIN: '+pin+'\n\nSi olvidas el PIN, recupéralo desde la pantalla de inicio con tu correo.';},
+    years_months:function(y,m){return y+'a '+m+'m';},months_days:function(m,d){return m+'m '+d+'d';},days:function(d){return d+' días';},moment:'Ha llegado el momento',open_in:function(a){return a+' años';},age_at:function(y,m){return m>0?y+' años y '+m+' meses':y+' años';},memories_word:function(n){return n===1?'recuerdo':'recuerdos';},you:'tú',
     progress_done:function(p){return p+'% del camino';},
-    reminder_title:'¿Tienes algo nuevo que guardar?',reminder_sub:'Han pasado más de 30 días desde tu último recuerdo.',
-    birthday_reminder_title:function(n){return '¡Hoy es el cumpleaños de '+n+'!';},
-    birthday_reminder_sub:'Un momento perfecto para añadir algo especial.',
-    opening_title:function(n){return 'Ha llegado el momento, '+n;},
-    opening_sub:'Esta cápsula fue creada con todo el amor del mundo.\nHoy es el día de abrirla.',
-    drive_title:'Google Drive compartido',drive_disconnected:'Sin conectar',drive_connected:'Conectado',
-    drive_syncing:'Sincronizando…',drive_error:'Error',
-    drive_connect:'Conectar Drive del administrador',drive_disconnect:'Desconectar',drive_sync_now:'Sincronizar ahora',
-    drive_account:'Cuenta del administrador',drive_folder:'Carpeta en Drive',
-    drive_last_sync:'Última sincronización',drive_files:'Archivos guardados',
-    drive_note_title:'Arquitectura de datos compartidos:',
-    drive_note_body:'El administrador conecta UNA cuenta de Google Drive. Todos los colaboradores leen y escriben en esa misma carpeta. Los archivos y metadatos viven en Drive.',
-    drive_member_note_title:'Datos compartidos:',
-    drive_member_note_body:'Todos los recuerdos se almacenan en el Google Drive del administrador. Cuando conecte su cuenta, verás aquí el estado de sincronización.'
+    reminder_title:'¿Tienes algo nuevo que guardar?',reminder_sub:'Han pasado más de 30 días desde tu último recuerdo.',birthday_reminder_title:function(n){return '¡Hoy es el cumpleaños de '+n+'!';},birthday_reminder_sub:'Un momento perfecto para añadir algo especial.',
+    opening_title:function(n){return 'Ha llegado el momento, '+n;},opening_sub:'Esta cápsula fue creada con todo el amor del mundo.\nHoy es el día de abrirla.',opening_btn:'Abrir mi cápsula',
+    confirm_delete_mem:'¿Eliminar este recuerdo?',confirm_delete_mem_msg:'Esta acción no se puede deshacer.',confirm_delete_user:'¿Eliminar colaborador?',confirm_delete_user_msg:'Esta acción no se puede deshacer.',confirm_yes:'Sí, eliminar',
+    nav_prev:'Anterior',nav_next:'Siguiente',
+    mem_age_line:function(child,age){return child+' tenía '+age;},
+    drive_title:'Google Drive compartido',drive_disconnected:'Sin conectar',drive_connected:'Conectado',drive_syncing:'Sincronizando…',drive_error:'Error',drive_connect:'Conectar Drive del administrador',drive_disconnect:'Desconectar',drive_sync_now:'Sincronizar ahora',drive_account:'Cuenta del administrador',drive_folder:'Carpeta en Drive',drive_last_sync:'Última sincronización',drive_files:'Archivos guardados',drive_note_title:'Arquitectura de datos compartidos:',drive_note_body:'El administrador conecta UNA cuenta de Google Drive. Todos los colaboradores leen y escriben en esa misma carpeta.',drive_member_note_title:'Datos compartidos:',drive_member_note_body:'Todos los recuerdos se almacenan en el Google Drive del administrador.'
   },
   en:{
-    setup_tagline:'Family time capsule',s1_title:'Who is this capsule for?',
-    s1_desc:'Store memories until that person reaches the age you choose.',
-    s1_name:'Recipient name',s1_name_ph:'e.g. Marino',s1_birth:'Date of birth',s1_age:'Open when they turn',
-    s2_title:'Create your admin account',s2_desc:"You'll manage the capsule, add contributors and connect the shared Drive.",
-    s2_name:'Your name',s2_name_ph:'e.g. Mom / John Doe',
+    setup_tagline:'Family time capsule',s1_title:'Who is this capsule for?',s1_desc:'Store memories until that person reaches the age you choose.',s1_name:'Recipient name',s1_name_ph:'e.g. Marino',s1_birth:'Date of birth',s1_age:'Open when they turn',
+    s2_title:'Create your admin account',s2_desc:"You'll manage the capsule and connect the shared Drive.",s2_name:'Your name',s2_name_ph:'e.g. Mom / John Doe',
     s3_title:'Choose an admin PIN',s3_desc:'Use this PIN to log in. Forgot it? Recover it by email.',s3_create:'Create capsule',
-    btn_next:'Next',btn_back:'Back',btn_logout:'Sign out',btn_edit:'Edit',btn_change:'Change',
-    btn_save:'Save',btn_cancel:'Cancel',btn_close:'Close',btn_delete:'Delete',
+    btn_next:'Next',btn_back:'Back',btn_logout:'Sign out',btn_edit:'Edit',btn_change:'Change',btn_save:'Save',btn_cancel:'Cancel',btn_close:'Close',btn_delete:'Delete',btn_export:'Export capsule',btn_import:'Import backup',
     field_email:'Email address',field_color:'Profile colour',
-    login_who:'Select your profile',forgot_pin:'Forgot my PIN',
-    recover_back:'Go back',recover_title:'Recover PIN',
-    recover_desc:'We will send your PIN to the email linked to your account.',recover_send:'Send PIN by email',
+    login_who:'Select your profile',forgot_pin:'Forgot my PIN',recover_back:'Go back',recover_title:'Recover PIN',recover_desc:'We will send your PIN to the email linked to your account.',recover_send:'Send PIN by email',
     pin_label:function(n){return 'PIN for '+n;},wrong_pin:'Wrong PIN. Please try again.',
-    recover_found:function(n,p){return '<strong>Email sent</strong><br><br>PIN for <strong>'+n+'</strong>: <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},
-    recover_notfound:'If that email is registered you will receive your PIN shortly.',
-    tab_memories:'Memories',tab_timeline:'Timeline',tab_add:'+ Add',tab_users:'Contributors',tab_settings:'Settings',
+    recover_found:function(n,p){return '<strong>Email sent</strong><br><br>PIN for <strong>'+n+'</strong>: <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},recover_notfound:'If that email is registered you will receive your PIN shortly.',
+    tab_memories:'Memories',tab_timeline:'Timeline',tab_add:'+ Add',tab_users:'Contributors',tab_settings:'Settings',tab_preview:'Preview',preview_label:'As they will see it',
     timeline_sub:'Your story organized by moments',
     cap_of:'For',cap_sub:'Storing memories until the right moment',cap_label:'until opening',
+    days_alive:function(d){return d+' days in the world';},
     stat_total:'Total',stat_photos:'Photos/Videos',stat_audio:'Audios',stat_hitos:'Milestones',
     filter_all:'All',type_photo:'Photo',type_video:'Video',type_audio:'Audio',type_milestone:'Milestone',
-    add_title:'Add memory',add_sub:'Every detail you save today will be a treasure tomorrow',
-    add_type:'Type',add_field_title:'Title',add_title_ph:'Give this memory a name…',
-    add_field_date:'Date of the memory',add_field_msg:'Message or description',
-    add_msg_ph:"Write what you feel now, what you hope for, what you want them to know…",
-    add_file:'File',add_save:'Save to the capsule',upload_click:'Click to upload',upload_or:'or drag here',
+    search_ph:'Search memories…',
+    add_title:'Add memory',add_sub:'Every detail you save today will be a treasure tomorrow',add_type:'Type',add_field_title:'Title',add_title_ph:'Give this memory a name…',add_field_date:'Memory date',add_field_msg:'Message or description',add_msg_ph:'Write what you feel now, what you hope, what you want them to know…',add_file:'File',add_save:'Save to capsule',upload_click:'Click to upload',upload_or:'or drag here',
     file_types:{foto:'JPG, PNG, GIF, WebP',video:'MP4, MOV, WebM',audio:'MP3, WAV, M4A, OGG',hito:''},
-    empty_title:'No memories yet',empty_sub:'Be the first to add something.',empty_cta:'Add first memory',
-    empty_filter_title:'Nothing here yet',empty_filter_sub:'No memories of this type.',
+    empty_title:'No memories yet',empty_sub:'Be the first to add something.',empty_cta:'Add first memory',empty_filter_title:'Nothing here yet',empty_filter_sub:'No memories of this type.',empty_search_title:'No results',empty_search_sub:'No memories found for that search.',
     users_title:'Contributors',users_sub:'Manage who can add memories',users_new:'+ New',
-    nu_title:'New contributor',nu_sub:'Create access for someone to add memories',
-    nu_email_ph:'To recover their PIN if forgotten',nu_role:'Role',
-    nu_role_member:'Member — can add memories',nu_role_admin:'Admin — full access',
-    nu_pin:'Access PIN (4 digits)',nu_preview:'Preview',nu_preview_btn:'Preview invite',nu_create:'Create contributor',
-    set_capsule:'The capsule',set_recipient:'Recipient',set_opens:'Opens on',set_edit_cap:'Edit capsule',
-    set_reminders:'Reminders',set_reminder_monthly:'Monthly reminder',
-    set_reminder_monthly_desc:'Reminder to add memories each month',
-    set_reminder_birthday:'Annual birthday',set_reminder_birthday_desc:'Special reminder on the birthday each year',
-    set_security:'Security',set_pin:'Change PIN',set_email_rec:'Recovery email',
-    set_profile:'My profile',set_name:'Name',set_role:'Role',set_edit_profile:'Edit name and colour',
-    set_lang:'Language',role_admin:'Administrator',role_member:'Contributor',
-    toast_created:'Capsule created',toast_saved:'Memory saved',toast_deleted:'Memory deleted',
-    toast_user_added:function(n){return n+' added to the capsule';},
-    toast_user_deleted:function(n){return n+' removed';},
-    toast_changes:'Changes saved',toast_pin_updated:'PIN updated',toast_profile_updated:'Profile updated',
-    toast_capsule_updated:'Capsule updated',toast_copied:'Message copied',
-    toast_fill:'Please fill in all fields',toast_invalid_email:'Enter a valid email',
-    toast_short_pin:'PIN must be 4 digits',toast_no_title:'Add a title',
+    nu_title:'New contributor',nu_sub:'Create access for someone',nu_email_ph:'To recover the PIN if forgotten',nu_role:'Role',nu_role_member:'Member — can add memories',nu_role_admin:'Admin — full access',nu_pin:'Access PIN (4 digits)',nu_preview:'Preview',nu_preview_btn:'View invite',nu_create:'Create contributor',
+    set_capsule:'The capsule',set_recipient:'Recipient',set_opens:'Opens on',set_edit_cap:'Edit capsule',set_reminders:'Reminders',set_reminder_monthly:'Monthly reminder',set_reminder_monthly_desc:'Reminder to add memories each month',set_reminder_birthday:'Annual birthday',set_reminder_birthday_desc:'Special reminder on the birthday each year',set_security:'Security',set_pin:'Change PIN',set_email_rec:'Recovery email',set_profile:'My profile',set_name:'Name',set_role:'Role',set_edit_profile:'Edit name and colour',set_lang:'Language',
+    set_data:'Data & backup',set_data_desc:'Export a full backup as JSON. If you change devices, import that file to restore everything.',
+    role_admin:'Administrator',role_member:'Contributor',
+    wl_title:'Welcome letter',wl_card_head:'Welcome letter',wl_card_desc:'Write a letter for whoever opens the capsule. It will appear first when the day comes.',wl_ph:'Write your letter here…',wl_save:'Save letter',
+    toast_created:'Capsule created',toast_saved:'Memory saved',toast_deleted:'Memory deleted',toast_user_added:function(n){return n+' added to capsule';},toast_user_deleted:function(n){return n+' removed';},toast_changes:'Changes saved',toast_pin_updated:'PIN updated',toast_profile_updated:'Profile updated',toast_capsule_updated:'Capsule updated',toast_copied:'Copied to clipboard',toast_fill:'Fill in all fields',toast_invalid_email:'Enter a valid email',toast_short_pin:'PIN must be 4 digits',toast_no_title:'Add a title',toast_exported:'Backup exported ✓',toast_imported:'Capsule restored ✓',toast_letter_saved:'Letter saved',
     change_pin_desc:'New 4-digit PIN for your account.',
-    invite:function(name,pin,role,child,age){return 'Hi '+name+',\n\nYou\'re invited to '+child+'\'s time capsule.\n\nEvery memory you add is saved to the family\'s shared Drive.\n\nYour access:\n  Name: '+name+'\n  PIN: '+pin+'\n\nForgot your PIN? Recover it from the login screen.';},
-    years_months:function(y,m){return y+'y '+m+'m';},months_days:function(m,d){return m+'m '+d+'d';},
-    days:function(d){return d+' days';},moment:'The moment has arrived',open_in:function(a){return a+' years';},
-    age_at:function(y,m){return m>0?y+' years and '+m+' months':y+' years old';},
-    memories_word:function(n){return n===1?'memory':'memories';},you:'you',
+    invite:function(name,pin,role,child,age){return 'Hi '+name+",\n\nYou're invited to "+child+"'s time capsule.\n\nYour access:\n  Name: "+name+'\n  PIN: '+pin+'\n\nForgot your PIN? Recover it from the login screen.';},
+    years_months:function(y,m){return y+'y '+m+'m';},months_days:function(m,d){return m+'m '+d+'d';},days:function(d){return d+' days';},moment:'The moment has arrived',open_in:function(a){return a+' years';},age_at:function(y,m){return m>0?y+' years and '+m+' months':y+' years old';},memories_word:function(n){return n===1?'memory':'memories';},you:'you',
     progress_done:function(p){return p+'% of the journey';},
-    reminder_title:'Do you have something new to save?',reminder_sub:'More than 30 days have passed since your last memory.',
-    birthday_reminder_title:function(n){return 'Today is '+n+'\'s birthday!';},
-    birthday_reminder_sub:'A perfect moment to add something special.',
-    opening_title:function(n){return 'The moment has come, '+n;},
-    opening_sub:'This capsule was made with all the love in the world.\nToday is the day to open it.',
-    drive_title:'Shared Google Drive',drive_disconnected:'Not connected',drive_connected:'Connected',
-    drive_syncing:'Syncing…',drive_error:'Error',
-    drive_connect:"Connect admin's Drive",drive_disconnect:'Disconnect',drive_sync_now:'Sync now',
-    drive_account:'Admin account',drive_folder:'Drive folder',drive_last_sync:'Last sync',drive_files:'Saved files',
-    drive_note_title:'Shared data architecture:',
-    drive_note_body:'The admin connects ONE Google Drive account. All contributors read and write to that same folder. Files and metadata live on Drive.',
-    drive_member_note_title:'Shared data:',
-    drive_member_note_body:"All memories are stored in the admin's Google Drive. Once connected, sync status will appear here."
-  },
-  fr:{
-    setup_tagline:'Capsule temporelle familiale',s1_title:'Pour qui est cette capsule ?',
-    s1_desc:"Conservez des souvenirs jusqu'à ce que la personne atteigne l'âge choisi.",
-    s1_name:'Prénom du destinataire',s1_name_ph:'Ex: Marino',s1_birth:'Date de naissance',s1_age:'Ouvrir quand il/elle aura',
-    s2_title:'Créez votre compte administrateur',s2_desc:'Vous gérerez la capsule et connecterez le Drive partagé.',
-    s2_name:'Votre prénom',s2_name_ph:'Ex: Maman / Marc Dupont',
-    s3_title:'Choisissez un code PIN',s3_desc:'Ce PIN vous permet de vous connecter. Oublié ? Récupérez-le par email.',s3_create:'Créer la capsule',
-    btn_next:'Suivant',btn_back:'Retour',btn_logout:'Déconnexion',btn_edit:'Modifier',btn_change:'Changer',
-    btn_save:'Enregistrer',btn_cancel:'Annuler',btn_close:'Fermer',btn_delete:'Supprimer',
-    field_email:'Adresse email',field_color:'Couleur du profil',
-    login_who:'Sélectionnez votre profil',forgot_pin:"J'ai oublié mon PIN",
-    recover_back:'Retour',recover_title:'Récupérer le PIN',
-    recover_desc:"Nous enverrons votre PIN à l'email associé.",recover_send:'Envoyer le PIN par email',
-    pin_label:function(n){return 'PIN de '+n;},wrong_pin:'PIN incorrect. Réessayez.',
-    recover_found:function(n,p){return '<strong>Email envoyé</strong><br><br>PIN de <strong>'+n+'</strong> : <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},
-    recover_notfound:"Si cet email est enregistré, vous recevrez votre PIN sous peu.",
-    tab_memories:'Souvenirs',tab_timeline:'Ligne du temps',tab_add:'+ Ajouter',tab_users:'Collaborateurs',tab_settings:'Paramètres',
-    timeline_sub:'Votre histoire organisée par moments',
-    cap_of:'Pour',cap_sub:"Conservant les souvenirs jusqu'au bon moment",cap_label:"avant l'ouverture",
-    stat_total:'Total',stat_photos:'Photos/Vidéos',stat_audio:'Audios',stat_hitos:'Jalons',
-    filter_all:'Tous',type_photo:'Photo',type_video:'Vidéo',type_audio:'Audio',type_milestone:'Jalon',
-    add_title:'Ajouter un souvenir',add_sub:"Chaque détail aujourd'hui sera un trésor demain",
-    add_type:'Type',add_field_title:'Titre',add_title_ph:'Donnez un nom à ce souvenir…',
-    add_field_date:'Date du souvenir',add_field_msg:'Message ou description',
-    add_msg_ph:'Écrivez ce que vous ressentez, ce que vous espérez…',
-    add_file:'Fichier',add_save:'Sauvegarder dans la capsule',upload_click:'Cliquez pour télécharger',upload_or:'ou glissez ici',
-    file_types:{foto:'JPG, PNG, GIF, WebP',video:'MP4, MOV, WebM',audio:'MP3, WAV, M4A, OGG',hito:''},
-    empty_title:'Pas encore de souvenirs',empty_sub:'Soyez le premier à ajouter quelque chose.',empty_cta:'Ajouter le premier souvenir',
-    empty_filter_title:'Rien ici encore',empty_filter_sub:'Aucun souvenir de ce type.',
-    users_title:'Collaborateurs',users_sub:'Gérez qui peut ajouter des souvenirs',users_new:'+ Nouveau',
-    nu_title:'Nouveau collaborateur',nu_sub:"Créez un accès pour quelqu'un",
-    nu_email_ph:'Pour récupérer le PIN si oublié',nu_role:'Rôle',
-    nu_role_member:'Membre — peut ajouter des souvenirs',nu_role_admin:'Admin — accès complet',
-    nu_pin:'Code PIN (4 chiffres)',nu_preview:'Aperçu',nu_preview_btn:"Voir l'invitation",nu_create:'Créer le collaborateur',
-    set_capsule:'La capsule',set_recipient:'Destinataire',set_opens:"S'ouvre le",set_edit_cap:'Modifier la capsule',
-    set_reminders:'Rappels',set_reminder_monthly:'Rappel mensuel',set_reminder_monthly_desc:'Avis pour ajouter des souvenirs chaque mois',
-    set_reminder_birthday:'Anniversaire annuel',set_reminder_birthday_desc:"Avis spécial chaque année le jour de l'anniversaire",
-    set_security:'Sécurité',set_pin:'Modifier le PIN',set_email_rec:'Email de récupération',
-    set_profile:'Mon profil',set_name:'Prénom',set_role:'Rôle',set_edit_profile:'Modifier nom et couleur',
-    set_lang:'Langue',role_admin:'Administrateur',role_member:'Collaborateur',
-    toast_created:'Capsule créée',toast_saved:'Souvenir enregistré',toast_deleted:'Souvenir supprimé',
-    toast_user_added:function(n){return n+' ajouté à la capsule';},
-    toast_user_deleted:function(n){return n+' supprimé';},
-    toast_changes:'Modifications enregistrées',toast_pin_updated:'PIN mis à jour',toast_profile_updated:'Profil mis à jour',
-    toast_capsule_updated:'Capsule mise à jour',toast_copied:'Message copié',
-    toast_fill:'Veuillez remplir tous les champs',toast_invalid_email:'Email invalide',
-    toast_short_pin:'Le PIN doit comporter 4 chiffres',toast_no_title:'Ajoutez un titre',
-    change_pin_desc:'Nouveau PIN de 4 chiffres pour votre compte.',
-    invite:function(name,pin,role,child,age){return 'Bonjour '+name+',\n\nVous êtes invité(e) à la capsule de '+child+'.\n\nVos accès :\n  Prénom : '+name+'\n  PIN : '+pin+'\n\nPIN oublié ? Récupérez-le depuis l\'écran de connexion.';},
-    years_months:function(y,m){return y+'a '+m+'m';},months_days:function(m,d){return m+'m '+d+'j';},
-    days:function(d){return d+' jours';},moment:'Le moment est venu',open_in:function(a){return a+' ans';},
-    age_at:function(y,m){return m>0?y+' ans et '+m+' mois':y+' ans';},
-    memories_word:function(n){return n===1?'souvenir':'souvenirs';},you:'vous',
-    progress_done:function(p){return p+'% du chemin';},
-    reminder_title:'Avez-vous quelque chose de nouveau à sauvegarder ?',reminder_sub:"Plus de 30 jours depuis votre dernier souvenir.",
-    birthday_reminder_title:function(n){return "Aujourd'hui c'est l'anniversaire de "+n+' !';},
-    birthday_reminder_sub:'Un moment parfait pour ajouter quelque chose de spécial.',
-    opening_title:function(n){return 'Le moment est venu, '+n;},
-    opening_sub:"Cette capsule a été créée avec tout l'amour du monde.\nAujourd'hui est le jour de l'ouvrir.",
-    drive_title:'Google Drive partagé',drive_disconnected:'Non connecté',drive_connected:'Connecté',
-    drive_syncing:'Synchronisation…',drive_error:'Erreur',
-    drive_connect:"Connecter le Drive de l'administrateur",drive_disconnect:'Déconnecter',drive_sync_now:'Synchroniser',
-    drive_account:"Compte de l'administrateur",drive_folder:'Dossier Drive',drive_last_sync:'Dernière sync',drive_files:'Fichiers sauvegardés',
-    drive_note_title:'Architecture des données partagées :',
-    drive_note_body:"L'administrateur connecte UN compte Google Drive. Tous les collaborateurs lisent et écrivent dans le même dossier.",
-    drive_member_note_title:'Données partagées :',
-    drive_member_note_body:"Tous les souvenirs sont dans le Drive de l'administrateur."
-  },
-  de:{
-    setup_tagline:'Familien-Zeitkapsel',s1_title:'Für wen ist diese Kapsel?',
-    s1_desc:'Speichere Erinnerungen bis die Person das gewählte Alter erreicht.',
-    s1_name:'Name des Empfängers',s1_name_ph:'z.B. Marino',s1_birth:'Geburtsdatum',s1_age:'Öffnen wenn … Jahre alt',
-    s2_title:'Administrator-Konto erstellen',s2_desc:'Du verwaltest die Kapsel und verbindest das geteilte Drive.',
-    s2_name:'Dein Name',s2_name_ph:'z.B. Mama / Klaus Müller',
-    s3_title:'Admin-PIN wählen',s3_desc:'Mit diesem PIN meldest du dich an. Vergessen? Per E-Mail wiederherstellen.',s3_create:'Kapsel erstellen',
-    btn_next:'Weiter',btn_back:'Zurück',btn_logout:'Abmelden',btn_edit:'Bearbeiten',btn_change:'Ändern',
-    btn_save:'Speichern',btn_cancel:'Abbrechen',btn_close:'Schließen',btn_delete:'Löschen',
-    field_email:'E-Mail-Adresse',field_color:'Profilfarbe',
-    login_who:'Profil auswählen',forgot_pin:'PIN vergessen',
-    recover_back:'Zurück',recover_title:'PIN wiederherstellen',
-    recover_desc:'Wir senden dir deinen PIN an die hinterlegte E-Mail.',recover_send:'PIN per E-Mail senden',
-    pin_label:function(n){return 'PIN für '+n;},wrong_pin:'Falscher PIN. Bitte erneut versuchen.',
-    recover_found:function(n,p){return '<strong>E-Mail gesendet</strong><br><br>PIN für <strong>'+n+'</strong>: <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},
-    recover_notfound:'Falls diese E-Mail registriert ist, erhältst du deinen PIN in Kürze.',
-    tab_memories:'Erinnerungen',tab_timeline:'Zeitstrahl',tab_add:'+ Hinzufügen',tab_users:'Mitwirkende',tab_settings:'Einstellungen',
-    timeline_sub:'Deine Geschichte nach Momenten geordnet',
-    cap_of:'Für',cap_sub:'Erinnerungen bis zum richtigen Moment bewahren',cap_label:'bis zur Öffnung',
-    stat_total:'Gesamt',stat_photos:'Fotos/Videos',stat_audio:'Audios',stat_hitos:'Meilensteine',
-    filter_all:'Alle',type_photo:'Foto',type_video:'Video',type_audio:'Audio',type_milestone:'Meilenstein',
-    add_title:'Erinnerung hinzufügen',add_sub:'Jedes Detail das du heute speicherst wird ein Schatz von morgen',
-    add_type:'Typ',add_field_title:'Titel',add_title_ph:'Gib dieser Erinnerung einen Namen…',
-    add_field_date:'Datum der Erinnerung',add_field_msg:'Nachricht oder Beschreibung',
-    add_msg_ph:'Schreibe was du jetzt fühlst, was du hoffst…',
-    add_file:'Datei',add_save:'In der Kapsel speichern',upload_click:'Klicken zum Hochladen',upload_or:'oder hierher ziehen',
-    file_types:{foto:'JPG, PNG, GIF, WebP',video:'MP4, MOV, WebM',audio:'MP3, WAV, M4A, OGG',hito:''},
-    empty_title:'Noch keine Erinnerungen',empty_sub:'Füge als Erster etwas hinzu.',empty_cta:'Erste Erinnerung hinzufügen',
-    empty_filter_title:'Hier noch nichts',empty_filter_sub:'Keine Erinnerungen dieses Typs.',
-    users_title:'Mitwirkende',users_sub:'Verwalte wer Erinnerungen hinzufügen kann',users_new:'+ Neu',
-    nu_title:'Neuer Mitwirkender',nu_sub:'Erstelle einen Zugang für jemanden',
-    nu_email_ph:'Zum Wiederherstellen des PINs falls vergessen',nu_role:'Rolle',
-    nu_role_member:'Mitglied — kann Erinnerungen hinzufügen',nu_role_admin:'Admin — vollständiger Zugriff',
-    nu_pin:'Zugangs-PIN (4 Ziffern)',nu_preview:'Vorschau',nu_preview_btn:'Einladung ansehen',nu_create:'Mitwirkenden erstellen',
-    set_capsule:'Die Kapsel',set_recipient:'Empfänger',set_opens:'Öffnet am',set_edit_cap:'Kapsel bearbeiten',
-    set_reminders:'Erinnerungen',set_reminder_monthly:'Monatliche Erinnerung',set_reminder_monthly_desc:'Hinweis zum Hinzufügen von Erinnerungen jeden Monat',
-    set_reminder_birthday:'Jährlicher Geburtstag',set_reminder_birthday_desc:'Besonderer Hinweis am Geburtstag jedes Jahr',
-    set_security:'Sicherheit',set_pin:'PIN ändern',set_email_rec:'Wiederherstellungs-E-Mail',
-    set_profile:'Mein Profil',set_name:'Name',set_role:'Rolle',set_edit_profile:'Name und Farbe bearbeiten',
-    set_lang:'Sprache',role_admin:'Administrator',role_member:'Mitwirkender',
-    toast_created:'Kapsel erstellt',toast_saved:'Erinnerung gespeichert',toast_deleted:'Erinnerung gelöscht',
-    toast_user_added:function(n){return n+' zur Kapsel hinzugefügt';},
-    toast_user_deleted:function(n){return n+' entfernt';},
-    toast_changes:'Änderungen gespeichert',toast_pin_updated:'PIN aktualisiert',toast_profile_updated:'Profil aktualisiert',
-    toast_capsule_updated:'Kapsel aktualisiert',toast_copied:'Nachricht kopiert',
-    toast_fill:'Bitte alle Felder ausfüllen',toast_invalid_email:'Gültige E-Mail eingeben',
-    toast_short_pin:'PIN muss 4 Ziffern haben',toast_no_title:'Titel hinzufügen',
-    change_pin_desc:'Neuer 4-stelliger PIN für dein Konto.',
-    invite:function(name,pin,role,child,age){return 'Hallo '+name+',\n\nDu bist eingeladen zur Zeitkapsel von '+child+'.\n\nDein Zugang:\n  Name: '+name+'\n  PIN: '+pin+'\n\nPIN vergessen? Stelle ihn über den Anmeldebildschirm wieder her.';},
-    years_months:function(y,m){return y+'J '+m+'M';},months_days:function(m,d){return m+'M '+d+'T';},
-    days:function(d){return d+' Tage';},moment:'Der Moment ist da',open_in:function(a){return a+' Jahre';},
-    age_at:function(y,m){return m>0?y+' Jahre und '+m+' Monate':y+' Jahre';},
-    memories_word:function(n){return n===1?'Erinnerung':'Erinnerungen';},you:'du',
-    progress_done:function(p){return p+'% des Weges';},
-    reminder_title:'Hast du etwas Neues zu speichern?',reminder_sub:'Mehr als 30 Tage seit deiner letzten Erinnerung.',
-    birthday_reminder_title:function(n){return 'Heute hat '+n+' Geburtstag!';},
-    birthday_reminder_sub:'Ein perfekter Moment um etwas Besonderes hinzuzufügen.',
-    opening_title:function(n){return 'Der Moment ist da, '+n;},
-    opening_sub:'Diese Kapsel wurde mit all der Liebe der Welt erstellt.\nHeute ist der Tag sie zu öffnen.',
-    drive_title:'Geteiltes Google Drive',drive_disconnected:'Nicht verbunden',drive_connected:'Verbunden',
-    drive_syncing:'Synchronisierung…',drive_error:'Fehler',
-    drive_connect:'Drive des Admins verbinden',drive_disconnect:'Trennen',drive_sync_now:'Jetzt synchronisieren',
-    drive_account:'Admin-Konto',drive_folder:'Drive-Ordner',drive_last_sync:'Letzte Synchronisierung',drive_files:'Gespeicherte Dateien',
-    drive_note_title:'Architektur der gemeinsamen Daten:',
-    drive_note_body:'Der Administrator verbindet EIN Google Drive-Konto. Alle Mitwirkenden lesen und schreiben in denselben Ordner.',
-    drive_member_note_title:'Gemeinsame Daten:',
-    drive_member_note_body:'Alle Erinnerungen befinden sich im Drive des Administrators.'
-  },
-  it:{
-    setup_tagline:'Capsula del tempo familiare',s1_title:'Per chi è questa capsula?',
-    s1_desc:"Conserva i ricordi finché quella persona raggiungerà l'età che scegli.",
-    s1_name:'Nome del destinatario',s1_name_ph:'Es: Marino',s1_birth:'Data di nascita',s1_age:'Aprire quando avrà',
-    s2_title:'Crea il tuo account amministratore',s2_desc:'Gestirai la capsula e collegherai il Drive condiviso.',
-    s2_name:'Il tuo nome',s2_name_ph:'Es: Mamma / Marco Rossi',
-    s3_title:'Scegli un PIN amministratore',s3_desc:"Con questo PIN accederai. L'hai dimenticato? Recuperalo via email.",s3_create:'Crea la capsula',
-    btn_next:'Avanti',btn_back:'Indietro',btn_logout:'Esci',btn_edit:'Modifica',btn_change:'Cambia',
-    btn_save:'Salva',btn_cancel:'Annulla',btn_close:'Chiudi',btn_delete:'Elimina',
-    field_email:'Email',field_color:'Colore profilo',
-    login_who:'Seleziona il tuo profilo',forgot_pin:'PIN dimenticato',
-    recover_back:'Indietro',recover_title:'Recupera PIN',
-    recover_desc:"Ti invieremo il PIN all'email del tuo account.",recover_send:'Invia PIN via email',
-    pin_label:function(n){return 'PIN di '+n;},wrong_pin:'PIN errato. Riprova.',
-    recover_found:function(n,p){return '<strong>Email inviata</strong><br><br>PIN di <strong>'+n+'</strong>: <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},
-    recover_notfound:"Se quell'email è registrata, riceverai il PIN a breve.",
-    tab_memories:'Ricordi',tab_timeline:'Linea del tempo',tab_add:'+ Aggiungi',tab_users:'Collaboratori',tab_settings:'Impostazioni',
-    timeline_sub:'La tua storia organizzata per momenti',
-    cap_of:'Per',cap_sub:'Conservando i ricordi fino al momento giusto',cap_label:"all'apertura",
-    stat_total:'Totale',stat_photos:'Foto/Video',stat_audio:'Audio',stat_hitos:'Tappe',
-    filter_all:'Tutti',type_photo:'Foto',type_video:'Video',type_audio:'Audio',type_milestone:'Tappa',
-    add_title:'Aggiungi ricordo',add_sub:'Ogni dettaglio che salvi oggi sarà un tesoro domani',
-    add_type:'Tipo',add_field_title:'Titolo',add_title_ph:'Dai un nome a questo ricordo…',
-    add_field_date:'Data del ricordo',add_field_msg:'Messaggio o descrizione',
-    add_msg_ph:'Scrivi cosa provi ora, cosa speri, cosa vuoi che sappia…',
-    add_file:'File',add_save:'Salva nella capsula',upload_click:'Clicca per caricare',upload_or:'o trascina qui',
-    file_types:{foto:'JPG, PNG, GIF, WebP',video:'MP4, MOV, WebM',audio:'MP3, WAV, M4A, OGG',hito:''},
-    empty_title:'Ancora nessun ricordo',empty_sub:'Sii il primo ad aggiungere qualcosa.',empty_cta:'Aggiungi il primo ricordo',
-    empty_filter_title:'Niente qui ancora',empty_filter_sub:'Nessun ricordo di questo tipo.',
-    users_title:'Collaboratori',users_sub:'Gestisci chi può aggiungere ricordi',users_new:'+ Nuovo',
-    nu_title:'Nuovo collaboratore',nu_sub:'Crea accesso per qualcuno',
-    nu_email_ph:'Per recuperare il PIN se dimenticato',nu_role:'Ruolo',
-    nu_role_member:'Membro — può aggiungere ricordi',nu_role_admin:'Admin — accesso completo',
-    nu_pin:'PIN di accesso (4 cifre)',nu_preview:'Anteprima',nu_preview_btn:"Vedi l'invito",nu_create:'Crea collaboratore',
-    set_capsule:'La capsula',set_recipient:'Destinatario',set_opens:'Si apre il',set_edit_cap:'Modifica capsula',
-    set_reminders:'Promemoria',set_reminder_monthly:'Promemoria mensile',set_reminder_monthly_desc:'Avviso per aggiungere ricordi ogni mese',
-    set_reminder_birthday:'Compleanno annuale',set_reminder_birthday_desc:'Avviso speciale ogni anno nel compleanno',
-    set_security:'Sicurezza',set_pin:'Cambia PIN',set_email_rec:'Email di recupero',
-    set_profile:'Il mio profilo',set_name:'Nome',set_role:'Ruolo',set_edit_profile:'Modifica nome e colore',
-    set_lang:'Lingua',role_admin:'Amministratore',role_member:'Collaboratore',
-    toast_created:'Capsula creata',toast_saved:'Ricordo salvato',toast_deleted:'Ricordo eliminato',
-    toast_user_added:function(n){return n+' aggiunto alla capsula';},
-    toast_user_deleted:function(n){return n+' eliminato';},
-    toast_changes:'Modifiche salvate',toast_pin_updated:'PIN aggiornato',toast_profile_updated:'Profilo aggiornato',
-    toast_capsule_updated:'Capsula aggiornata',toast_copied:'Messaggio copiato',
-    toast_fill:'Compila tutti i campi',toast_invalid_email:'Inserisci un email valida',
-    toast_short_pin:'Il PIN deve avere 4 cifre',toast_no_title:'Aggiungi un titolo',
-    change_pin_desc:'Nuovo PIN di 4 cifre per il tuo account.',
-    invite:function(name,pin,role,child,age){return 'Ciao '+name+',\n\nSei invitato/a alla capsula del tempo di '+child+'.\n\nI tuoi accessi:\n  Nome: '+name+'\n  PIN: '+pin+'\n\nPIN dimenticato? Recuperalo dalla schermata di accesso.';},
-    years_months:function(y,m){return y+'a '+m+'m';},months_days:function(m,d){return m+'m '+d+'g';},
-    days:function(d){return d+' giorni';},moment:'Il momento è arrivato',open_in:function(a){return a+' anni';},
-    age_at:function(y,m){return m>0?y+' anni e '+m+' mesi':y+' anni';},
-    memories_word:function(n){return n===1?'ricordo':'ricordi';},you:'tu',
-    progress_done:function(p){return p+'% del percorso';},
-    reminder_title:'Hai qualcosa di nuovo da salvare?',reminder_sub:'Sono passati più di 30 giorni dal tuo ultimo ricordo.',
-    birthday_reminder_title:function(n){return 'Oggi è il compleanno di '+n+'!';},
-    birthday_reminder_sub:'Un momento perfetto per aggiungere qualcosa di speciale.',
-    opening_title:function(n){return 'Il momento è arrivato, '+n;},
-    opening_sub:"Questa capsula è stata creata con tutto l'amore del mondo.\nOggi è il giorno di aprirla.",
-    drive_title:'Google Drive condiviso',drive_disconnected:'Non collegato',drive_connected:'Collegato',
-    drive_syncing:'Sincronizzazione…',drive_error:'Errore',
-    drive_connect:"Collega Drive dell'amministratore",drive_disconnect:'Scollega',drive_sync_now:'Sincronizza ora',
-    drive_account:'Account amministratore',drive_folder:'Cartella Drive',drive_last_sync:'Ultima sincronizzazione',drive_files:'File salvati',
-    drive_note_title:'Architettura dati condivisi:',
-    drive_note_body:"L'amministratore collega UN account Google Drive. Tutti i collaboratori leggono e scrivono nella stessa cartella.",
-    drive_member_note_title:'Dati condivisi:',
-    drive_member_note_body:"Tutti i ricordi sono nell'account Drive dell'amministratore."
-  },
-  pt:{
-    setup_tagline:'Cápsula do tempo familiar',s1_title:'Para quem é esta cápsula?',
-    s1_desc:'Guarda memórias até que essa pessoa atinja a idade que escolheres.',
-    s1_name:'Nome do destinatário',s1_name_ph:'Ex: Marino',s1_birth:'Data de nascimento',s1_age:'Abrir quando tiver',
-    s2_title:'Cria a tua conta de administrador',s2_desc:'Vais gerir a cápsula e ligar o Drive partilhado.',
-    s2_name:'O teu nome',s2_name_ph:'Ex: Mãe / João Silva',
-    s3_title:'Escolhe um PIN de administrador',s3_desc:'Usa este PIN para entrar. Esqueceste? Recupera por email.',s3_create:'Criar cápsula',
-    btn_next:'Seguinte',btn_back:'Voltar',btn_logout:'Sair',btn_edit:'Editar',btn_change:'Alterar',
-    btn_save:'Guardar',btn_cancel:'Cancelar',btn_close:'Fechar',btn_delete:'Eliminar',
-    field_email:'Email',field_color:'Cor do perfil',
-    login_who:'Seleciona o teu perfil',forgot_pin:'Esqueci o meu PIN',
-    recover_back:'Voltar',recover_title:'Recuperar PIN',
-    recover_desc:'Enviaremos o teu PIN para o email da tua conta.',recover_send:'Enviar PIN por email',
-    pin_label:function(n){return 'PIN de '+n;},wrong_pin:'PIN incorreto. Tenta novamente.',
-    recover_found:function(n,p){return '<strong>Email enviado</strong><br><br>PIN de <strong>'+n+'</strong>: <strong style="font-family:monospace;font-size:1.1rem;letter-spacing:.15em">'+p+'</strong>';},
-    recover_notfound:'Se esse email estiver registado, receberás o PIN em breve.',
-    tab_memories:'Memórias',tab_timeline:'Linha do tempo',tab_add:'+ Adicionar',tab_users:'Colaboradores',tab_settings:'Definições',
-    timeline_sub:'A tua história organizada por momentos',
-    cap_of:'Para',cap_sub:'A guardar memórias até ao momento certo',cap_label:'para abrir',
-    stat_total:'Total',stat_photos:'Fotos/Vídeos',stat_audio:'Áudios',stat_hitos:'Marcos',
-    filter_all:'Todos',type_photo:'Foto',type_video:'Vídeo',type_audio:'Áudio',type_milestone:'Marco',
-    add_title:'Adicionar memória',add_sub:'Cada detalhe que guardas hoje será um tesouro amanhã',
-    add_type:'Tipo',add_field_title:'Título',add_title_ph:'Dá um nome a esta memória…',
-    add_field_date:'Data da memória',add_field_msg:'Mensagem ou descrição',
-    add_msg_ph:'Escreve o que sentes agora, o que esperas, o que queres que saiba…',
-    add_file:'Ficheiro',add_save:'Guardar na cápsula',upload_click:'Clica para carregar',upload_or:'ou arrasta aqui',
-    file_types:{foto:'JPG, PNG, GIF, WebP',video:'MP4, MOV, WebM',audio:'MP3, WAV, M4A, OGG',hito:''},
-    empty_title:'Ainda sem memórias',empty_sub:'Sê o primeiro a adicionar algo.',empty_cta:'Adicionar primeira memória',
-    empty_filter_title:'Nada aqui ainda',empty_filter_sub:'Nenhuma memória deste tipo.',
-    users_title:'Colaboradores',users_sub:'Gere quem pode adicionar memórias',users_new:'+ Novo',
-    nu_title:'Novo colaborador',nu_sub:'Cria acesso para alguém',
-    nu_email_ph:'Para recuperar o PIN se esquecido',nu_role:'Função',
-    nu_role_member:'Membro — pode adicionar memórias',nu_role_admin:'Admin — acesso completo',
-    nu_pin:'PIN de acesso (4 dígitos)',nu_preview:'Pré-visualização',nu_preview_btn:'Ver convite',nu_create:'Criar colaborador',
-    set_capsule:'A cápsula',set_recipient:'Destinatário',set_opens:'Abre em',set_edit_cap:'Editar cápsula',
-    set_reminders:'Lembretes',set_reminder_monthly:'Lembrete mensal',set_reminder_monthly_desc:'Aviso para adicionar memórias cada mês',
-    set_reminder_birthday:'Aniversário anual',set_reminder_birthday_desc:'Aviso especial no aniversário cada ano',
-    set_security:'Segurança',set_pin:'Alterar PIN',set_email_rec:'Email de recuperação',
-    set_profile:'O meu perfil',set_name:'Nome',set_role:'Função',set_edit_profile:'Editar nome e cor',
-    set_lang:'Idioma',role_admin:'Administrador',role_member:'Colaborador',
-    toast_created:'Cápsula criada',toast_saved:'Memória guardada',toast_deleted:'Memória eliminada',
-    toast_user_added:function(n){return n+' adicionado à cápsula';},
-    toast_user_deleted:function(n){return n+' removido';},
-    toast_changes:'Alterações guardadas',toast_pin_updated:'PIN atualizado',toast_profile_updated:'Perfil atualizado',
-    toast_capsule_updated:'Cápsula atualizada',toast_copied:'Mensagem copiada',
-    toast_fill:'Preenche todos os campos',toast_invalid_email:'Introduz um email válido',
-    toast_short_pin:'O PIN deve ter 4 dígitos',toast_no_title:'Adiciona um título',
-    change_pin_desc:'Novo PIN de 4 dígitos para a tua conta.',
-    invite:function(name,pin,role,child,age){return 'Olá '+name+',\n\nEstás convidado/a para a cápsula do tempo de '+child+'.\n\nOs teus acessos:\n  Nome: '+name+'\n  PIN: '+pin+'\n\nEsqueceste o PIN? Recupera-o no ecrã de início.';},
-    years_months:function(y,m){return y+'a '+m+'m';},months_days:function(m,d){return m+'m '+d+'d';},
-    days:function(d){return d+' dias';},moment:'O momento chegou',open_in:function(a){return a+' anos';},
-    age_at:function(y,m){return m>0?y+' anos e '+m+' meses':y+' anos';},
-    memories_word:function(n){return n===1?'memória':'memórias';},you:'tu',
-    progress_done:function(p){return p+'% do caminho';},
-    reminder_title:'Tens algo novo para guardar?',reminder_sub:'Passaram mais de 30 dias desde a tua última memória.',
-    birthday_reminder_title:function(n){return 'Hoje é o aniversário de '+n+'!';},
-    birthday_reminder_sub:'Um momento perfeito para adicionar algo especial.',
-    opening_title:function(n){return 'O momento chegou, '+n;},
-    opening_sub:'Esta cápsula foi criada com todo o amor do mundo.\nHoje é o dia de a abrir.',
-    drive_title:'Google Drive partilhado',drive_disconnected:'Não ligado',drive_connected:'Ligado',
-    drive_syncing:'A sincronizar…',drive_error:'Erro',
-    drive_connect:'Ligar Drive do administrador',drive_disconnect:'Desligar',drive_sync_now:'Sincronizar agora',
-    drive_account:'Conta do administrador',drive_folder:'Pasta Drive',drive_last_sync:'Última sincronização',drive_files:'Ficheiros guardados',
-    drive_note_title:'Arquitetura de dados partilhados:',
-    drive_note_body:'O administrador liga UMA conta Google Drive. Todos os colaboradores leem e escrevem na mesma pasta.',
-    drive_member_note_title:'Dados partilhados:',
-    drive_member_note_body:'Todas as memórias estão no Drive do administrador.'
+    reminder_title:'Do you have something new to save?',reminder_sub:'More than 30 days since your last memory.',birthday_reminder_title:function(n){return "Today is "+n+"'s birthday!";},birthday_reminder_sub:'A perfect moment to add something special.',
+    opening_title:function(n){return 'The moment has come, '+n;},opening_sub:'This capsule was made with all the love in the world.\nToday is the day to open it.',opening_btn:'Open my capsule',
+    confirm_delete_mem:'Delete this memory?',confirm_delete_mem_msg:'This cannot be undone.',confirm_delete_user:'Delete contributor?',confirm_delete_user_msg:'This cannot be undone.',confirm_yes:'Yes, delete',
+    nav_prev:'Prev',nav_next:'Next',
+    mem_age_line:function(child,age){return child+' was '+age;},
+    drive_title:'Shared Google Drive',drive_disconnected:'Not connected',drive_connected:'Connected',drive_syncing:'Syncing…',drive_error:'Error',drive_connect:"Connect admin's Drive",drive_disconnect:'Disconnect',drive_sync_now:'Sync now',drive_account:'Admin account',drive_folder:'Drive folder',drive_last_sync:'Last sync',drive_files:'Saved files',drive_note_title:'Shared data architecture:',drive_note_body:'The admin connects ONE Google Drive account. All contributors read and write to that same folder.',drive_member_note_title:'Shared data:',drive_member_note_body:"All memories are stored in the admin's Google Drive."
   }
 };
-// remaining langs fallback to ES
-['zh','hi','ar','ru','ja','eu'].forEach(function(c){STRINGS[c]=STRINGS.es;});
+['fr','de','it','pt','zh','hi','ar','ru','ja','eu'].forEach(function(c){STRINGS[c]=STRINGS.es;});
 
 var lang=localStorage.getItem('kintu_lang')||'es';
-function t(k){var L=STRINGS[lang]||STRINGS.es;var v=L[k]!==undefined?L[k]:STRINGS.es[k];return typeof v==='function'?v:v;}
+function t(k){var L=STRINGS[lang]||STRINGS.es;return L[k]!==undefined?L[k]:STRINGS.es[k];}
 function tc(k){var v=t(k);return typeof v==='string'?v:'';}
 function tf(k){var L=STRINGS[lang]||STRINGS.es;var v=L[k]!==undefined?L[k]:STRINGS.es[k];return typeof v==='function'?v:function(){return String(v);};}
-function applyI18n(){
-  document.querySelectorAll('[data-i18n]').forEach(function(el){var v=tc(el.dataset.i18n);if(v)el.textContent=v;});
-  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var v=tc(el.getAttribute('data-i18n-ph'));if(v)el.placeholder=v;});
-}
+function applyI18n(){document.querySelectorAll('[data-i18n]').forEach(function(el){var v=tc(el.dataset.i18n);if(v)el.textContent=v;});document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var v=tc(el.getAttribute('data-i18n-ph'));if(v)el.placeholder=v;});}
 function setLang(l){lang=l;localStorage.setItem('kintu_lang',l);applyI18n();renderLangSelect();updateDriveUI();if(currentUser){renderCountdown();renderProgress();renderStats();renderMemories();renderSettings();}}
-function renderLangSelect(){
-  var sel=document.getElementById('lang-select');if(!sel)return;
-  sel.innerHTML=LANG_META.map(function(m){return '<option value="'+m.code+'"'+(m.code===lang?' selected':'')+'>'+m.flag+' '+m.name+'</option>';}).join('');
-}
+function renderLangSelect(){var sel=document.getElementById('lang-select');if(!sel)return;sel.innerHTML=LANG_META.map(function(m){return'<option value="'+m.code+'"'+(m.code===lang?' selected':'')+'>'+m.flag+' '+m.name+'</option>';}).join('');}
 
 // ═══ LOGO ═══
-// ── KINTU logo SVG — recreated from PNG ──
-// White rounded-fat letters on transparent bg, grey left-pointing triangle inside K
-// Using paths that replicate the original rounded letterforms
-var KINTU_LETTERS = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200">
-  <!-- K -->
-  <rect x="10" y="20" width="52" height="160" rx="26" fill="white"/>
-  <!-- K top arm -->
-  <path d="M44 100 L110 28 Q122 14 136 22 L148 30 Q158 40 148 54 L88 114 Z" fill="white"/>
-  <!-- K bottom arm -->
-  <path d="M44 100 L110 172 Q122 186 136 178 L148 170 Q158 160 148 146 L88 86 Z" fill="white"/>
-  <!-- Grey triangle inside K (pointing left) -->
-  <polygon points="102,100 130,78 130,122" fill="#8a9db0" opacity="0.9"/>
-
-  <!-- i dot -->
-  <circle cx="188" cy="34" r="26" fill="white"/>
-  <!-- i stem -->
-  <rect x="162" y="74" width="52" height="106" rx="26" fill="white"/>
-
-  <!-- N -->
-  <rect x="232" y="20" width="50" height="160" rx="25" fill="white"/>
-  <rect x="370" y="20" width="50" height="160" rx="25" fill="white"/>
-  <!-- N diagonal -->
-  <path d="M258 28 L258 60 L394 152 L394 120 Z" fill="white"/>
-
-  <!-- T crossbar -->
-  <rect x="428" y="20" width="152" height="50" rx="25" fill="white"/>
-  <!-- T stem -->
-  <rect x="479" y="44" width="50" height="136" rx="25" fill="white"/>
-
-  <!-- U (converted to V-like rounded bottom) — no room, use U shape -->
-  <!-- Already included in T area; shift slightly or note: viewBox fits 5 chars -->
-</svg>`;
-
-// Cleaner version — single-pass outline approach matching the original PNG style
-var LOGO_SVG_FULL = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">'
-  // K palo
-  +'<rect x="10" y="10" width="56" height="180" rx="28" fill="white"/>'
-  // K brazo superior
-  +'<path d="M46,100 L122,18 Q136,4 152,14 L164,24 Q174,36 162,50 L86,112 Z" fill="white"/>'
-  // K brazo inferior
-  +'<path d="M46,100 L122,182 Q136,196 152,186 L164,176 Q174,164 162,150 L86,88 Z" fill="white"/>'
-  // Triángulo gris dentro de K
-  +'<polygon points="110,100 140,74 140,126" fill="#8fafc4"/>'
-  // i punto
-  +'<circle cx="210" cy="32" r="28" fill="white"/>'
-  // i palo
-  +'<rect x="182" y="72" width="56" height="118" rx="28" fill="white"/>'
-  // N palo izq
-  +'<rect x="258" y="10" width="54" height="180" rx="27" fill="white"/>'
-  // N palo der
-  +'<rect x="394" y="10" width="54" height="180" rx="27" fill="white"/>'
-  // N diagonal
-  +'<path d="M285,10 L285,52 L421,190 L421,148 Z" fill="white" stroke="white" stroke-width="2"/>'
-  // T travesaño
-  +'<rect x="458" y="10" width="172" height="54" rx="27" fill="white"/>'
-  // T palo
-  +'<rect x="517" y="36" width="54" height="154" rx="27" fill="white"/>'
-  // U palo izq
-  +'<rect x="644" y="10" width="54" height="130" rx="27" fill="white"/>'
-  // U fondo redondeado
-  +'<rect x="644" y="104" width="102" height="86" rx="43" fill="white"/>'
-  // U palo der
-  +'<rect x="692" y="10" width="54" height="130" rx="27" fill="white"/>'
-+'</svg>';
-
-// Versión pequeña para topbar (misma pero viewBox y dimensiones reducidas)
-var LOGO_SVG_SMALL = LOGO_SVG_FULL;
-
-function buildHeaderHTML(childName,sub){
-  var name=childName||'';
-  return '<div class="logo-lockup">'
-    +'<div style="height:48px;width:96px;flex-shrink:0">'+LOGO_SVG_FULL+'</div>'
-    +'<div class="logo-wordmark"><span class="lw-name">Para '+name+'</span>'+(sub?'<span class="lw-sub">'+sub+'</span>':'')+'</div></div>';
-}
-function buildTopbarLogo(childName){
-  return '<div class="logo-lockup">'
-    +'<div style="height:32px;width:64px;flex-shrink:0">'+LOGO_SVG_SMALL+'</div>'
-    +'<span style="font-size:.85rem;font-weight:900;color:var(--text);letter-spacing:-.02em">Para '+(childName||'')+'</span></div>';
-}
+function buildHeaderHTML(childName,sub){var name=childName||'';return '<div class="logo-lockup"><div class="logo-wordmark"><span class="lw-brand">kintu</span>'+(name?'<span class="lw-name">Para '+name+'</span>':'')+(sub?'<span class="lw-sub">'+sub+'</span>':'')+'</div></div>';}
+function buildTopbarLogo(childName){return '<div class="logo-lockup" style="gap:.42rem;align-items:baseline"><span style="font-family:var(--font-warm);font-size:1.18rem;font-weight:700;color:var(--accent);letter-spacing:.01em">kintu</span>'+(childName?'<span style="font-size:.72rem;font-weight:600;color:var(--muted)">· Para '+(childName||'')+'</span>':'')+'</div>';}
 
 // ═══ DRIVE ═══
 var driveState={status:'disconnected',account:null,folderId:null,lastSync:null,filesCount:0};
@@ -1229,12 +763,12 @@ function setDriveStatus(s){driveState.status=s;renderDrivePanelBadge();renderDri
 function initDriveFromStorage(){var a=localStorage.getItem('kintu_drive_account'),f=localStorage.getItem('kintu_drive_folder');if(a&&f){driveState.status='connected';driveState.account=a;driveState.folderId=f;driveState.filesCount=db?db.memories.length:0;}}
 function renderDrivePanelBadge(){var b=document.getElementById('drive-status-badge'),tx=document.getElementById('drive-status-text');if(!b)return;b.className='drive-status-badge '+driveState.status;var map={connected:'drive_connected',disconnected:'drive_disconnected',syncing:'drive_syncing',error:'drive_error'};tx.textContent=tc(map[driveState.status]||'drive_disconnected');}
 function renderDrivePanelButtons(){var isAdmin=currentUser&&currentUser.role==='admin';var c=document.getElementById('drive-connect-btn'),s=document.getElementById('drive-sync-btn'),d=document.getElementById('drive-disconnect-btn'),note=document.getElementById('drive-member-note'),btns=document.getElementById('drive-admin-buttons');if(!c)return;var ok=driveState.status==='connected',syncing=driveState.status==='syncing';if(isAdmin){if(btns)btns.style.display='flex';if(note)note.style.display='none';c.style.display=(ok||syncing)?'none':'';s.style.display=ok?'':'none';d.style.display=ok?'':'none';c.textContent=tc('drive_connect');s.textContent=tc('drive_sync_now');d.textContent=tc('drive_disconnect');}else{if(btns)btns.style.display='none';if(note)note.style.display='block';}}
-function renderDrivePanelBody(){var fmtSync=driveState.lastSync?new Date(driveState.lastSync).toLocaleString():' — ';var map={'drive-account-val':driveState.account||'—','drive-folder-val':driveState.folderId?'Cápsula de Marino/':'—','drive-last-sync-val':fmtSync,'drive-files-val':String(driveState.filesCount)};Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=map[id];});}
+function renderDrivePanelBody(){var fmtSync=driveState.lastSync?new Date(driveState.lastSync).toLocaleString():' — ';var map={'drive-account-val':driveState.account||'—','drive-folder-val':driveState.folderId?'Cápsula/':'—','drive-last-sync-val':fmtSync,'drive-files-val':String(driveState.filesCount)};Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=map[id];});}
 function updateTopbarDrivePill(){var p=document.getElementById('topbar-drive-pill'),tx=document.getElementById('topbar-drive-text');if(!p)return;p.className='drive-pill '+driveState.status;var map={connected:'drive_connected',disconnected:'drive_disconnected',syncing:'drive_syncing',error:'drive_error'};if(tx)tx.textContent=tc(map[driveState.status]||'drive_disconnected');}
 function updateDriveUI(){renderDrivePanelBadge();renderDrivePanelButtons();renderDrivePanelBody();updateTopbarDrivePill();}
 
 // ═══ STATE ═══
-var SK='kintu_v3';
+var SK='kintu_v5';
 var COLORS=['#3d6b8e','#e07a9e','#5599c4','#5cb88a','#e07a3d','#c45555','#7c6af0','#d4a017','#3db8b8','#a855d4'];
 var TYPE_CFG={
   foto:{bg:'#fce4ec',stroke:'#ad1457',svg:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',accept:'image/*'},
@@ -1243,33 +777,26 @@ var TYPE_CFG={
   hito:{bg:'#deeaf4',stroke:'#2a4f6d',svg:'<path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/>',accept:null}
 };
 var TYPE_KEY={foto:'photo',video:'video',audio:'audio',hito:'milestone'};
-
-var db=null,currentUser=null,selectedFilter='all',selectedType='foto',currentView='grid';
-var editingUserId=null,openMemoryId=null,loginSelectedUser=null,loginPinEntry='',setupStep=1,currentFile=null;
+var REACTIONS=['❤️','⭐','🌟'];
+var db=null,currentUser=null,selectedFilter='all',selectedType='foto',currentView='grid',searchQuery='';
+var editingUserId=null,openMemoryList=[],openMemoryIdx=0,loginSelectedUser=null,loginPinEntry='',setupStep=1,currentFile=null,confirmCallback=null;
 
 function getDB(){try{return JSON.parse(localStorage.getItem(SK)||'null');}catch(e){return null;}}
 function saveDB(){localStorage.setItem(SK,JSON.stringify(db));}
 function uid(){return '_'+Math.random().toString(36).slice(2,10)+Date.now().toString(36);}
 function ini(n){return((n||'?').trim().split(/\s+/).map(function(w){return w[0];}).join('').toUpperCase().slice(0,2))||'??';}
-function avHtml(u,s){s=s||36;return '<div class="ui-avatar" style="width:'+s+'px;height:'+s+'px;font-size:'+(s*.27)+'px;background:'+(u.color||COLORS[0])+'">'+ini(u.name)+'</div>';}
-function fmtDate(iso){if(!iso)return '—';try{return new Date(iso+'T12:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});}catch(e){return iso;}}
-function unlockDate(birth,age){try{var d=new Date(birth);d.setFullYear(d.getFullYear()+age);return d.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});}catch(e){return '';}}
-function countdown(birth,age){try{var u=new Date(birth);u.setFullYear(u.getFullYear()+age);var diff=u-new Date();if(diff<=0)return tc('moment');var days=Math.floor(diff/864e5),y=Math.floor(days/365),m=Math.floor((days%365)/30);if(y>0)return tf('years_months')(y,m);if(m>0)return tf('months_days')(m,days%30);return tf('days')(days);}catch(e){return '—';}}
-function maskEmail(e){if(!e)return '—';var parts=e.split('@');return(parts[0]||'').slice(0,2)+'***@'+(parts[1]||'');}
-function fmtBytes(b){if(b<1024)return b+'B';if(b<1048576)return (b/1024).toFixed(1)+'KB';return (b/1048576).toFixed(1)+'MB';}
+function avHtml(u,s){s=s||36;return'<div style="width:'+s+'px;height:'+s+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:'+(s*.27)+'px;font-weight:800;color:#fff;flex-shrink:0;background:'+(u.color||COLORS[0])+'">'+ini(u.name)+'</div>';}
+function fmtDate(iso){if(!iso)return'—';try{return new Date(iso+'T12:00:00').toLocaleDateString(lang,{day:'numeric',month:'long',year:'numeric'});}catch(e){return iso;}}
+function unlockDate(birth,age){try{var d=new Date(birth);d.setFullYear(d.getFullYear()+age);return d.toLocaleDateString(lang,{day:'numeric',month:'long',year:'numeric'});}catch(e){return'';}}
+function countdown(birth,age){try{var u=new Date(birth);u.setFullYear(u.getFullYear()+age);var diff=u-new Date();if(diff<=0)return tc('moment');var days=Math.floor(diff/864e5),y=Math.floor(days/365),m=Math.floor((days%365)/30);if(y>0)return tf('years_months')(y,m);if(m>0)return tf('months_days')(m,days%30);return tf('days')(days);}catch(e){return'—';}}
+function maskEmail(e){if(!e)return'—';var parts=e.split('@');return(parts[0]||'').slice(0,2)+'***@'+(parts[1]||'');}
+function fmtBytes(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB';}
+function daysAlive(birth){try{return Math.max(0,Math.floor((new Date()-new Date(birth))/864e5));}catch(e){return 0;}}
 function ageAtDate(birthStr,dateStr){if(!birthStr||!dateStr)return null;try{var birth=new Date(birthStr),date=new Date(dateStr+'T12:00:00');var years=date.getFullYear()-birth.getFullYear(),months=date.getMonth()-birth.getMonth();if(months<0){years--;months+=12;}return{years:Math.max(0,years),months:Math.max(0,months)};}catch(e){return null;}}
 function capsuleProgress(){if(!db||!db.capsule||!db.capsule.birth)return 0;try{var birth=new Date(db.capsule.birth),unlock=new Date(birth);unlock.setFullYear(unlock.getFullYear()+db.capsule.openAge);var total=unlock-birth,elapsed=new Date()-birth;return Math.max(0,Math.min(100,Math.round((elapsed/total)*100)));}catch(e){return 0;}}
 
 // ═══ BOOT ═══
-window.onload=function(){
-  applyI18n();renderLangSelect();
-  db=getDB();
-  if(!db){show('screen-setup');initSetup();}
-  else{
-    try{var b=db.capsule.birth,a=db.capsule.openAge;var u=new Date(b);u.setFullYear(u.getFullYear()+a);if(new Date()>=u){show('screen-opening');initOpeningScreen();return;}}catch(e){}
-    initDriveFromStorage();show('screen-login');initLogin();
-  }
-};
+window.onload=function(){applyI18n();renderLangSelect();db=getDB();if(!db){show('screen-setup');initSetup();}else{try{var u=new Date(db.capsule.birth);u.setFullYear(u.getFullYear()+db.capsule.openAge);if(new Date()>=u){show('screen-opening');initOpeningScreen();return;}}catch(e){}initDriveFromStorage();show('screen-login');initLogin();}};
 function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});document.getElementById(id).classList.add('active');}
 
 // ═══ OPENING ═══
@@ -1277,18 +804,18 @@ function initOpeningScreen(){if(!db)return;var n=db.capsule.childName||'';docume
 function openCapsuleReveal(){show('screen-login');initLogin();}
 
 // ═══ REMINDERS ═══
-function checkReminders(){if(!db||!db.capsule)return;var prefs=JSON.parse(localStorage.getItem('kintu_reminder_prefs')||'{"monthly":true,"birthday":true}');var today=new Date();if(prefs.birthday){try{var b=new Date(db.capsule.birth);if(b.getMonth()===today.getMonth()&&b.getDate()===today.getDate()){showReminderBanner(tf('birthday_reminder_title')(db.capsule.childName),tc('birthday_reminder_sub'));return;}}catch(e){}}if(prefs.monthly){var last=localStorage.getItem('kintu_reminder_dismiss');if(last&&(today-new Date(last))<30*864e5)return;var sorted=db.memories.slice().sort(function(a,b){return new Date(b.createdAt)-new Date(a.createdAt);});var lm=sorted[0];if(!lm||(today-new Date(lm.createdAt))>30*864e5){showReminderBanner(tc('reminder_title'),tc('reminder_sub'));}}}
+function checkReminders(){if(!db||!db.capsule)return;var prefs=JSON.parse(localStorage.getItem('kintu_reminder_prefs')||'{"monthly":true,"birthday":true}');var today=new Date();if(prefs.birthday){try{var b=new Date(db.capsule.birth);if(b.getMonth()===today.getMonth()&&b.getDate()===today.getDate()){showReminderBanner(tf('birthday_reminder_title')(db.capsule.childName),tc('birthday_reminder_sub'));return;}}catch(e){}}if(prefs.monthly){var last=localStorage.getItem('kintu_reminder_dismiss');if(last&&(today-new Date(last))<30*864e5)return;var sorted=db.memories.slice().sort(function(a,b){return new Date(b.createdAt)-new Date(a.createdAt);});var lm=sorted[0];if(!lm||(today-new Date(lm.createdAt))>30*864e5)showReminderBanner(tc('reminder_title'),tc('reminder_sub'));}}
 function showReminderBanner(title,sub){var ban=document.getElementById('reminder-banner');if(!ban)return;document.getElementById('rb-title').textContent=title;document.getElementById('rb-sub').textContent=sub;ban.style.display='flex';var bell=document.getElementById('notif-bell');if(bell&&!bell.querySelector('.notif-badge')){var bd=document.createElement('div');bd.className='notif-badge';bell.appendChild(bd);}}
 function dismissReminder(){var ban=document.getElementById('reminder-banner');if(ban)ban.style.display='none';localStorage.setItem('kintu_reminder_dismiss',new Date().toISOString());var bd=document.querySelector('.notif-badge');if(bd)bd.remove();}
-function toggleNotifPanel(){var ban=document.getElementById('reminder-banner');if(ban)ban.style.display=ban.style.display==='none'?'flex':'none';}
-function saveReminderPrefs(){var prefs={monthly:!!(document.getElementById('toggle-monthly')||{checked:true}).checked,birthday:!!(document.getElementById('toggle-birthday')||{checked:true}).checked};localStorage.setItem('kintu_reminder_prefs',JSON.stringify(prefs));}
+function toggleNotifPanel(){var ban=document.getElementById('reminder-banner');if(ban)ban.style.display=ban.style.display==='none'||ban.style.display===''?'flex':'none';}
+function saveReminderPrefs(){var prefs={monthly:document.getElementById('toggle-monthly').checked,birthday:document.getElementById('toggle-birthday').checked};localStorage.setItem('kintu_reminder_prefs',JSON.stringify(prefs));}
 
 // ═══ SETUP ═══
 function initSetup(){var dots=document.getElementById('setup-dots');dots.innerHTML=Array.from({length:3},function(_,i){return'<div class="si-dot" id="sdot-'+(i+1)+'"></div>';}).join('');updateSetupDots();buildColorPicker('s-color-picker',COLORS[0]);document.getElementById('setup-header').innerHTML=buildHeaderHTML('',tc('setup_tagline'));applyI18n();}
 function updateSetupDots(){for(var i=1;i<=3;i++)document.getElementById('sdot-'+i).classList.toggle('done',i<=setupStep);}
-function setupNext(f){if(f===1){if(!document.getElementById('s-child-name').value.trim()||!document.getElementById('s-birth').value){showToast(tc('toast_fill'));return;}}if(f===2){if(!document.getElementById('s-admin-name').value.trim()){showToast(tc('toast_fill'));return;}var e=document.getElementById('s-admin-email').value.trim();if(!e||!e.includes('@')){showToast(tc('toast_invalid_email'));return;}}document.getElementById('step-'+f).classList.remove('active');setupStep=f+1;document.getElementById('step-'+setupStep).classList.add('active');updateSetupDots();}
+function setupNext(f){if(f===1){if(!document.getElementById('s-child-name').value.trim()||!document.getElementById('s-birth').value){showToast(tc('toast_fill'));return;}}if(f===2){if(!document.getElementById('s-admin-name').value.trim()){showToast(tc('toast_fill'));return;}var e=document.getElementById('s-admin-email').value.trim();if(e&&!e.includes('@')){showToast(tc('toast_invalid_email'));return;}}document.getElementById('step-'+f).classList.remove('active');setupStep=f+1;document.getElementById('step-'+setupStep).classList.add('active');updateSetupDots();}
 function setupPrev(f){document.getElementById('step-'+f).classList.remove('active');setupStep=f-1;document.getElementById('step-'+setupStep).classList.add('active');updateSetupDots();}
-function setupFinish(){var pin=['sp0','sp1','sp2','sp3'].map(function(id){return document.getElementById(id).value;}).join('');if(pin.length<4){showToast(tc('toast_short_pin'));return;}var childName=document.getElementById('s-child-name').value.trim();db={capsule:{childName:childName,birth:document.getElementById('s-birth').value,openAge:parseInt(document.getElementById('s-open-age').value)},users:[{id:uid(),name:document.getElementById('s-admin-name').value.trim(),email:document.getElementById('s-admin-email').value.trim().toLowerCase(),role:'admin',color:getPickerColor('s-color-picker'),pin:pin,createdAt:new Date().toISOString()}],memories:[]};saveDB();showToast(tc('toast_created'));setTimeout(function(){show('screen-login');initLogin();},700);}
+function setupFinish(){var pin=['sp0','sp1','sp2','sp3'].map(function(id){return document.getElementById(id).value;}).join('');if(pin.length<4){showToast(tc('toast_short_pin'));return;}var childName=document.getElementById('s-child-name').value.trim();db={capsule:{childName:childName,birth:document.getElementById('s-birth').value,openAge:parseInt(document.getElementById('s-open-age').value)},users:[{id:uid(),name:document.getElementById('s-admin-name').value.trim(),email:document.getElementById('s-admin-email').value.trim().toLowerCase(),role:'admin',color:getPickerColor('s-color-picker'),pin:pin,createdAt:new Date().toISOString()}],memories:[],welcomeLetter:'',reactions:{}};saveDB();showToast(tc('toast_created'));setTimeout(function(){show('screen-login');initLogin();},700);}
 function buildColorPicker(cid,def){document.getElementById(cid).innerHTML=COLORS.map(function(c){return'<div class="color-swatch'+(c===def?' sel':'')+'" data-color="'+c+'" style="background:'+c+'" onclick="pickColor(this)"></div>';}).join('');}
 function pickColor(el){el.closest('.color-picker').querySelectorAll('.color-swatch').forEach(function(s){s.classList.remove('sel');});el.classList.add('sel');}
 function getPickerColor(cid){var s=document.querySelector('#'+cid+' .color-swatch.sel');return s?s.dataset.color:COLORS[0];}
@@ -1311,24 +838,46 @@ function hideRecover(){document.getElementById('recover-box').classList.remove('
 function sendRecoverPin(){var email=document.getElementById('recover-email').value.trim().toLowerCase();if(!email||!email.includes('@')){showToast(tc('toast_invalid_email'));return;}var user=db.users.find(function(u){return u.email&&u.email.toLowerCase()===email;});var box=document.getElementById('recover-sent');box.classList.add('show');box.innerHTML=user?tf('recover_found')(user.name,user.pin):tc('recover_notfound');}
 
 // ═══ APP ═══
-function initApp(){db=getDB();var isAdmin=currentUser.role==='admin';var childName=db.capsule.childName;document.getElementById('app-header-logo').innerHTML=buildTopbarLogo(childName);var av=document.getElementById('tb-avatar');av.style.background=currentUser.color||COLORS[0];av.textContent=ini(currentUser.name);document.getElementById('tb-name').textContent=currentUser.name;document.querySelectorAll('.admin-only').forEach(function(el){el.style.display=isAdmin?'':'none';});document.getElementById('admin-change-capsule').style.display=isAdmin?'flex':'none';applyI18n();renderLangSelect();updateDriveUI();goTab('memories',document.querySelector('.tab'));document.getElementById('add-date').valueAsDate=new Date();var firstType=document.querySelector('.type-opt.active');if(firstType)selType(firstType);checkReminders();}
-function goTab(name,btn){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active');});if(btn)btn.classList.add('active');var tc2=document.getElementById('tab-'+name);if(tc2)tc2.classList.add('active');if(name==='memories'){renderCountdown();renderProgress();renderStats();renderMemories();}if(name==='timeline')renderTimeline();if(name==='users'&&currentUser&&currentUser.role==='admin')renderUsersAdmin();if(name==='settings')renderSettings();}
+function initApp(){db=getDB();var isAdmin=currentUser.role==='admin';var childName=db.capsule.childName;document.getElementById('app-header-logo').innerHTML=buildTopbarLogo(childName);var av=document.getElementById('tb-avatar');av.style.background=currentUser.color||COLORS[0];av.textContent=ini(currentUser.name);document.getElementById('tb-name').textContent=currentUser.name;document.querySelectorAll('.admin-only').forEach(function(el){el.style.display=isAdmin?'':'none';});document.getElementById('admin-change-capsule').style.display=isAdmin?'flex':'none';applyI18n();renderLangSelect();updateDriveUI();goTab('memories',document.querySelector('.tab'));document.getElementById('add-date').valueAsDate=new Date();var ft=document.querySelector('.type-opt.active');if(ft)selType(ft);checkReminders();renderWelcomeLetterBanner();}
+
+function goTab(name,btn){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active');});if(btn)btn.classList.add('active');var el=document.getElementById('tab-'+name);if(el)el.classList.add('active');if(name==='memories'){renderCountdown();renderDaysAlive();renderProgress();renderStats();renderMemories();}if(name==='timeline'){openMemoryList=db.memories.slice().sort(function(a,b){return new Date(a.date)-new Date(b.date);});renderTimeline();}if(name==='users'&&currentUser&&currentUser.role==='admin')renderUsersAdmin();if(name==='settings')renderSettings();if(name==='add'){document.getElementById('add-title').value='';document.getElementById('add-msg').value='';document.getElementById('add-date').valueAsDate=new Date();clearFile();}}
 
 function renderCountdown(){if(!db||!db.capsule)return;document.getElementById('cap-name-banner').textContent=db.capsule.childName;document.getElementById('cap-countdown').textContent=countdown(db.capsule.birth,db.capsule.openAge);}
+function renderDaysAlive(){if(!db||!db.capsule||!db.capsule.birth)return;var d=daysAlive(db.capsule.birth);document.getElementById('days-alive-text').textContent=tf('days_alive')(d.toLocaleString());}
 function renderProgress(){var p=capsuleProgress();document.getElementById('progress-fill').style.width=p+'%';document.getElementById('progress-label-left').textContent=tf('progress_done')(p);var yrsLeft=Math.max(0,db.capsule.openAge-Math.floor((new Date()-new Date(db.capsule.birth))/(365.25*864e5)));document.getElementById('progress-label-right').textContent=yrsLeft>0?yrsLeft+' '+tc('open_in').replace(/\d+/,'').trim():'';}
 function renderStats(){if(!db)return;var m=db.memories;document.getElementById('st-total').textContent=m.length;document.getElementById('st-photos').textContent=m.filter(function(x){return x.type==='foto'||x.type==='video';}).length;document.getElementById('st-audio').textContent=m.filter(function(x){return x.type==='audio';}).length;document.getElementById('st-hitos').textContent=m.filter(function(x){return x.type==='hito';}).length;}
 function setFilter(btn){document.querySelectorAll('.f-chip').forEach(function(c){c.classList.remove('active');});btn.classList.add('active');selectedFilter=btn.dataset.f;renderMemories();}
 function setView(v,btn){currentView=v;document.querySelectorAll('.vt-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');renderMemories();}
 
-function emptyIllo(type){var C='#6b7f8e';if(type==='filter')return'<svg class="illo" viewBox="0 0 160 140" fill="none"><rect x="20" y="30" width="120" height="80" rx="14" fill="#e8ecef"/><rect x="35" y="50" width="90" height="10" rx="5" fill="#b0bec5" opacity=".6"/><rect x="35" y="68" width="60" height="10" rx="5" fill="#b0bec5" opacity=".35"/><circle cx="120" cy="45" r="18" fill="#f2f4f5"/><path d="M112 45L128 45M120 37L120 53" stroke="'+C+'" stroke-width="2.5" stroke-linecap="round"/></svg>';return'<svg class="illo" viewBox="0 0 160 140" fill="none"><rect x="15" y="40" width="130" height="85" rx="16" fill="#e8ecef"/><rect x="30" y="15" width="100" height="70" rx="12" fill="#f4f6f7" stroke="#b0bec5" stroke-width="2"/><path d="M30 35L80 58L130 35" stroke="#b0bec5" stroke-width="1.8" fill="none"/><path d="M80 68C80 68 66 56 66 48C66 42 71 38 75 39C77 39.5 80 42 80 42C80 42 83 39.5 85 39C89 38 94 42 94 48C94 56 80 68 80 68Z" fill="'+C+'" opacity=".55"/><circle cx="125" cy="105" r="22" fill="#eceff1" stroke="#b0bec5" stroke-width="2"/><path d="M125 96L125 106" stroke="'+C+'" stroke-width="3" stroke-linecap="round"/><circle cx="125" cy="112" r="2.5" fill="'+C+'"/></svg>';}
+// ═══ SEARCH ═══
+function onSearch(q){searchQuery=q.trim();document.getElementById('search-clear').classList.toggle('show',q.length>0);renderMemories();}
+function clearSearch(){searchQuery='';document.getElementById('search-input').value='';document.getElementById('search-clear').classList.remove('show');renderMemories();}
+function getFilteredMemories(){var list=db.memories.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date);});if(selectedFilter!=='all')list=list.filter(function(m){return m.type===selectedFilter;});if(searchQuery){var q=searchQuery.toLowerCase();list=list.filter(function(m){return(m.title||'').toLowerCase().includes(q)||(m.message||'').toLowerCase().includes(q);});}return list;}
 
-function renderMemories(){var grid=document.getElementById('memory-grid');if(!grid||!db)return;var list=db.memories.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date);});if(selectedFilter!=='all')list=list.filter(function(m){return m.type===selectedFilter;});if(!list.length){var isF=selectedFilter!=='all';grid.style.gridTemplateColumns='1fr';grid.innerHTML='<div class="empty-state">'+emptyIllo(isF?'filter':'main')+'<h3>'+(isF?tc('empty_filter_title'):tc('empty_title'))+'</h3><p>'+(isF?tc('empty_filter_sub'):tc('empty_sub'))+'</p>'+(isF?'':'<div class="empty-cta"><button class="btn btn-primary" onclick="goTab(\'add\',document.querySelectorAll(\'.tab\')[2])">'+tc('empty_cta')+'</button></div>')+'</div>';return;}if(currentView==='list'){grid.style.gridTemplateColumns='1fr';grid.innerHTML=list.map(renderListItem).join('');}else{grid.style.gridTemplateColumns='';grid.innerHTML=list.map(renderGridCard).join('');}}
+function emptyIllo(type){var C='#6b7f8e';if(type==='search')return'<svg class="illo" viewBox="0 0 160 140" fill="none"><circle cx="72" cy="66" r="38" fill="#e8ecef" stroke="#b0bec5" stroke-width="2.5"/><line x1="100" y1="94" x2="128" y2="122" stroke="#b0bec5" stroke-width="6" stroke-linecap="round"/><line x1="58" y1="58" x2="86" y2="58" stroke="'+C+'" stroke-width="3" stroke-linecap="round" opacity=".4"/><line x1="58" y1="68" x2="76" y2="68" stroke="'+C+'" stroke-width="3" stroke-linecap="round" opacity=".25"/></svg>';if(type==='filter')return'<svg class="illo" viewBox="0 0 160 140" fill="none"><rect x="20" y="30" width="120" height="80" rx="14" fill="#e8ecef"/><rect x="35" y="50" width="90" height="10" rx="5" fill="#b0bec5" opacity=".6"/><rect x="35" y="68" width="60" height="10" rx="5" fill="#b0bec5" opacity=".35"/></svg>';return'<svg class="illo" viewBox="0 0 160 140" fill="none"><rect x="15" y="40" width="130" height="85" rx="16" fill="#e8ecef"/><rect x="30" y="15" width="100" height="70" rx="12" fill="#f4f6f7" stroke="#b0bec5" stroke-width="2"/><path d="M30 35L80 58L130 35" stroke="#b0bec5" stroke-width="1.8" fill="none"/><path d="M80 68C80 68 66 56 66 48C66 42 71 38 75 39C77 39.5 80 42 80 42C80 42 83 39.5 85 39C89 38 94 42 94 48C94 56 80 68 80 68Z" fill="'+C+'" opacity=".55"/><circle cx="125" cy="105" r="22" fill="#eceff1" stroke="#b0bec5" stroke-width="2"/><path d="M125 96L125 106" stroke="'+C+'" stroke-width="3" stroke-linecap="round"/><circle cx="125" cy="112" r="2.5" fill="'+C+'"/></svg>';}
 
-function renderGridCard(m){var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var typeLabel=tc('type_'+TYPE_KEY[m.type]);var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';var th='';if(m.fileData&&m.type==='foto')th='<img src="'+m.fileData+'" alt="">';else if(m.fileData&&m.type==='video')th='<video src="'+m.fileData+'" muted></video><div class="mem-thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>';else if(m.fileData&&m.type==='audio')th='<div style="display:flex;flex-direction:column;align-items:center;gap:.3rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="'+cfg.stroke+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+cfg.svg+'</svg><span style="font-size:.58rem;color:'+cfg.stroke+';font-weight:700">'+((m.fileName||'audio').slice(0,16))+'</span></div>';else th='<div class="mem-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke="'+cfg.stroke+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+cfg.svg+'</svg></div>';return'<div class="mem-card'+(m.type==='hito'?' milestone-card':'')+'" onclick="openMemory(\''+m.id+'\')">'+'<div class="mem-thumb" style="background:'+cfg.bg+'">'+th+'<div class="mem-badge">'+typeLabel+'</div><div class="mem-author-av" style="background:'+(author.color||'#3d6b8e')+'">'+ini(author.name)+'</div>'+(ageStr?'<div class="mem-age-tag">'+ageStr+'</div>':'')+'</div><div class="mem-body">'+(m.type==='hito'?'<div class="mem-milestone-badge">'+typeLabel+'</div>':'')+'<div class="mem-date">'+fmtDate(m.date)+'</div><div class="mem-title">'+m.title+'</div>'+(m.message?'<div class="mem-preview">'+m.message.slice(0,60)+(m.message.length>60?'…':'')+'</div>':'')+'</div></div>';}
-function renderListItem(m){var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var typeLabel=tc('type_'+TYPE_KEY[m.type]);var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';return'<div class="mem-card" style="display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem;" onclick="openMemory(\''+m.id+'\')">'+'<div style="width:50px;height:50px;border-radius:12px;background:'+cfg.bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="'+cfg.stroke+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">'+cfg.svg+'</svg></div><div style="flex:1;min-width:0"><div style="font-size:.6rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em">'+fmtDate(m.date)+(ageStr?' · '+ageStr:'')+'</div><div style="font-size:.88rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.title+'</div><div style="font-size:.68rem;color:var(--muted)">'+typeLabel+' · '+author.name+'</div></div>'+(m.fileData&&m.type==='foto'?'<img src="'+m.fileData+'" style="width:44px;height:44px;border-radius:8px;object-fit:cover;flex-shrink:0">':m.type==='hito'?'<div style="background:var(--accent-light);color:var(--accent);border-radius:8px;padding:.3rem .5rem;font-size:.6rem;font-weight:800">&#9733;</div>':'')+'</div>';}
+// ═══ REACTIONS ═══
+function reactionsFor(memId){var r=db.reactions||{};return r[memId]||{};}
+function renderReactionsHTML(m){var r=reactionsFor(m.id);return'<div class="mem-reactions">'+REACTIONS.map(function(emoji){var count=r[emoji]?r[emoji].length:0;var isMine=r[emoji]&&r[emoji].indexOf(currentUser.id)>=0;return'<button class="react-btn'+(isMine?' active':'')+'" onclick="toggleReaction(event,\''+m.id+'\',\''+encodeURIComponent(emoji)+'\')">'+emoji+(count>0?'<span class="react-count">'+count+'</span>':'')+'</button>';}).join('')+'</div>';}
+function toggleReaction(e,memId,emojiEncoded){e.stopPropagation();var emoji=decodeURIComponent(emojiEncoded);if(!db.reactions)db.reactions={};if(!db.reactions[memId])db.reactions[memId]={};var arr=db.reactions[memId][emoji]||[];var idx=arr.indexOf(currentUser.id);if(idx>=0)arr.splice(idx,1);else arr.push(currentUser.id);db.reactions[memId][emoji]=arr;saveDB();renderMemories();}
 
-function renderTimeline(){var tl=document.getElementById('timeline-content');if(!tl||!db)return;var list=db.memories.slice().sort(function(a,b){return new Date(a.date)-new Date(b.date);});if(!list.length){tl.innerHTML='<div style="text-align:center;padding:3rem 1rem;color:var(--muted)"><p style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.3rem">'+tc('empty_title')+'</p><p style="font-size:.78rem">'+tc('empty_sub')+'</p></div>';return;}var byYear={};list.forEach(function(m){var y=new Date(m.date+'T12:00:00').getFullYear();if(!byYear[y])byYear[y]=[];byYear[y].push(m);});tl.innerHTML=Object.keys(byYear).sort().map(function(year){return'<div class="tl-year">'+year+'</div>'+byYear[year].map(function(m){var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var typeLabel=tc('type_'+TYPE_KEY[m.type]);var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';return'<div class="tl-item'+(m.type==='hito'?' milestone':'')+'" onclick="openMemory(\''+m.id+'\')">'+'<div class="tl-dot"></div><div class="tl-card'+(m.type==='hito'?' milestone':'')+'">'+'<div class="tl-meta"><span class="tl-type">'+typeLabel+'</span>'+(ageStr?'<span class="tl-age">'+ageStr+'</span>':'')+'<span style="font-size:.58rem;color:var(--muted);margin-left:auto">'+fmtDate(m.date)+'</span></div>'+'<div class="tl-title">'+m.title+'</div>'+(m.message?'<div class="tl-preview">'+m.message.slice(0,80)+(m.message.length>80?'…':'')+'</div>':'')+'<div class="tl-author">'+avHtml(author,16)+' '+author.name+'</div></div></div>';}).join('');}).join('');}
+// ═══ MEMORY RENDER ═══
+function renderMemories(){var grid=document.getElementById('memory-grid');if(!grid||!db)return;var list=getFilteredMemories();openMemoryList=list;if(!list.length){var type=searchQuery?'search':(selectedFilter!=='all'?'filter':'main');grid.style.gridTemplateColumns='1fr';var et=searchQuery?tc('empty_search_title'):(selectedFilter!=='all'?tc('empty_filter_title'):tc('empty_title'));var es=searchQuery?tc('empty_search_sub'):(selectedFilter!=='all'?tc('empty_filter_sub'):tc('empty_sub'));grid.innerHTML='<div class="empty-state">'+emptyIllo(type)+'<h3>'+et+'</h3><p>'+es+'</p>'+((!searchQuery&&selectedFilter==='all')?'<div class="empty-cta"><button class="btn btn-primary" onclick="goTab(\'add\',document.querySelectorAll(\'.tab\')[2])">'+tc('empty_cta')+'</button></div>':'')+'</div>';return;}if(currentView==='list'){grid.style.gridTemplateColumns='1fr';grid.innerHTML=list.map(renderListItem).join('');}else{grid.style.gridTemplateColumns='';grid.innerHTML=list.map(renderGridCard).join('');}}
 
+function renderGridCard(m){var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var typeLabel=tc('type_'+TYPE_KEY[m.type]);var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';var th='';if(m.fileData&&m.type==='foto')th='<img src="'+m.fileData+'" alt="">';else if(m.fileData&&m.type==='video')th='<video src="'+m.fileData+'" muted></video><div class="mem-thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>';else if(m.fileData&&m.type==='audio')th='<div style="display:flex;flex-direction:column;align-items:center;gap:.3rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="'+cfg.stroke+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+cfg.svg+'</svg></div>';else th='<div class="mem-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke="'+cfg.stroke+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+cfg.svg+'</svg></div>';var idx=openMemoryList.findIndex(function(x){return x.id===m.id;});return'<div class="mem-card" onclick="openMemory(\''+m.id+'\','+idx+')">'+'<div class="mem-thumb" style="background:'+cfg.bg+'">'+th+'<div class="mem-badge">'+typeLabel+'</div><div class="mem-author-av" style="background:'+(author.color||'#3d6b8e')+'">'+ini(author.name)+'</div>'+(ageStr?'<div class="mem-age-tag">'+ageStr+'</div>':'')+'</div><div class="mem-body">'+(m.type==='hito'?'<div class="mem-milestone-badge">'+typeLabel+'</div>':'')+'<div class="mem-date">'+fmtDate(m.date)+'</div><div class="mem-title">'+m.title+'</div>'+(m.message?'<div class="mem-preview">'+m.message.slice(0,60)+(m.message.length>60?'…':'')+'</div>':'')+'</div>'+renderReactionsHTML(m)+'</div>';}
+
+function renderListItem(m){var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var typeLabel=tc('type_'+TYPE_KEY[m.type]);var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';var idx=openMemoryList.findIndex(function(x){return x.id===m.id;});return'<div class="mem-card" style="display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem;" onclick="openMemory(\''+m.id+'\','+idx+')">'+'<div style="width:50px;height:50px;border-radius:12px;background:'+cfg.bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="'+cfg.stroke+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">'+cfg.svg+'</svg></div><div style="flex:1;min-width:0"><div style="font-size:.6rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em">'+fmtDate(m.date)+(ageStr?' · '+ageStr:'')+'</div><div style="font-size:.88rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.title+'</div><div style="font-size:.68rem;color:var(--muted)">'+typeLabel+' · '+author.name+'</div></div>'+(m.fileData&&m.type==='foto'?'<img src="'+m.fileData+'" style="width:44px;height:44px;border-radius:8px;object-fit:cover;flex-shrink:0">':m.type==='hito'?'<div style="background:var(--accent-light);color:var(--accent);border-radius:8px;padding:.3rem .5rem;font-size:.6rem;font-weight:800">★</div>':'')+'</div>';}
+
+// ═══ TIMELINE ═══
+function renderTimeline(){var tl=document.getElementById('timeline-content');if(!tl||!db)return;var list=db.memories.slice().sort(function(a,b){return new Date(a.date)-new Date(b.date);});if(!list.length){tl.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);font-size:.85rem">'+tc('empty_title')+'</div>';return;}var byYear={};list.forEach(function(m){var y=m.date?m.date.slice(0,4):'?';if(!byYear[y])byYear[y]=[];byYear[y].push(m);});tl.innerHTML=Object.keys(byYear).sort().map(function(y){return'<div class="tl-year">'+y+'</div>'+byYear[y].map(function(m){var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';var idx=openMemoryList.findIndex(function(x){return x.id===m.id;});return'<div class="tl-item'+(m.type==='hito'?' milestone':'')+'" onclick="openMemory(\''+m.id+'\','+idx+')">'+'<div class="tl-dot"></div><div class="tl-card'+(m.type==='hito'?' milestone':'')+'">'+'<div class="tl-meta"><span class="tl-type">'+tc('type_'+TYPE_KEY[m.type])+'</span>'+(ageStr?'<span class="tl-age">'+ageStr+'</span>':'')+'</div>'+'<div class="tl-title">'+m.title+'</div>'+(m.message?'<div class="tl-preview">'+m.message.slice(0,80)+(m.message.length>80?'…':'')+'</div>':'')+'<div class="tl-author">'+avHtml(author,14)+'<span>'+author.name+' · '+fmtDate(m.date)+'</span></div>'+'</div></div>';}).join('');}).join('');}
+
+// ═══ MEMORY MODAL ═══
+function openMemory(id,idx){var list=getFilteredMemories();openMemoryList=list;openMemoryIdx=(idx!==undefined&&idx>=0)?idx:list.findIndex(function(x){return x.id===id;});if(openMemoryIdx<0)openMemoryIdx=0;renderMemoryModal();openModal('overlay-memory');}
+function navMemory(dir){openMemoryIdx=Math.max(0,Math.min(openMemoryList.length-1,openMemoryIdx+dir));renderMemoryModal();}
+function renderMemoryModal(){var m=openMemoryList[openMemoryIdx];if(!m)return;var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var canDelete=currentUser.role==='admin'||currentUser.id===m.authorId;var typeLabel=tc('type_'+TYPE_KEY[m.type]);var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';document.getElementById('mem-modal-title').textContent=m.title;document.getElementById('mem-modal-sub').textContent=typeLabel+' · '+fmtDate(m.date)+(ageStr?' · '+ageStr:'');document.getElementById('mem-delete-btn').style.display=canDelete?'':'none';var prev=document.getElementById('mmn-prev'),next=document.getElementById('mmn-next'),count=document.getElementById('mmn-count');if(prev)prev.disabled=openMemoryIdx<=0;if(next)next.disabled=openMemoryIdx>=openMemoryList.length-1;if(count)count.textContent=(openMemoryIdx+1)+' / '+openMemoryList.length;var media='';if(m.fileData&&m.type==='foto')media='<img src="'+m.fileData+'" alt="" style="width:100%;border-radius:10px;margin-bottom:.85rem;max-height:300px;object-fit:cover">';else if(m.fileData&&m.type==='video')media='<video src="'+m.fileData+'" controls style="width:100%;border-radius:10px;margin-bottom:.85rem;max-height:280px"></video>';else if(m.fileData&&m.type==='audio')media='<audio src="'+m.fileData+'" controls style="width:100%;margin-bottom:.85rem"></audio>';document.getElementById('mem-modal-body').innerHTML=media+'<div style="display:flex;align-items:center;gap:.46rem;margin-bottom:.78rem">'+avHtml(author,26)+'<span style="font-size:.76rem;color:var(--muted)"><strong style="color:var(--text)">'+author.name+'</strong> · '+fmtDate(m.date)+'</span></div>'+(ageStr?'<div style="background:var(--accent-light);color:var(--accent);border-radius:8px;padding:.4rem .7rem;font-size:.76rem;font-weight:700;margin-bottom:.78rem">'+tf('mem_age_line')(db.capsule.childName,ageStr)+'</div>':'')+(m.message?'<div style="background:var(--bg);border-left:3px solid var(--accent);border-radius:8px;padding:.8rem;font-size:.82rem;line-height:1.7;margin-bottom:.85rem">'+m.message+'</div>':'')+renderReactionsHTML(m);}
+function confirmDeleteMemory(){var id=openMemoryList[openMemoryIdx]?openMemoryList[openMemoryIdx].id:null;if(!id)return;showConfirm(tc('confirm_delete_mem'),tc('confirm_delete_mem_msg'),tc('confirm_yes'),function(){db.memories=db.memories.filter(function(m){return m.id!==id;});saveDB();closeModal('overlay-memory');openMemoryList=getFilteredMemories();renderMemories();renderStats();showToast(tc('toast_deleted'));});}
+
+// ═══ ADD MEMORY ═══
 function selType(btn){document.querySelectorAll('.type-opt').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');selectedType=btn.dataset.type;clearFile();updateUploadZone();}
 function updateUploadZone(){var uf=document.getElementById('upload-field');if(!uf)return;if(selectedType==='hito'){uf.style.display='none';return;}uf.style.display='block';var sub=document.getElementById('uz-sub-text');var ft=t('file_types');if(sub&&ft)sub.textContent=ft[selectedType]||'';var fi=document.getElementById('file-input');if(fi){fi.accept=TYPE_CFG[selectedType]&&TYPE_CFG[selectedType].accept?TYPE_CFG[selectedType].accept:'';fi.value='';}}
 function onDragOver(e){e.preventDefault();document.getElementById('upload-zone').classList.add('dragover');}
@@ -1336,29 +885,47 @@ function onDragLeave(){document.getElementById('upload-zone').classList.remove('
 function onDrop(e){e.preventDefault();document.getElementById('upload-zone').classList.remove('dragover');var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)handleFile(f);}
 function onFileChange(e){var f=e.target&&e.target.files&&e.target.files[0];if(f)handleFile(f);}
 function handleFile(file){var cfg=TYPE_CFG[selectedType];if(!cfg)return;if(cfg.accept){var prefix=cfg.accept.replace('/*','');if(!file.type.startsWith(prefix)){showToast(tc('toast_fill'));return;}}var reader=new FileReader();reader.onload=function(ev){currentFile={file:file,dataURL:ev.target.result,mimeType:file.type};renderFilePreview(file,ev.target.result);};reader.readAsDataURL(file);}
-function renderFilePreview(file,dataURL){var fp=document.getElementById('file-preview');if(!fp)return;fp.style.display='flex';var thumb=document.getElementById('fp-thumb');if(file.type.startsWith('image'))thumb.innerHTML='<img src="'+dataURL+'" alt="">';else if(file.type.startsWith('video'))thumb.innerHTML='<video src="'+dataURL+'" muted></video>';else thumb.innerHTML='<div style="font-size:1.4rem">&#127925;</div>';document.getElementById('fp-name').textContent=file.name;document.getElementById('fp-size').textContent=fmtBytes(file.size);}
+function renderFilePreview(file,dataURL){var fp=document.getElementById('file-preview');if(!fp)return;fp.style.display='flex';var thumb=document.getElementById('fp-thumb');if(file.type.startsWith('image'))thumb.innerHTML='<img src="'+dataURL+'" alt="">';else if(file.type.startsWith('video'))thumb.innerHTML='<video src="'+dataURL+'" muted></video>';else thumb.innerHTML='<div style="font-size:1.4rem">🎵</div>';document.getElementById('fp-name').textContent=file.name;document.getElementById('fp-size').textContent=fmtBytes(file.size);}
 function clearFile(){currentFile=null;var fp=document.getElementById('file-preview');if(fp)fp.style.display='none';var fi=document.getElementById('file-input');if(fi)fi.value='';}
 function saveMemory(){var title=document.getElementById('add-title').value.trim();if(!title){showToast(tc('toast_no_title'));return;}var m={id:uid(),type:selectedType,title:title,date:document.getElementById('add-date').value||new Date().toISOString().split('T')[0],message:document.getElementById('add-msg').value.trim(),authorId:currentUser.id,createdAt:new Date().toISOString()};if(currentFile){m.fileData=currentFile.dataURL;m.fileName=currentFile.file.name;m.fileMime=currentFile.mimeType;}db.memories.push(m);saveDB();driveAutoSave();document.getElementById('add-title').value='';document.getElementById('add-msg').value='';document.getElementById('add-date').valueAsDate=new Date();clearFile();showToast(tc('toast_saved'));goTab('memories',document.querySelector('.tab'));}
 
-function openMemory(id){var m=db.memories.find(function(x){return x.id===id;});if(!m)return;openMemoryId=id;var cfg=TYPE_CFG[m.type]||TYPE_CFG.foto;var author=db.users.find(function(u){return u.id===m.authorId;})||{name:'?',color:'#999'};var canDelete=currentUser.role==='admin'||currentUser.id===m.authorId;var typeLabel=tc('type_'+TYPE_KEY[m.type]);var age=ageAtDate(db.capsule.birth,m.date);var ageStr=age&&age.years>=0?tf('age_at')(age.years,age.months):'';document.getElementById('mem-modal-title').textContent=m.title;document.getElementById('mem-modal-sub').textContent=typeLabel+' · '+fmtDate(m.date)+(ageStr?' · '+ageStr:'');document.getElementById('mem-delete-btn').style.display=canDelete?'':'none';var media='';if(m.fileData&&m.type==='foto')media='<img src="'+m.fileData+'" alt="" style="width:100%;border-radius:10px;margin-bottom:.85rem;max-height:300px;object-fit:cover">';else if(m.fileData&&m.type==='video')media='<video src="'+m.fileData+'" controls style="width:100%;border-radius:10px;margin-bottom:.85rem;max-height:280px"></video>';else if(m.fileData&&m.type==='audio')media='<audio src="'+m.fileData+'" controls style="width:100%;margin-bottom:.85rem"></audio>';document.getElementById('mem-modal-body').innerHTML=media+'<div style="width:44px;height:44px;border-radius:12px;background:'+cfg.bg+';display:flex;align-items:center;justify-content:center;margin-bottom:.78rem"><svg viewBox="0 0 24 24" fill="none" stroke="'+cfg.stroke+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">'+cfg.svg+'</svg></div><div style="display:flex;align-items:center;gap:.46rem;margin-bottom:.78rem">'+avHtml(author,26)+'<span style="font-size:.76rem;color:var(--muted)"><strong style="color:var(--text)">'+author.name+'</strong> · '+fmtDate(m.date)+'</span></div>'+(ageStr?'<div style="background:var(--accent-light);color:var(--accent);border-radius:8px;padding:.4rem .7rem;font-size:.76rem;font-weight:700;margin-bottom:.78rem">'+db.capsule.childName+' tenía '+ageStr+'</div>':'')+(m.message?'<div style="background:var(--bg);border-left:3px solid var(--accent);border-radius:8px;padding:.8rem;font-size:.82rem;line-height:1.7">'+m.message+'</div>':'');openModal('overlay-memory');}
-function deleteMemory(){db.memories=db.memories.filter(function(m){return m.id!==openMemoryId;});saveDB();closeModal('overlay-memory');renderMemories();renderStats();showToast(tc('toast_deleted'));}
+// ═══ WELCOME LETTER ═══
+function renderWelcomeLetterBanner(){var letter=db.welcomeLetter||'';var banner=document.getElementById('welcome-letter-banner');if(!banner)return;if(letter&&letter.trim()){banner.style.display='block';document.getElementById('wl-preview-text').textContent=letter.trim().slice(0,120)+(letter.length>120?'…':'');}else{banner.style.display='none';}}
+function openWelcomeLetter(){var letter=db.welcomeLetter||'';document.getElementById('wl-modal-body').innerHTML='<div style="white-space:pre-wrap;font-size:.88rem;line-height:1.85;color:var(--text)">'+letter+'</div>';openModal('overlay-welcome-letter');}
+function saveWelcomeLetter(){var txt=document.getElementById('wl-textarea').value;db.welcomeLetter=txt;saveDB();renderWelcomeLetterBanner();showToast(tc('toast_letter_saved'));}
 
-function renderUsersAdmin(){if(!db)return;document.getElementById('users-admin-list').innerHTML=db.users.map(function(u){var count=db.memories.filter(function(m){return m.authorId===u.id;}).length;var isSelf=u.id===currentUser.id;return'<div class="user-admin-item"><div class="uai-left">'+avHtml(u,40)+'<div><div class="uai-name">'+u.name+(isSelf?' <span style="font-size:.63rem;color:var(--muted)">('+tc('you')+')</span>':'')+'</div><div class="uai-meta"><span class="role-badge '+(u.role)+'">'+( u.role==='admin'?'Admin':tc('role_member'))+'</span>· '+count+' '+tf('memories_word')(count)+(u.email?' · '+maskEmail(u.email):'')+'</div></div></div><div class="uai-actions"><button class="btn btn-secondary btn-sm" onclick="openUserDetail(\''+u.id+'\')">'+tc('btn_edit')+'</button></div></div>';}).join('');}
-function openNewUserModal(){buildColorPicker('nu-color-picker',COLORS[1]);['nu-p0','nu-p1','nu-p2','nu-p3'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('nu-name').value='';document.getElementById('nu-email').value='';document.getElementById('nu-role').value='member';document.getElementById('nu-access-preview').style.display='none';applyI18n();openModal('overlay-new-user');}
-function previewAccess(){var name=document.getElementById('nu-name').value.trim();var pin=getPin(['nu-p0','nu-p1','nu-p2','nu-p3']);if(!name){showToast(tc('toast_fill'));return;}if(pin.length<4){showToast(tc('toast_short_pin'));return;}document.getElementById('nu-invite-msg').textContent=tf('invite')(name,pin,document.getElementById('nu-role').value,db.capsule.childName,db.capsule.openAge);document.getElementById('nu-access-preview').style.display='block';}
-function saveNewUser(){var name=document.getElementById('nu-name').value.trim();var email=document.getElementById('nu-email').value.trim().toLowerCase();var pin=getPin(['nu-p0','nu-p1','nu-p2','nu-p3']);if(!name){showToast(tc('toast_fill'));return;}if(pin.length<4){showToast(tc('toast_short_pin'));return;}if(email&&!email.includes('@')){showToast(tc('toast_invalid_email'));return;}db.users.push({id:uid(),name:name,email:email,role:document.getElementById('nu-role').value,color:getPickerColor('nu-color-picker'),pin:pin,createdAt:new Date().toISOString()});saveDB();closeModal('overlay-new-user');renderUsersAdmin();showToast(tf('toast_user_added')(name));}
-function openUserDetail(userId){editingUserId=userId;var u=db.users.find(function(x){return x.id===userId;});if(!u)return;var isSelf=userId===currentUser.id;var count=db.memories.filter(function(m){return m.authorId===userId;}).length;document.getElementById('ud-title').textContent=u.name;document.getElementById('ud-sub').textContent=(u.role==='admin'?tc('role_admin'):tc('role_member'))+' · '+count+' '+tf('memories_word')(count);document.getElementById('ud-delete-btn').style.display=isSelf?'none':'';document.getElementById('ud-save-btn').style.display=isSelf?'none':'';document.getElementById('ud-body').innerHTML='<div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem;padding-bottom:.95rem;border-bottom:1px solid var(--border)">'+avHtml(u,44)+'<div><div style="font-size:.93rem;font-weight:800">'+u.name+'</div><div style="font-size:.68rem;color:var(--muted);margin-top:.12rem">'+(u.email?maskEmail(u.email):'—')+'</div></div></div>'+(!isSelf?'<div class="form-field"><label>'+tc('set_name')+'</label><input type="text" id="ud-name" value="'+u.name+'"></div><div class="form-field"><label>'+tc('field_email')+'</label><input type="email" id="ud-email" value="'+(u.email||'')+'"></div><div class="form-field"><label>'+tc('nu_role')+'</label><select id="ud-role"><option value="member"'+(u.role==='member'?' selected':'')+'>'+tc('role_member')+'</option><option value="admin"'+(u.role==='admin'?' selected':'')+'>Admin</option></select></div><div class="form-field"><label>'+tc('field_color')+'</label><div class="color-picker" id="ud-color-picker"></div></div><div class="form-field"><label>'+tc('nu_pin')+'</label><div class="pin-row" style="justify-content:flex-start"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p0" oninput="pinMove(this,null,\'ud-p1\')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p1" oninput="pinMove(this,\'ud-p0\',\'ud-p2\')" onkeydown="pinBack(event,\'ud-p0\')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p2" oninput="pinMove(this,\'ud-p1\',\'ud-p3\')" onkeydown="pinBack(event,\'ud-p1\')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p3" oninput="pinMove(this,\'ud-p2\',null)" onkeydown="pinBack(event,\'ud-p2\')"></div></div>':'')+'<div class="access-box"><div class="ab-label">'+tc('nu_preview')+'</div><div class="access-code">'+u.pin+'</div><div style="font-size:.7rem;color:var(--muted);margin-bottom:.48rem">'+tc('set_email_rec')+': <strong>'+(u.email||'—')+'</strong></div><button class="copy-btn" onclick="copyInvite(\''+u.id+'\')">&#128203; '+tc('nu_preview_btn')+'</button></div>';if(!isSelf)buildColorPicker('ud-color-picker',u.color);openModal('overlay-user-detail');}
-function saveUserEdit(){var u=db.users.find(function(x){return x.id===editingUserId;});if(!u)return;var name=document.getElementById('ud-name').value.trim();if(!name){showToast(tc('toast_fill'));return;}u.name=name;u.email=document.getElementById('ud-email').value.trim().toLowerCase();u.role=document.getElementById('ud-role').value;u.color=getPickerColor('ud-color-picker');var np=getPin(['ud-p0','ud-p1','ud-p2','ud-p3']);if(np.length===4)u.pin=np;saveDB();closeModal('overlay-user-detail');renderUsersAdmin();showToast(tc('toast_changes'));}
-function deleteUserConfirm(){var u=db.users.find(function(x){return x.id===editingUserId;});if(!u)return;db.users=db.users.filter(function(x){return x.id!==editingUserId;});saveDB();closeModal('overlay-user-detail');renderUsersAdmin();showToast(tf('toast_user_deleted')(u.name));}
-function copyInvite(userId){var u=db.users.find(function(x){return x.id===userId;});if(!u)return;navigator.clipboard.writeText(tf('invite')(u.name,u.pin,u.role,db.capsule.childName,db.capsule.openAge)).then(function(){showToast(tc('toast_copied'));}).catch(function(){showToast(tc('toast_copied'));});}
+// ═══ PREVIEW ═══
+function goPreview(){show('screen-preview');renderPreview();applyI18n();}
+function closePreview(){show('screen-app');}
+function renderPreview(){var body=document.getElementById('preview-body');if(!body||!db)return;var letter=db.welcomeLetter||'';var mems=db.memories.slice().sort(function(a,b){return new Date(a.date)-new Date(b.date);});body.innerHTML=(letter?'<div class="preview-letter"><div class="preview-letter-title">✉️ '+tc('wl_title')+'</div><div class="preview-letter-body">'+letter+'</div></div>':'')+'<div style="color:rgba(255,255,255,.5);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem">'+(mems.length?mems.length+' '+tf('memories_word')(mems.length):tc('empty_title'))+'</div><div class="preview-mem-grid">'+(mems.length?mems.map(function(m){var th='';if(m.fileData&&m.type==='foto')th='<img src="'+m.fileData+'">';else{var icons={foto:'📷',video:'🎬',audio:'🎵',hito:'⭐'};th='<div style="font-size:2rem">'+icons[m.type]+'</div>';}return'<div class="preview-mem-card"><div class="preview-mem-thumb">'+th+'</div><div class="preview-mem-title">'+m.title+'</div><div class="preview-mem-date">'+fmtDate(m.date)+'</div></div>';}).join(''):'<div class="preview-empty"><div class="preview-empty-text">'+tc('empty_title')+'</div></div>')+'</div>';}
 
-function renderSettings(){if(!db||!currentUser)return;var isAdmin=currentUser.role==='admin';document.getElementById('set-child-name').textContent=db.capsule.childName;document.getElementById('set-open-date').textContent=unlockDate(db.capsule.birth,db.capsule.openAge)+' ('+tf('open_in')(db.capsule.openAge)+')';document.getElementById('set-my-name').textContent=currentUser.name;document.getElementById('set-my-email-desc').textContent=currentUser.email?maskEmail(currentUser.email):'—';var rb=document.getElementById('set-my-role');if(rb){rb.textContent=currentUser.role==='admin'?'Admin':tc('role_member');rb.className='role-badge '+currentUser.role;}var prefs=JSON.parse(localStorage.getItem('kintu_reminder_prefs')||'{"monthly":true,"birthday":true}');var tm=document.getElementById('toggle-monthly'),tb=document.getElementById('toggle-birthday');if(tm)tm.checked=prefs.monthly!==false;if(tb)tb.checked=prefs.birthday!==false;renderLangSelect();updateDriveUI();applyI18n();}
+// ═══ EXPORT / IMPORT ═══
+function exportData(){if(!db)return;var blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='kintu-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href);showToast(tc('toast_exported'));}
+function importData(e){var file=e.target.files&&e.target.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(ev){try{var data=JSON.parse(ev.target.result);if(!data.capsule||!data.users||!Array.isArray(data.memories))throw new Error('invalid');db=data;if(!db.reactions)db.reactions={};if(!db.welcomeLetter)db.welcomeLetter='';localStorage.setItem(SK,JSON.stringify(db));showToast(tc('toast_imported'));setTimeout(function(){show('screen-login');initLogin();},800);}catch(err){showToast('Error al importar');}};reader.readAsText(file);e.target.value='';}
+
+// ═══ CONFIRM ═══
+function showConfirm(title,msg,okLabel,cb){document.getElementById('confirm-title').textContent=title;document.getElementById('confirm-msg').textContent=msg;document.getElementById('confirm-ok-btn').textContent=okLabel;confirmCallback=cb;document.getElementById('confirm-overlay').classList.add('open');}
+function confirmOk(){document.getElementById('confirm-overlay').classList.remove('open');if(confirmCallback)confirmCallback();confirmCallback=null;}
+function confirmCancel(){document.getElementById('confirm-overlay').classList.remove('open');confirmCallback=null;}
+
+// ═══ SETTINGS ═══
+function renderSettings(){if(!db||!currentUser)return;document.getElementById('set-child-name').textContent=db.capsule.childName;document.getElementById('set-open-date').textContent=unlockDate(db.capsule.birth,db.capsule.openAge)+' ('+tf('open_in')(db.capsule.openAge)+')';document.getElementById('set-my-name').textContent=currentUser.name;document.getElementById('set-my-email-desc').textContent=currentUser.email?maskEmail(currentUser.email):'—';var rb=document.getElementById('set-my-role');if(rb){rb.textContent=currentUser.role==='admin'?'Admin':tc('role_member');rb.className='role-badge '+currentUser.role;}var prefs=JSON.parse(localStorage.getItem('kintu_reminder_prefs')||'{"monthly":true,"birthday":true}');var tm=document.getElementById('toggle-monthly'),tb=document.getElementById('toggle-birthday');if(tm)tm.checked=prefs.monthly!==false;if(tb)tb.checked=prefs.birthday!==false;var wlta=document.getElementById('wl-textarea');if(wlta)wlta.value=db.welcomeLetter||'';renderLangSelect();updateDriveUI();applyI18n();}
 function openEditCapsuleModal(){document.getElementById('ec-name').value=db.capsule.childName;document.getElementById('ec-birth').value=db.capsule.birth;document.getElementById('ec-age').value=db.capsule.openAge;openModal('overlay-edit-capsule');}
 function saveCapsuleEdit(){var name=document.getElementById('ec-name').value.trim(),birth=document.getElementById('ec-birth').value;if(!name||!birth){showToast(tc('toast_fill'));return;}db.capsule.childName=name;db.capsule.birth=birth;db.capsule.openAge=parseInt(document.getElementById('ec-age').value);saveDB();closeModal('overlay-edit-capsule');renderSettings();renderCountdown();showToast(tc('toast_capsule_updated'));}
 function openChangePinModal(){['cp0','cp1','cp2','cp3'].forEach(function(id){document.getElementById(id).value='';});openModal('overlay-change-pin');}
 function saveChangedPin(){var pin=getPin(['cp0','cp1','cp2','cp3']);if(pin.length<4){showToast(tc('toast_short_pin'));return;}var u=db.users.find(function(x){return x.id===currentUser.id;});if(!u)return;u.pin=pin;currentUser.pin=pin;saveDB();closeModal('overlay-change-pin');showToast(tc('toast_pin_updated'));}
 function openEditProfileModal(){document.getElementById('ep-name').value=currentUser.name;document.getElementById('ep-email').value=currentUser.email||'';buildColorPicker('ep-color-picker',currentUser.color);openModal('overlay-edit-profile');}
 function saveEditProfile(){var name=document.getElementById('ep-name').value.trim();if(!name){showToast(tc('toast_fill'));return;}var email=document.getElementById('ep-email').value.trim().toLowerCase();if(email&&!email.includes('@')){showToast(tc('toast_invalid_email'));return;}var color=getPickerColor('ep-color-picker');var u=db.users.find(function(x){return x.id===currentUser.id;});if(!u)return;u.name=name;u.email=email;u.color=color;currentUser.name=name;currentUser.email=email;currentUser.color=color;saveDB();var av=document.getElementById('tb-avatar');if(av){av.style.background=color;av.textContent=ini(name);}var tn=document.getElementById('tb-name');if(tn)tn.textContent=name;closeModal('overlay-edit-profile');renderSettings();if(currentUser.role==='admin')renderUsersAdmin();showToast(tc('toast_profile_updated'));}
+
+// ═══ USERS ═══
+function renderUsersAdmin(){if(!db)return;document.getElementById('users-admin-list').innerHTML=db.users.map(function(u){var count=db.memories.filter(function(m){return m.authorId===u.id;}).length;var isSelf=u.id===currentUser.id;return'<div class="user-admin-item"><div class="uai-left">'+avHtml(u,40)+'<div><div class="uai-name">'+u.name+(isSelf?' <span style="font-size:.63rem;color:var(--muted)">('+tc('you')+')</span>':'')+'</div><div class="uai-meta"><span class="role-badge '+u.role+'">'+(u.role==='admin'?'Admin':tc('role_member'))+'</span>· '+count+' '+tf('memories_word')(count)+(u.email?' · '+maskEmail(u.email):'')+'</div></div></div><div class="uai-actions"><button class="btn btn-secondary btn-sm" onclick="openUserDetail(\''+u.id+'\')">'+tc('btn_edit')+'</button></div></div>';}).join('');}
+function openNewUserModal(){buildColorPicker('nu-color-picker',COLORS[1]);['nu-p0','nu-p1','nu-p2','nu-p3'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('nu-name').value='';document.getElementById('nu-email').value='';document.getElementById('nu-role').value='member';document.getElementById('nu-access-preview').style.display='none';applyI18n();openModal('overlay-new-user');}
+function previewAccess(){var name=document.getElementById('nu-name').value.trim();var pin=getPin(['nu-p0','nu-p1','nu-p2','nu-p3']);if(!name){showToast(tc('toast_fill'));return;}if(pin.length<4){showToast(tc('toast_short_pin'));return;}document.getElementById('nu-invite-msg').textContent=tf('invite')(name,pin,document.getElementById('nu-role').value,db.capsule.childName,db.capsule.openAge);document.getElementById('nu-access-preview').style.display='block';}
+function saveNewUser(){var name=document.getElementById('nu-name').value.trim();var email=document.getElementById('nu-email').value.trim().toLowerCase();var pin=getPin(['nu-p0','nu-p1','nu-p2','nu-p3']);if(!name){showToast(tc('toast_fill'));return;}if(pin.length<4){showToast(tc('toast_short_pin'));return;}if(email&&!email.includes('@')){showToast(tc('toast_invalid_email'));return;}db.users.push({id:uid(),name:name,email:email,role:document.getElementById('nu-role').value,color:getPickerColor('nu-color-picker'),pin:pin,createdAt:new Date().toISOString()});saveDB();closeModal('overlay-new-user');renderUsersAdmin();showToast(tf('toast_user_added')(name));}
+function openUserDetail(userId){editingUserId=userId;var u=db.users.find(function(x){return x.id===userId;});if(!u)return;var isSelf=userId===currentUser.id;var count=db.memories.filter(function(m){return m.authorId===userId;}).length;document.getElementById('ud-title').textContent=u.name;document.getElementById('ud-sub').textContent=(u.role==='admin'?tc('role_admin'):tc('role_member'))+' · '+count+' '+tf('memories_word')(count);document.getElementById('ud-delete-btn').style.display=isSelf?'none':'';document.getElementById('ud-save-btn').style.display=isSelf?'none':'';document.getElementById('ud-body').innerHTML='<div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem;padding-bottom:.95rem;border-bottom:1px solid var(--border)">'+avHtml(u,44)+'<div><div style="font-size:.93rem;font-weight:800">'+u.name+'</div><div style="font-size:.68rem;color:var(--muted);margin-top:.12rem">'+(u.email?maskEmail(u.email):'—')+'</div></div></div>'+(!isSelf?'<div class="form-field"><label>'+tc('set_name')+'</label><input type="text" id="ud-name" value="'+u.name+'"></div><div class="form-field"><label>'+tc('field_email')+'</label><input type="email" id="ud-email" value="'+(u.email||'')+'"></div><div class="form-field"><label>'+tc('nu_role')+'</label><select id="ud-role"><option value="member"'+(u.role==='member'?' selected':'')+'>'+tc('role_member')+'</option><option value="admin"'+(u.role==='admin'?' selected':'')+'>Admin</option></select></div><div class="form-field"><label>'+tc('field_color')+'</label><div class="color-picker" id="ud-color-picker"></div></div><div class="form-field"><label>'+tc('nu_pin')+'</label><div class="pin-row" style="justify-content:flex-start"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p0" oninput="pinMove(this,null,\'ud-p1\')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p1" oninput="pinMove(this,\'ud-p0\',\'ud-p2\')" onkeydown="pinBack(event,\'ud-p0\')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p2" oninput="pinMove(this,\'ud-p1\',\'ud-p3\')" onkeydown="pinBack(event,\'ud-p1\')"><input class="pin-box" type="password" maxlength="1" inputmode="numeric" id="ud-p3" oninput="pinMove(this,\'ud-p2\',null)" onkeydown="pinBack(event,\'ud-p2\')"></div></div>':'')+'<div class="access-box"><div class="ab-label">'+tc('nu_preview')+'</div><div class="access-code">'+u.pin+'</div><div style="font-size:.7rem;color:var(--muted);margin-bottom:.48rem">'+tc('set_email_rec')+': <strong>'+(u.email||'—')+'</strong></div><button class="copy-btn" onclick="copyInvite(\''+u.id+'\')">📋 '+tc('nu_preview_btn')+'</button></div>';if(!isSelf)buildColorPicker('ud-color-picker',u.color);openModal('overlay-user-detail');}
+function saveUserEdit(){var u=db.users.find(function(x){return x.id===editingUserId;});if(!u)return;var name=document.getElementById('ud-name').value.trim();if(!name){showToast(tc('toast_fill'));return;}u.name=name;u.email=document.getElementById('ud-email').value.trim().toLowerCase();u.role=document.getElementById('ud-role').value;u.color=getPickerColor('ud-color-picker');var np=getPin(['ud-p0','ud-p1','ud-p2','ud-p3']);if(np.length===4)u.pin=np;saveDB();closeModal('overlay-user-detail');renderUsersAdmin();showToast(tc('toast_changes'));}
+function confirmDeleteUser(){var u=db.users.find(function(x){return x.id===editingUserId;});if(!u)return;showConfirm(tc('confirm_delete_user'),tc('confirm_delete_user_msg'),tc('confirm_yes'),function(){db.users=db.users.filter(function(x){return x.id!==editingUserId;});saveDB();closeModal('overlay-user-detail');renderUsersAdmin();showToast(tf('toast_user_deleted')(u.name));});}
+function copyInvite(userId){var u=db.users.find(function(x){return x.id===userId;});if(!u)return;navigator.clipboard.writeText(tf('invite')(u.name,u.pin,u.role,db.capsule.childName,db.capsule.openAge)).then(function(){showToast(tc('toast_copied'));}).catch(function(){showToast(tc('toast_copied'));});}
 
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
