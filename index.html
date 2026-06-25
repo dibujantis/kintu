@@ -350,9 +350,51 @@ input,textarea,select,button{font-family:var(--font-ui);}
   .app-header{padding:1.5rem 1.2rem;}
   .preview-mem-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
 }
+
+/* ═══ HOME SCREEN ═══ */
+#screen-home{background:linear-gradient(160deg,var(--accent-dark) 0%,var(--accent) 60%,var(--accent-mid) 100%);align-items:center;justify-content:flex-start;padding:0;min-height:100vh;}
+.home-header{width:100%;padding:2.2rem 1.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+.home-brand{font-family:var(--font-warm);font-size:2rem;font-weight:700;color:#fff;letter-spacing:.01em;}
+.home-tagline{font-size:.72rem;color:rgba(255,255,255,.6);font-weight:500;margin-top:.1rem;}
+.home-body{flex:1;width:100%;padding:0 1.2rem 2rem;overflow-y:auto;}
+.home-section-label{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.75rem;padding:0 .2rem;}
+.capsule-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin-bottom:1.2rem;}
+.capsule-card{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);border-radius:18px;padding:1.1rem 1rem 1rem;cursor:pointer;transition:all .2s;position:relative;backdrop-filter:blur(8px);}
+.capsule-card:hover{background:rgba(255,255,255,.18);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18);}
+.capsule-card-emoji{font-size:2rem;margin-bottom:.55rem;display:block;}
+.capsule-card-name{font-family:var(--font-warm);font-size:.95rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:.25rem;}
+.capsule-card-meta{font-size:.62rem;color:rgba(255,255,255,.62);font-weight:500;line-height:1.5;}
+.capsule-card-badge{position:absolute;top:.6rem;right:.6rem;background:rgba(255,255,255,.18);border-radius:50px;padding:.1rem .45rem;font-size:.55rem;font-weight:800;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.04em;}
+.capsule-card-new{background:rgba(255,255,255,.07);border:2px dashed rgba(255,255,255,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;min-height:120px;}
+.capsule-card-new:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.4);}
+.capsule-new-icon{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.capsule-new-label{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.7);}
+.capsule-card-delete{position:absolute;bottom:.55rem;right:.55rem;background:rgba(0,0,0,.2);border:none;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.6);font-size:.65rem;transition:all .15s;opacity:0;}
+.capsule-card:hover .capsule-card-delete{opacity:1;}
+.capsule-card-delete:hover{background:rgba(220,50,50,.5);color:#fff;}
+.home-import{display:flex;align-items:center;justify-content:center;margin-top:.5rem;}
+.home-import-btn{background:none;border:1.5px solid rgba(255,255,255,.25);border-radius:50px;padding:.42rem 1.1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.7);cursor:pointer;transition:all .18s;}
+.home-import-btn:hover{background:rgba(255,255,255,.1);color:#fff;}
 </style>
 </head>
 <body>
+
+<!-- HOME — selector de cápsulas -->
+<div id="screen-home" class="screen">
+  <div class="home-header">
+    <div>
+      <div class="home-brand">kintu</div>
+      <div class="home-tagline">Cápsulas del tiempo familiar</div>
+    </div>
+    <button class="home-import-btn" onclick="document.getElementById('home-import-file').click()">📥 Importar</button>
+    <input type="file" id="home-import-file" accept=".json" style="display:none" onchange="importCapsuleFromHome(event)">
+  </div>
+  <div class="home-body">
+    <div class="home-section-label" id="home-section-label">Mis cápsulas</div>
+    <div class="capsule-cards" id="capsule-cards"></div>
+  </div>
+</div>
+
 <div class="confetti-bg"><canvas id="confetti-canvas"></canvas></div>
 
 <!-- OPENING -->
@@ -378,7 +420,9 @@ input,textarea,select,button{font-family:var(--font-ui);}
         <div class="form-field"><label data-i18n="s1_name"></label><input type="text" id="s-child-name" data-i18n-ph="s1_name_ph"></div>
         <div class="form-field"><label data-i18n="s1_birth"></label><input type="date" id="s-birth"></div>
         <div class="form-field"><label data-i18n="s1_age"></label><select id="s-open-age"><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18" selected>18</option><option value="21">21</option><option value="25">25</option></select></div>
+        <div class="form-field"><label data-i18n="s1_recipient_email"></label><input type="email" id="s-recipient-email" data-i18n-ph="s1_recipient_email_ph"></div>
         <button class="btn btn-primary btn-full" onclick="setupNext(1)" data-i18n="btn_next"></button>
+        <button class="btn btn-secondary btn-full" style="margin-top:.5rem" onclick="backToHome()" data-i18n="back_to_home"></button>
       </div>
       <div class="step" id="step-2">
         <div class="setup-illo"><svg width="110" height="90" viewBox="0 0 110 90" fill="none"><circle cx="55" cy="30" r="22" fill="#e8ecef" stroke="#b0bec5" stroke-width="2"/><circle cx="55" cy="24" r="10" fill="#b0bec5"/><path d="M35 62 C35 52 42 46 55 46 C68 46 75 52 75 62" fill="#b0bec5"/><circle cx="82" cy="68" r="12" fill="#eceff1" stroke="#b0bec5" stroke-width="2"/><path d="M82 62 L82 68 M79 65 L85 65" stroke="#546473" stroke-width="2.5" stroke-linecap="round"/><path d="M82 68 L82 76" stroke="#546473" stroke-width="2.5" stroke-linecap="round"/></svg></div>
@@ -432,6 +476,7 @@ input,textarea,select,button{font-family:var(--font-ui);}
       <div class="drive-pill disconnected" id="topbar-drive-pill" onclick="goTab('settings',document.querySelectorAll('.tab')[3])"><div class="drive-dot"></div><span id="topbar-drive-text"></span></div>
       <div class="tb-avatar" id="tb-avatar"></div>
       <span class="tb-name" id="tb-name"></span>
+      <button class="tb-logout" onclick="goHome()" data-i18n="back_to_home"></button>
       <button class="tb-logout" onclick="logout()" data-i18n="btn_logout"></button>
     </div>
   </div>
@@ -551,6 +596,7 @@ input,textarea,select,button{font-family:var(--font-ui);}
     <div class="card"><div class="card-head" data-i18n="set_capsule"></div><div class="card-body">
       <div class="setting-row"><div><div class="sr-name" data-i18n="set_recipient"></div></div><span style="font-size:.82rem;font-weight:700" id="set-child-name">—</span></div>
       <div class="setting-row"><div><div class="sr-name" data-i18n="set_opens"></div></div><span style="font-size:.82rem;font-weight:700" id="set-open-date">—</span></div>
+      <div class="setting-row"><div><div class="sr-name" data-i18n="set_recipient_email"></div><div class="sr-desc" data-i18n="set_recipient_email_desc"></div></div><span style="font-size:.82rem;font-weight:700" id="set-recipient-email">—</span></div>
       <div class="setting-row admin-only" id="admin-change-capsule" style="display:none"><div><div class="sr-name" data-i18n="set_edit_cap"></div></div><button class="btn btn-secondary btn-sm" onclick="openEditCapsuleModal()" data-i18n="btn_edit"></button></div>
     </div></div>
     <div class="card"><div class="card-head" data-i18n="set_reminders"></div><div class="card-body">
@@ -662,13 +708,13 @@ input,textarea,select,button{font-family:var(--font-ui);}
 (function(){var cv=document.getElementById('confetti-canvas'),ctx=cv.getContext('2d');var PAL=['#9bbdd6','#deeaf4','#b3d4ea','#c5dff0','#a8c8e0','#e8f3f9','#5585a8','#f0f7fb','#7fb3ce','#d1e9f5'];var dots=[];function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;}function init(){dots=[];for(var i=0;i<80;i++)dots.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:2+Math.random()*8,color:PAL[i%PAL.length],sy:.14+Math.random()*.38,sx:(Math.random()-.5)*.14,op:.18+Math.random()*.32,drift:Math.random()*Math.PI*2,ds:.002+Math.random()*.007});}function draw(){ctx.clearRect(0,0,cv.width,cv.height);dots.forEach(function(d){d.drift+=d.ds;d.x+=d.sx+Math.sin(d.drift)*.16;d.y+=d.sy;if(d.y>cv.height+12)d.y=-12;if(d.x>cv.width+12)d.x=-12;if(d.x<-12)d.x=cv.width+12;ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle=d.color;ctx.globalAlpha=d.op;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}resize();init();draw();window.addEventListener('resize',function(){resize();init();});})();
 
 // ═══ i18n ═══
-var LANG_META=[{code:'es',flag:'🇪🇸',name:'Español'},{code:'en',flag:'🇬🇧',name:'English'},{code:'fr',flag:'🇫🇷',name:'Français'},{code:'de',flag:'🇩🇪',name:'Deutsch'},{code:'it',flag:'🇮🇹',name:'Italiano'},{code:'pt',flag:'🇧🇷',name:'Português'},{code:'zh',flag:'🇨🇳',name:'中文'},{code:'hi',flag:'🇮🇳',name:'हिन्दी'},{code:'ar',flag:'🇸🇦',name:'العربية'},{code:'ru',flag:'🇷🇺',name:'Русский'},{code:'ja',flag:'🇯🇵',name:'日本語'},{code:'eu',flag:'🏴',name:'Euskera'}];
+var LANG_META=[{code:'es',flag:'ES',name:'Español'},{code:'en',flag:'EN',name:'English'},{code:'fr',flag:'FR',name:'Français'},{code:'de',flag:'DE',name:'Deutsch'},{code:'it',flag:'IT',name:'Italiano'},{code:'pt',flag:'PT',name:'Português'},{code:'zh',flag:'ZH',name:'中文'},{code:'hi',flag:'HI',name:'हिन्दी'},{code:'ar',flag:'AR',name:'العربية'},{code:'ru',flag:'RU',name:'Русский'},{code:'ja',flag:'JA',name:'日本語'},{code:'eu',flag:'EU',name:'Euskera'}];
 var STRINGS={
   es:{
-    setup_tagline:'Cápsula del tiempo familiar',s1_title:'¿Para quién es esta cápsula?',s1_desc:'Guarda recuerdos hasta que esa persona llegue a la edad que elijas.',s1_name:'Nombre del destinatario',s1_name_ph:'Ej: Marino',s1_birth:'Fecha de nacimiento',s1_age:'Abrir cuando tenga',
+    setup_tagline:'Cápsula del tiempo familiar',s1_title:'¿Para qué niño o niña es esta cápsula?',s1_desc:'Guarda recuerdos hasta que esa persona cumpla la edad que elijas.',s1_name:'Nombre del destinatario',s1_name_ph:'Ej: Marino',s1_birth:'Fecha de nacimiento',s1_age:'Abrir cuando tenga',s1_recipient_email:'Email del destinatario (opcional)',s1_recipient_email_ph:'Email de Marino cuando sea mayor…',
     s2_title:'Crea tu cuenta de administrador',s2_desc:'Gestionarás la cápsula y conectarás el Drive compartido.',s2_name:'Tu nombre',s2_name_ph:'Ej: Mamá / Carlos García',
     s3_title:'Elige un PIN de administrador',s3_desc:'Con este PIN accederás a tu cuenta. Si lo olvidas, recupéralo por email.',s3_create:'Crear cápsula',
-    btn_next:'Siguiente',btn_back:'Atrás',btn_logout:'Salir',btn_edit:'Editar',btn_change:'Cambiar',btn_save:'Guardar',btn_cancel:'Cancelar',btn_close:'Cerrar',btn_delete:'Eliminar',btn_export:'Exportar cápsula',btn_import:'Importar copia',
+    btn_next:'Siguiente',btn_back:'Atrás',back_to_home:'Volver al inicio',btn_logout:'Salir',btn_edit:'Editar',btn_change:'Cambiar',btn_save:'Guardar',btn_cancel:'Cancelar',btn_close:'Cerrar',btn_delete:'Eliminar',btn_export:'Exportar cápsula',btn_import:'Importar copia',
     field_email:'Correo electrónico',field_color:'Color de perfil',
     login_who:'Selecciona tu perfil',forgot_pin:'Olvidé mi PIN',recover_back:'Volver',recover_title:'Recuperar PIN',recover_desc:'Te enviaremos tu PIN al correo asociado a tu cuenta.',recover_send:'Enviar PIN por email',
     pin_label:function(n){return 'PIN de '+n;},wrong_pin:'PIN incorrecto. Inténtalo de nuevo.',
@@ -685,7 +731,7 @@ var STRINGS={
     empty_title:'Aún no hay recuerdos',empty_sub:'Sé el primero en añadir algo.',empty_cta:'Añadir primer recuerdo',empty_filter_title:'Nada aquí todavía',empty_filter_sub:'No hay recuerdos de este tipo.',empty_search_title:'Sin resultados',empty_search_sub:'No hay recuerdos con esa búsqueda.',
     users_title:'Colaboradores',users_sub:'Gestiona quién puede añadir recuerdos',users_new:'+ Nuevo',
     nu_title:'Nuevo colaborador',nu_sub:'Crea acceso para alguien',nu_email_ph:'Para recuperar el PIN si lo olvida',nu_role:'Rol',nu_role_member:'Miembro — puede añadir recuerdos',nu_role_admin:'Admin — acceso completo',nu_pin:'PIN de acceso (4 dígitos)',nu_preview:'Vista previa',nu_preview_btn:'Ver invitación',nu_create:'Crear colaborador',
-    set_capsule:'La cápsula',set_recipient:'Destinatario',set_opens:'Se abre el',set_edit_cap:'Modificar cápsula',set_reminders:'Recordatorios',set_reminder_monthly:'Recordatorio mensual',set_reminder_monthly_desc:'Aviso para añadir recuerdos cada mes',set_reminder_birthday:'Cumpleaños anual',set_reminder_birthday_desc:'Aviso especial cada año en el cumpleaños',set_security:'Seguridad',set_pin:'Cambiar PIN',set_email_rec:'Email de recuperación',set_profile:'Mi perfil',set_name:'Nombre',set_role:'Rol',set_edit_profile:'Editar nombre y color',set_lang:'Idioma',
+    set_capsule:'La cápsula',set_recipient:'Destinatario',set_recipient_email:'Email del destinatario',set_recipient_email_desc:'Se usará para notificarle el día de apertura',set_opens:'Se abre el',set_edit_cap:'Modificar cápsula',set_reminders:'Recordatorios',set_reminder_monthly:'Recordatorio mensual',set_reminder_monthly_desc:'Aviso para añadir recuerdos cada mes',set_reminder_birthday:'Cumpleaños anual',set_reminder_birthday_desc:'Aviso especial cada año en el cumpleaños',set_security:'Seguridad',set_pin:'Cambiar PIN',set_email_rec:'Email de recuperación',set_profile:'Mi perfil',set_name:'Nombre',set_role:'Rol',set_edit_profile:'Editar nombre y color',set_lang:'Idioma',
     set_data:'Datos y backup',set_data_desc:'Exporta una copia de seguridad completa en JSON. Si cambias de dispositivo, importa ese archivo para restaurar todo.',
     role_admin:'Administrador',role_member:'Colaborador',
     wl_title:'Carta de bienvenida',wl_card_head:'Carta de bienvenida',wl_card_desc:'Escribe una carta para quien abra la cápsula. Aparecerá lo primero cuando llegue el día.',wl_ph:'Escribe aquí tu carta…\n\n"Cuando tengas 18 años y leas esto, quiero que sepas que…"',wl_save:'Guardar carta',
@@ -702,10 +748,10 @@ var STRINGS={
     drive_title:'Google Drive compartido',drive_disconnected:'Sin conectar',drive_connected:'Conectado',drive_syncing:'Sincronizando…',drive_error:'Error',drive_connect:'Conectar Drive del administrador',drive_disconnect:'Desconectar',drive_sync_now:'Sincronizar ahora',drive_account:'Cuenta del administrador',drive_folder:'Carpeta en Drive',drive_last_sync:'Última sincronización',drive_files:'Archivos guardados',drive_note_title:'Arquitectura de datos compartidos:',drive_note_body:'El administrador conecta UNA cuenta de Google Drive. Todos los colaboradores leen y escriben en esa misma carpeta.',drive_member_note_title:'Datos compartidos:',drive_member_note_body:'Todos los recuerdos se almacenan en el Google Drive del administrador.'
   },
   en:{
-    setup_tagline:'Family time capsule',s1_title:'Who is this capsule for?',s1_desc:'Store memories until that person reaches the age you choose.',s1_name:'Recipient name',s1_name_ph:'e.g. Marino',s1_birth:'Date of birth',s1_age:'Open when they turn',
+    setup_tagline:'Family time capsule',s1_title:'Who is this capsule for?',s1_desc:'Store memories until that person reaches the age you choose.',s1_name:'Recipient name',s1_name_ph:'e.g. Marino',s1_birth:'Date of birth',s1_age:'Open when they turn',s1_recipient_email:'Recipient email (optional)',s1_recipient_email_ph:'Email Marino will have when older…',
     s2_title:'Create your admin account',s2_desc:"You'll manage the capsule and connect the shared Drive.",s2_name:'Your name',s2_name_ph:'e.g. Mom / John Doe',
     s3_title:'Choose an admin PIN',s3_desc:'Use this PIN to log in. Forgot it? Recover it by email.',s3_create:'Create capsule',
-    btn_next:'Next',btn_back:'Back',btn_logout:'Sign out',btn_edit:'Edit',btn_change:'Change',btn_save:'Save',btn_cancel:'Cancel',btn_close:'Close',btn_delete:'Delete',btn_export:'Export capsule',btn_import:'Import backup',
+    btn_next:'Next',btn_back:'Back',back_to_home:'Back to home',btn_logout:'Sign out',btn_edit:'Edit',btn_change:'Change',btn_save:'Save',btn_cancel:'Cancel',btn_close:'Close',btn_delete:'Delete',btn_export:'Export capsule',btn_import:'Import backup',
     field_email:'Email address',field_color:'Profile colour',
     login_who:'Select your profile',forgot_pin:'Forgot my PIN',recover_back:'Go back',recover_title:'Recover PIN',recover_desc:'We will send your PIN to the email linked to your account.',recover_send:'Send PIN by email',
     pin_label:function(n){return 'PIN for '+n;},wrong_pin:'Wrong PIN. Please try again.',
@@ -722,7 +768,7 @@ var STRINGS={
     empty_title:'No memories yet',empty_sub:'Be the first to add something.',empty_cta:'Add first memory',empty_filter_title:'Nothing here yet',empty_filter_sub:'No memories of this type.',empty_search_title:'No results',empty_search_sub:'No memories found for that search.',
     users_title:'Contributors',users_sub:'Manage who can add memories',users_new:'+ New',
     nu_title:'New contributor',nu_sub:'Create access for someone',nu_email_ph:'To recover the PIN if forgotten',nu_role:'Role',nu_role_member:'Member — can add memories',nu_role_admin:'Admin — full access',nu_pin:'Access PIN (4 digits)',nu_preview:'Preview',nu_preview_btn:'View invite',nu_create:'Create contributor',
-    set_capsule:'The capsule',set_recipient:'Recipient',set_opens:'Opens on',set_edit_cap:'Edit capsule',set_reminders:'Reminders',set_reminder_monthly:'Monthly reminder',set_reminder_monthly_desc:'Reminder to add memories each month',set_reminder_birthday:'Annual birthday',set_reminder_birthday_desc:'Special reminder on the birthday each year',set_security:'Security',set_pin:'Change PIN',set_email_rec:'Recovery email',set_profile:'My profile',set_name:'Name',set_role:'Role',set_edit_profile:'Edit name and colour',set_lang:'Language',
+    set_capsule:'The capsule',set_recipient:'Recipient',set_recipient_email:'Recipient email',set_recipient_email_desc:'Used to notify them on opening day',set_opens:'Opens on',set_edit_cap:'Edit capsule',set_reminders:'Reminders',set_reminder_monthly:'Monthly reminder',set_reminder_monthly_desc:'Reminder to add memories each month',set_reminder_birthday:'Annual birthday',set_reminder_birthday_desc:'Special reminder on the birthday each year',set_security:'Security',set_pin:'Change PIN',set_email_rec:'Recovery email',set_profile:'My profile',set_name:'Name',set_role:'Role',set_edit_profile:'Edit name and colour',set_lang:'Language',
     set_data:'Data & backup',set_data_desc:'Export a full backup as JSON. If you change devices, import that file to restore everything.',
     role_admin:'Administrator',role_member:'Contributor',
     wl_title:'Welcome letter',wl_card_head:'Welcome letter',wl_card_desc:'Write a letter for whoever opens the capsule. It will appear first when the day comes.',wl_ph:'Write your letter here…',wl_save:'Save letter',
@@ -768,7 +814,19 @@ function updateTopbarDrivePill(){var p=document.getElementById('topbar-drive-pil
 function updateDriveUI(){renderDrivePanelBadge();renderDrivePanelButtons();renderDrivePanelBody();updateTopbarDrivePill();}
 
 // ═══ STATE ═══
-var SK='kintu_v5';
+// ═══ MULTI-CAPSULE SYSTEM ═══
+var INDEX_KEY='kintu_index';  // [{id,childName,birth,openAge,color,emoji,createdAt}]
+var CAP_PREFIX='kintu_cap_'; // + id => full capsule db
+var SK='kintu_v5';           // legacy single-capsule key (for migration)
+var activeCapsuleId=null;
+
+function getAllCapsules(){try{return JSON.parse(localStorage.getItem(INDEX_KEY)||'[]');}catch(e){return[];}}
+function saveCapsuleIndex(list){localStorage.setItem(INDEX_KEY,JSON.stringify(list));}
+function getCapsuleDB(id){try{return JSON.parse(localStorage.getItem(CAP_PREFIX+id)||'null');}catch(e){return null;}}
+function saveCapsuleDB(id,data){localStorage.setItem(CAP_PREFIX+id,JSON.stringify(data));}
+function deleteCapsuleDB(id){localStorage.removeItem(CAP_PREFIX+id);var list=getAllCapsules().filter(function(c){return c.id!==id;});saveCapsuleIndex(list);}
+function migrateLegacy(){var legacy=null;try{legacy=JSON.parse(localStorage.getItem(SK)||'null');}catch(e){}if(!legacy||!legacy.capsule)return;var list=getAllCapsules();var alreadyMigrated=list.some(function(c){return c.id==='legacy';});if(alreadyMigrated)return;var id='legacy';saveCapsuleDB(id,legacy);list.unshift({id:id,childName:legacy.capsule.childName,birth:legacy.capsule.birth,openAge:legacy.capsule.openAge,color:legacy.users&&legacy.users[0]?legacy.users[0].color:COLORS[0],emoji:'\uD83D\uDC8C',createdAt:legacy.users&&legacy.users[0]?legacy.users[0].createdAt:new Date().toISOString()});saveCapsuleIndex(list);localStorage.removeItem(SK);console.log('Legacy capsule migrated');}
+function setActiveCapsule(id){activeCapsuleId=id;db=getCapsuleDB(id);}
 var COLORS=['#3d6b8e','#e07a9e','#5599c4','#5cb88a','#e07a3d','#c45555','#7c6af0','#d4a017','#3db8b8','#a855d4'];
 var TYPE_CFG={
   foto:{bg:'#fce4ec',stroke:'#ad1457',svg:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',accept:'image/*'},
@@ -777,12 +835,27 @@ var TYPE_CFG={
   hito:{bg:'#deeaf4',stroke:'#2a4f6d',svg:'<path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/>',accept:null}
 };
 var TYPE_KEY={foto:'photo',video:'video',audio:'audio',hito:'milestone'};
-var REACTIONS=['❤️','⭐','🌟'];
+var REACTIONS=['\u2764\uFE0F','\u2B50','\uD83C\uDF1F'];
 var db=null,currentUser=null,selectedFilter='all',selectedType='foto',currentView='grid',searchQuery='';
 var editingUserId=null,openMemoryList=[],openMemoryIdx=0,loginSelectedUser=null,loginPinEntry='',setupStep=1,currentFile=null,confirmCallback=null;
 
-function getDB(){try{return JSON.parse(localStorage.getItem(SK)||'null');}catch(e){return null;}}
-function saveDB(){localStorage.setItem(SK,JSON.stringify(db));}
+function getDB(){if(activeCapsuleId)return getCapsuleDB(activeCapsuleId);try{return JSON.parse(localStorage.getItem(SK)||'null');}catch(e){return null;}}
+
+// ═══ REGISTRO CENTRAL (Google Apps Script) ═══
+var APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxfupkUWMty8LacOvlBNfOBB4ukd56QGLmdYa9U8GdWSycwnhGKXC6I--Ko7MmCMBXB/exec';
+function registerCapsule(capId,childName,birth,openAge,recipientEmail){
+  if(!recipientEmail)return; // solo registrar si hay email destinatario
+  try{
+    fetch(APPS_SCRIPT_URL,{
+      method:'POST',
+      body:JSON.stringify({id:capId,childName:childName,birth:birth,openAge:openAge,recipientEmail:recipientEmail}),
+      headers:{'Content-Type':'application/json'}
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d&&d.ok)console.log('Cápsula registrada en el sistema de notificaciones');
+    }).catch(function(e){console.log('Registro omitido (sin conexión):',e.message);});
+  }catch(e){console.log('Registro omitido:',e);}
+}
+function saveDB(){if(activeCapsuleId)saveCapsuleDB(activeCapsuleId,db);else localStorage.setItem(SK,JSON.stringify(db));}
 function uid(){return '_'+Math.random().toString(36).slice(2,10)+Date.now().toString(36);}
 function ini(n){return((n||'?').trim().split(/\s+/).map(function(w){return w[0];}).join('').toUpperCase().slice(0,2))||'??';}
 function avHtml(u,s){s=s||36;return'<div style="width:'+s+'px;height:'+s+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:'+(s*.27)+'px;font-weight:800;color:#fff;flex-shrink:0;background:'+(u.color||COLORS[0])+'">'+ini(u.name)+'</div>';}
@@ -796,7 +869,94 @@ function ageAtDate(birthStr,dateStr){if(!birthStr||!dateStr)return null;try{var 
 function capsuleProgress(){if(!db||!db.capsule||!db.capsule.birth)return 0;try{var birth=new Date(db.capsule.birth),unlock=new Date(birth);unlock.setFullYear(unlock.getFullYear()+db.capsule.openAge);var total=unlock-birth,elapsed=new Date()-birth;return Math.max(0,Math.min(100,Math.round((elapsed/total)*100)));}catch(e){return 0;}}
 
 // ═══ BOOT ═══
-window.onload=function(){applyI18n();renderLangSelect();db=getDB();if(!db){show('screen-setup');initSetup();}else{try{var u=new Date(db.capsule.birth);u.setFullYear(u.getFullYear()+db.capsule.openAge);if(new Date()>=u){show('screen-opening');initOpeningScreen();return;}}catch(e){}initDriveFromStorage();show('screen-login');initLogin();}};
+
+// ═══ HOME SCREEN ═══
+var CAPSULE_EMOJIS=['\uD83D\uDC8C','🌟','🎈','🌈','🦋','🌸','⭐','🎁','🌺','🦄','🎀','🌙'];
+
+function renderHome(){
+  var list=getAllCapsules();
+  var label=document.getElementById('home-section-label');
+  if(label)label.textContent=list.length===0?'Empezá tu primera cápsula':'Mis cápsulas ('+list.length+')';
+  var grid=document.getElementById('capsule-cards');
+  if(!grid)return;
+  grid.innerHTML=list.map(function(cap){
+    var age=cap.birth?calcCurrentAge(cap.birth):'';
+    var countdown=cap.birth&&cap.openAge?calcCountdownHome(cap.birth,cap.openAge):'';
+    var mems=0;try{var d=getCapsuleDB(cap.id);mems=d&&d.memories?d.memories.length:0;}catch(e){}
+    return '<div class="capsule-card" onclick="openCapsule(\''+cap.id+'\')">'      +'<span class="capsule-card-emoji">'+(cap.emoji||'\uD83D\uDC8C')+'</span>'      +'<div class="capsule-card-name">Para '+cap.childName+'</div>'      +'<div class="capsule-card-meta">'        +(age?age+'<br>':'')        +(countdown?'\u23F3 '+countdown+'<br>':'')        +mems+' recuerdos'      +'</div>'      +'<button class="capsule-card-delete" onclick="confirmDeleteCapsule(event,\''+cap.id+'\',\''+cap.childName+'\')">✕</button>'    +'</div>';
+  }).join('')
+  +'<div class="capsule-card capsule-card-new" onclick="newCapsuleFromHome()">'
+    +'<div class="capsule-new-icon">+</div>'
+    +'<div class="capsule-new-label">Nueva cápsula</div>'
+  +'</div>';
+}
+
+function calcCurrentAge(birth){
+  try{
+    var b=new Date(birth),now=new Date();
+    var y=now.getFullYear()-b.getFullYear(),m=now.getMonth()-b.getMonth();
+    if(m<0){y--;m+=12;}
+    if(y<0)return '';
+    if(y===0)return m+'m de vida';
+    return y+' años '+m+'m';
+  }catch(e){return '';}
+}
+
+function calcCountdownHome(birth,openAge){
+  try{
+    var u=new Date(birth);u.setFullYear(u.getFullYear()+openAge);
+    var diff=u-new Date();
+    if(diff<=0)return '¡Listo para abrir!';
+    var days=Math.floor(diff/864e5),y=Math.floor(days/365),mo=Math.floor((days%365)/30);
+    if(y>0)return y+'a '+mo+'m';
+    if(mo>0)return mo+'m '+days%30+'d';
+    return days+' días';
+  }catch(e){return '';}
+}
+
+function openCapsule(id){
+  setActiveCapsule(id);
+  if(!db){showToast('Error al abrir la cápsula');return;}
+  // Check if already unlocked
+  try{
+    var u=new Date(db.capsule.birth);
+    u.setFullYear(u.getFullYear()+db.capsule.openAge);
+    if(new Date()>=u){show('screen-opening');initOpeningScreen();return;}
+  }catch(e){}
+  initDriveFromStorage();
+  show('screen-login');
+  initLogin();
+}
+
+function newCapsuleFromHome(){
+  activeCapsuleId=null;
+  db=null;
+  setupStep=1;
+  show('screen-setup');
+  initSetup();
+}
+
+function confirmDeleteCapsule(e,id,name){
+  e.stopPropagation();
+  showConfirm(
+    '¿Eliminar cápsula?',
+    'Se eliminarán todos los recuerdos de "Para '+name+'". Esta acción no se puede deshacer.',
+    'Sí, eliminar',
+    function(){deleteCapsuleDB(id);renderHome();}
+  );
+}
+
+window.onload=function(){
+  applyI18n();renderLangSelect();
+  migrateLegacy();
+  var list=getAllCapsules();
+  if(list.length===0){
+    // No capsules at all — go straight to setup
+    show('screen-setup');initSetup();
+  } else {
+    show('screen-home');renderHome();
+  }
+};
 function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});document.getElementById(id).classList.add('active');}
 
 // ═══ OPENING ═══
@@ -814,8 +974,9 @@ function saveReminderPrefs(){var prefs={monthly:document.getElementById('toggle-
 function initSetup(){var dots=document.getElementById('setup-dots');dots.innerHTML=Array.from({length:3},function(_,i){return'<div class="si-dot" id="sdot-'+(i+1)+'"></div>';}).join('');updateSetupDots();buildColorPicker('s-color-picker',COLORS[0]);document.getElementById('setup-header').innerHTML=buildHeaderHTML('',tc('setup_tagline'));applyI18n();}
 function updateSetupDots(){for(var i=1;i<=3;i++)document.getElementById('sdot-'+i).classList.toggle('done',i<=setupStep);}
 function setupNext(f){if(f===1){if(!document.getElementById('s-child-name').value.trim()||!document.getElementById('s-birth').value){showToast(tc('toast_fill'));return;}}if(f===2){if(!document.getElementById('s-admin-name').value.trim()){showToast(tc('toast_fill'));return;}var e=document.getElementById('s-admin-email').value.trim();if(e&&!e.includes('@')){showToast(tc('toast_invalid_email'));return;}}document.getElementById('step-'+f).classList.remove('active');setupStep=f+1;document.getElementById('step-'+setupStep).classList.add('active');updateSetupDots();}
+function backToHome(){setupStep=1;show('screen-home');renderHome();}
 function setupPrev(f){document.getElementById('step-'+f).classList.remove('active');setupStep=f-1;document.getElementById('step-'+setupStep).classList.add('active');updateSetupDots();}
-function setupFinish(){var pin=['sp0','sp1','sp2','sp3'].map(function(id){return document.getElementById(id).value;}).join('');if(pin.length<4){showToast(tc('toast_short_pin'));return;}var childName=document.getElementById('s-child-name').value.trim();db={capsule:{childName:childName,birth:document.getElementById('s-birth').value,openAge:parseInt(document.getElementById('s-open-age').value)},users:[{id:uid(),name:document.getElementById('s-admin-name').value.trim(),email:document.getElementById('s-admin-email').value.trim().toLowerCase(),role:'admin',color:getPickerColor('s-color-picker'),pin:pin,createdAt:new Date().toISOString()}],memories:[],welcomeLetter:'',reactions:{}};saveDB();showToast(tc('toast_created'));setTimeout(function(){show('screen-login');initLogin();},700);}
+function setupFinish(){var pin=['sp0','sp1','sp2','sp3'].map(function(id){return document.getElementById(id).value;}).join('');if(pin.length<4){showToast(tc('toast_short_pin'));return;}var childName=document.getElementById('s-child-name').value.trim();var capId=uid();var adminColor=getPickerColor('s-color-picker');var birth=document.getElementById('s-birth').value;var openAge=parseInt(document.getElementById('s-open-age').value);var recipientEmail=document.getElementById('s-recipient-email').value.trim().toLowerCase();db={capsule:{childName:childName,birth:birth,openAge:openAge,recipientEmail:recipientEmail},users:[{id:uid(),name:document.getElementById('s-admin-name').value.trim(),email:document.getElementById('s-admin-email').value.trim().toLowerCase(),role:'admin',color:adminColor,pin:pin,createdAt:new Date().toISOString()}],memories:[],welcomeLetter:'',reactions:{}};activeCapsuleId=capId;saveCapsuleDB(capId,db);var list=getAllCapsules();list.push({id:capId,childName:childName,birth:birth,openAge:openAge,color:adminColor,emoji:'\uD83D\uDC8C',createdAt:new Date().toISOString()});saveCapsuleIndex(list);registerCapsule(capId,childName,birth,openAge,recipientEmail);showToast(tc('toast_created'));setTimeout(function(){show('screen-login');initLogin();},700);}
 function buildColorPicker(cid,def){document.getElementById(cid).innerHTML=COLORS.map(function(c){return'<div class="color-swatch'+(c===def?' sel':'')+'" data-color="'+c+'" style="background:'+c+'" onclick="pickColor(this)"></div>';}).join('');}
 function pickColor(el){el.closest('.color-picker').querySelectorAll('.color-swatch').forEach(function(s){s.classList.remove('sel');});el.classList.add('sel');}
 function getPickerColor(cid){var s=document.querySelector('#'+cid+' .color-swatch.sel');return s?s.dataset.color:COLORS[0];}
@@ -832,7 +993,8 @@ function renderNumpad(){document.getElementById('numpad').innerHTML=[1,2,3,4,5,6
 function numpadPress(d){if(loginPinEntry.length>=4)return;loginPinEntry+=d;renderPinDots();if(loginPinEntry.length===4)setTimeout(tryLogin,200);}
 function numpadDel(){loginPinEntry=loginPinEntry.slice(0,-1);renderPinDots();document.getElementById('login-error').textContent='';}
 function tryLogin(){if(!loginSelectedUser)return;if(loginPinEntry===loginSelectedUser.pin){currentUser=loginSelectedUser;show('screen-app');initApp();}else{document.getElementById('login-error').textContent=tc('wrong_pin');loginPinEntry='';renderPinDots();}}
-function logout(){currentUser=null;show('screen-login');initLogin();}
+function goHome(){currentUser=null;show('screen-home');renderHome();}
+function logout(){currentUser=null;activeCapsuleId=null;db=null;show('screen-home');renderHome();}
 function showRecover(){document.getElementById('pin-section').style.display='none';document.getElementById('login-user-section').style.display='none';document.getElementById('recover-box').classList.add('active');document.getElementById('recover-email').value='';document.getElementById('recover-sent').classList.remove('show');applyI18n();}
 function hideRecover(){document.getElementById('recover-box').classList.remove('active');document.getElementById('login-user-section').style.display='block';document.getElementById('pin-section').style.display='none';loginSelectedUser=null;loginPinEntry='';document.querySelectorAll('.user-item').forEach(function(el){el.classList.remove('selected');});}
 function sendRecoverPin(){var email=document.getElementById('recover-email').value.trim().toLowerCase();if(!email||!email.includes('@')){showToast(tc('toast_invalid_email'));return;}var user=db.users.find(function(u){return u.email&&u.email.toLowerCase()===email;});var box=document.getElementById('recover-sent');box.classList.add('show');box.innerHTML=user?tf('recover_found')(user.name,user.pin):tc('recover_notfound');}
@@ -901,7 +1063,9 @@ function renderPreview(){var body=document.getElementById('preview-body');if(!bo
 
 // ═══ EXPORT / IMPORT ═══
 function exportData(){if(!db)return;var blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='kintu-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href);showToast(tc('toast_exported'));}
-function importData(e){var file=e.target.files&&e.target.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(ev){try{var data=JSON.parse(ev.target.result);if(!data.capsule||!data.users||!Array.isArray(data.memories))throw new Error('invalid');db=data;if(!db.reactions)db.reactions={};if(!db.welcomeLetter)db.welcomeLetter='';localStorage.setItem(SK,JSON.stringify(db));showToast(tc('toast_imported'));setTimeout(function(){show('screen-login');initLogin();},800);}catch(err){showToast('Error al importar');}};reader.readAsText(file);e.target.value='';}
+function importData(e){importCapsuleFile(e.target.files&&e.target.files[0]);e.target.value='';}
+function importCapsuleFromHome(e){importCapsuleFile(e.target.files&&e.target.files[0]);e.target.value='';}
+function importCapsuleFile(file){if(!file)return;var reader=new FileReader();reader.onload=function(ev){try{var data=JSON.parse(ev.target.result);if(!data.capsule||!data.users||!Array.isArray(data.memories))throw new Error('invalid');if(!data.reactions)data.reactions={};if(!data.welcomeLetter)data.welcomeLetter='';var capId=uid();activeCapsuleId=capId;db=data;saveCapsuleDB(capId,data);var list=getAllCapsules();list.push({id:capId,childName:data.capsule.childName,birth:data.capsule.birth,openAge:data.capsule.openAge,color:data.users&&data.users[0]?data.users[0].color:COLORS[0],emoji:'\uD83D\uDC8C',createdAt:new Date().toISOString()});saveCapsuleIndex(list);showToast(tc('toast_imported'));setTimeout(function(){show('screen-login');initLogin();},800);}catch(err){showToast('Error al importar');}};reader.readAsText(file);}
 
 // ═══ CONFIRM ═══
 function showConfirm(title,msg,okLabel,cb){document.getElementById('confirm-title').textContent=title;document.getElementById('confirm-msg').textContent=msg;document.getElementById('confirm-ok-btn').textContent=okLabel;confirmCallback=cb;document.getElementById('confirm-overlay').classList.add('open');}
@@ -909,9 +1073,11 @@ function confirmOk(){document.getElementById('confirm-overlay').classList.remove
 function confirmCancel(){document.getElementById('confirm-overlay').classList.remove('open');confirmCallback=null;}
 
 // ═══ SETTINGS ═══
-function renderSettings(){if(!db||!currentUser)return;document.getElementById('set-child-name').textContent=db.capsule.childName;document.getElementById('set-open-date').textContent=unlockDate(db.capsule.birth,db.capsule.openAge)+' ('+tf('open_in')(db.capsule.openAge)+')';document.getElementById('set-my-name').textContent=currentUser.name;document.getElementById('set-my-email-desc').textContent=currentUser.email?maskEmail(currentUser.email):'—';var rb=document.getElementById('set-my-role');if(rb){rb.textContent=currentUser.role==='admin'?'Admin':tc('role_member');rb.className='role-badge '+currentUser.role;}var prefs=JSON.parse(localStorage.getItem('kintu_reminder_prefs')||'{"monthly":true,"birthday":true}');var tm=document.getElementById('toggle-monthly'),tb=document.getElementById('toggle-birthday');if(tm)tm.checked=prefs.monthly!==false;if(tb)tb.checked=prefs.birthday!==false;var wlta=document.getElementById('wl-textarea');if(wlta)wlta.value=db.welcomeLetter||'';renderLangSelect();updateDriveUI();applyI18n();}
+function renderSettings(){if(!db||!currentUser)return;document.getElementById('set-child-name').textContent=db.capsule.childName;
+  var re=document.getElementById('set-recipient-email');if(re)re.textContent=db.capsule.recipientEmail||'—';document.getElementById('set-open-date').textContent=unlockDate(db.capsule.birth,db.capsule.openAge)+' ('+tf('open_in')(db.capsule.openAge)+')';document.getElementById('set-my-name').textContent=currentUser.name;document.getElementById('set-my-email-desc').textContent=currentUser.email?maskEmail(currentUser.email):'—';var rb=document.getElementById('set-my-role');if(rb){rb.textContent=currentUser.role==='admin'?'Admin':tc('role_member');rb.className='role-badge '+currentUser.role;}var prefs=JSON.parse(localStorage.getItem('kintu_reminder_prefs')||'{"monthly":true,"birthday":true}');var tm=document.getElementById('toggle-monthly'),tb=document.getElementById('toggle-birthday');if(tm)tm.checked=prefs.monthly!==false;if(tb)tb.checked=prefs.birthday!==false;var wlta=document.getElementById('wl-textarea');if(wlta)wlta.value=db.welcomeLetter||'';renderLangSelect();updateDriveUI();applyI18n();}
 function openEditCapsuleModal(){document.getElementById('ec-name').value=db.capsule.childName;document.getElementById('ec-birth').value=db.capsule.birth;document.getElementById('ec-age').value=db.capsule.openAge;openModal('overlay-edit-capsule');}
-function saveCapsuleEdit(){var name=document.getElementById('ec-name').value.trim(),birth=document.getElementById('ec-birth').value;if(!name||!birth){showToast(tc('toast_fill'));return;}db.capsule.childName=name;db.capsule.birth=birth;db.capsule.openAge=parseInt(document.getElementById('ec-age').value);saveDB();closeModal('overlay-edit-capsule');renderSettings();renderCountdown();showToast(tc('toast_capsule_updated'));}
+function saveCapsuleEdit(){var name=document.getElementById('ec-name').value.trim(),birth=document.getElementById('ec-birth').value;if(!name||!birth){showToast(tc('toast_fill'));return;}db.capsule.childName=name;db.capsule.birth=birth;db.capsule.openAge=parseInt(document.getElementById('ec-age').value);saveDB();// sync index
+var list=getAllCapsules();var idx=list.findIndex(function(c){return c.id===activeCapsuleId;});if(idx>=0){list[idx].childName=name;list[idx].birth=birth;list[idx].openAge=db.capsule.openAge;saveCapsuleIndex(list);}registerCapsule(activeCapsuleId,db.capsule.childName,db.capsule.birth,db.capsule.openAge,db.capsule.recipientEmail);closeModal('overlay-edit-capsule');renderSettings();renderCountdown();showToast(tc('toast_capsule_updated'));}
 function openChangePinModal(){['cp0','cp1','cp2','cp3'].forEach(function(id){document.getElementById(id).value='';});openModal('overlay-change-pin');}
 function saveChangedPin(){var pin=getPin(['cp0','cp1','cp2','cp3']);if(pin.length<4){showToast(tc('toast_short_pin'));return;}var u=db.users.find(function(x){return x.id===currentUser.id;});if(!u)return;u.pin=pin;currentUser.pin=pin;saveDB();closeModal('overlay-change-pin');showToast(tc('toast_pin_updated'));}
 function openEditProfileModal(){document.getElementById('ep-name').value=currentUser.name;document.getElementById('ep-email').value=currentUser.email||'';buildColorPicker('ep-color-picker',currentUser.color);openModal('overlay-edit-profile');}
