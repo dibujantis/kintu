@@ -844,15 +844,17 @@ function getDB(){if(activeCapsuleId)return getCapsuleDB(activeCapsuleId);try{ret
 // ═══ REGISTRO CENTRAL (Google Apps Script) ═══
 var APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxfupkUWMty8LacOvlBNfOBB4ukd56QGLmdYa9U8GdWSycwnhGKXC6I--Ko7MmCMBXB/exec';
 function registerCapsule(capId,childName,birth,openAge,recipientEmail){
-  if(!recipientEmail)return; // solo registrar si hay email destinatario
+  if(!recipientEmail)return;
   try{
-    fetch(APPS_SCRIPT_URL,{
-      method:'POST',
-      body:JSON.stringify({id:capId,childName:childName,birth:birth,openAge:openAge,recipientEmail:recipientEmail}),
-      headers:{'Content-Type':'application/json'}
-    }).then(function(r){return r.json();}).then(function(d){
-      if(d&&d.ok)console.log('Cápsula registrada en el sistema de notificaciones');
-    }).catch(function(e){console.log('Registro omitido (sin conexión):',e.message);});
+    // Usar modo no-cors + GET con parámetros para evitar bloqueo CORS
+    var params='id='+encodeURIComponent(capId)
+      +'&childName='+encodeURIComponent(childName)
+      +'&birth='+encodeURIComponent(birth)
+      +'&openAge='+encodeURIComponent(openAge)
+      +'&recipientEmail='+encodeURIComponent(recipientEmail);
+    var img=new Image();
+    img.src=APPS_SCRIPT_URL+'?'+params;
+    console.log('Registro enviado via GET');
   }catch(e){console.log('Registro omitido:',e);}
 }
 function saveDB(){if(activeCapsuleId)saveCapsuleDB(activeCapsuleId,db);else localStorage.setItem(SK,JSON.stringify(db));}
